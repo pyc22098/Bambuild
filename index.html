@@ -10,7 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 
   <style>
+    /* --- COLOR PALETTE & DYNAMIC STYLES --- */
     :root {
+      /* Light Mode Palette */
       --bg-color: #f6efdf;
       --card-bg: #fffbf0;
       --card-border: #7c5c43;
@@ -29,6 +31,7 @@
     }
 
     [data-theme="dark"] {
+      /* Dark Mode Palette */
       --bg-color: #2b2420;
       --card-bg: #3d3531;
       --card-border: #8c6d56;
@@ -63,6 +66,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    /* Standard Town-Simulator Button Style */
     .btn {
       cursor: pointer;
       border: 3px solid var(--card-border);
@@ -92,13 +96,7 @@
       box-shadow: 0 1px 0 var(--card-border);
     }
 
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none !important;
-      box-shadow: 0 4px 0 var(--card-border) !important;
-    }
-
+    /* Custom OK Button */
     .btn-ok {
       background-color: var(--accent-yellow);
       color: var(--text-color);
@@ -144,6 +142,7 @@
       box-shadow: 0 1px 0 var(--card-border);
     }
 
+    /* Modal Styling */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -196,6 +195,7 @@
       transform: scale(1.2);
     }
 
+    /* Form Selects & Inputs */
     .modal-select {
       width: 100%;
       padding: 10px;
@@ -208,6 +208,7 @@
       color: var(--text-color);
     }
 
+    /* Mode Toggles */
     .setting-row {
       display: flex;
       flex-direction: column;
@@ -253,6 +254,7 @@
       border: 1.5px solid var(--card-border);
     }
 
+    /* --- HOME SCREEN --- */
     #home-screen {
       position: absolute;
       width: 100%;
@@ -266,6 +268,7 @@
       overflow: hidden;
     }
 
+    /* Cartoon Town Background Elements */
     .town-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -293,11 +296,13 @@
       border-right: 3px dashed var(--card-border);
     }
 
+    /* Corner Buttons */
     .top-left-btn { position: absolute; top: 20px; left: 20px; background-color: var(--accent-yellow); }
     .top-right-btn { position: absolute; top: 20px; right: 20px; background-color: var(--accent-green); color: #fff; }
     .bottom-left-btn { position: absolute; bottom: 20px; left: 20px; background-color: var(--accent-blue); color: #fff; }
     .bottom-right-btn { position: absolute; bottom: 20px; right: 20px; background-color: var(--accent-red); color: #fff; }
 
+    /* Title Container */
     .title-wrapper {
       display: flex;
       align-items: center;
@@ -320,6 +325,7 @@
       font-family: 'Mochiy Pop One', cursive;
     }
 
+    /* Middle Center Buttons */
     .home-center-buttons {
       display: flex;
       align-items: center;
@@ -378,6 +384,7 @@
       animation: pulse 1.6s infinite ease-in-out;
     }
 
+    /* --- TOWN SCREEN & PAVEMENT CANVAS --- */
     #town-screen {
       position: absolute;
       width: 100%;
@@ -394,6 +401,7 @@
       overflow: hidden;
     }
 
+    /* Pavement Town Map Grid */
     .town-map-area {
       position: absolute;
       bottom: 0;
@@ -407,6 +415,7 @@
       border-top: 4px solid var(--card-border);
     }
 
+    /* Distant Short Buildings Background Row */
     .short-buildings-row {
       position: absolute;
       top: -45px;
@@ -429,6 +438,7 @@
       z-index: 50;
     }
 
+    /* Player Profile Area */
     .player-profile-badge {
       display: flex;
       align-items: center;
@@ -471,19 +481,6 @@
       color: #666;
     }
 
-    .clock-badge {
-      background: var(--card-bg);
-      border: 3px solid var(--card-border);
-      padding: 6px 12px;
-      border-radius: 20px;
-      box-shadow: 0 4px 0 var(--card-border);
-      font-weight: 800;
-      font-size: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
     .resources-bar {
       display: flex;
       gap: 12px;
@@ -518,6 +515,7 @@
       font-weight: 700;
     }
 
+    /* Left Side Missions Stack */
     .town-left-controls {
       position: absolute;
       top: 80px;
@@ -554,6 +552,7 @@
       justify-content: center;
     }
 
+    /* Enlarged Pedestrians - Always Top Z-Index */
     .pedestrian-wrapper {
       position: absolute;
       animation: walk 10s infinite alternate ease-in-out;
@@ -572,6 +571,7 @@
 
     .town-bottom-left { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 15px; z-index: 50; }
 
+    /* Interactive Facility Placement Container */
     .facility-node {
       position: absolute;
       display: flex;
@@ -591,6 +591,7 @@
       pointer-events: none;
     }
 
+    /* Directional Triangles for Facility Movement */
     .arrow-controls {
       position: absolute;
       top: -25px; left: -25px; right: -25px; bottom: -25px;
@@ -615,6 +616,7 @@
       transform: scale(1.2);
     }
 
+    /* Triangle Triangles pointing N, E, S, W */
     .arrow-north {
       top: -12px; left: 50%; transform: translateX(-50%);
       border-left: 10px solid transparent;
@@ -686,6 +688,7 @@
       background: var(--accent-yellow);
     }
 
+    /* Starter Character Cards Grid */
     .character-selection-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -716,11 +719,13 @@
       background: var(--accent-yellow);
     }
 
+    /* Pure Outlined Vector Facilities */
     .outlined-art {
       filter: drop-shadow(0px 2px 0px var(--card-border));
       transition: transform 0.2s ease;
     }
 
+    /* Construction Menu List Item with Checkbox Toggle */
     .construction-toggle-item {
       display: flex;
       align-items: center;
@@ -751,6 +756,7 @@
       background: #eafaf1;
     }
 
+    /* Mission Item Component */
     .mission-item {
       background: var(--card-bg);
       border: 2px solid var(--card-border);
@@ -778,26 +784,6 @@
       font-weight: 700;
       color: var(--accent-green);
     }
-
-    .mission-tag {
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 2px;
-    }
-    .tag-daily { background: var(--accent-yellow); color: var(--text-color); }
-    .tag-weekly { background: var(--accent-blue); color: #fff; }
-    .tag-golden { background: #ffd700; color: #000; }
-
-    /* Unified Bamboo Icon Template */
-    .bamboo-icon-svg {
-      width: 20px;
-      height: 20px;
-      vertical-align: middle;
-      display: inline-block;
-    }
   </style>
 </head>
 <body>
@@ -810,8 +796,8 @@
       <div class="path"></div>
     </div>
     
-    <button class="btn top-left-btn" id="lbl-follow" onclick="openModal('follow-modal')">📣 Follow Us!</button>
-    <button class="btn top-right-btn" id="lbl-settings" onclick="openModal('settings-modal')">⚙️ Settings</button>
+    <button class="btn top-left-btn" onclick="openModal('follow-modal')">📣 Follow Us!</button>
+    <button class="btn top-right-btn" onclick="openModal('settings-modal')">⚙️ Settings</button>
 
     <div class="title-wrapper">
       <svg class="bamboo-art" width="50" height="100" viewBox="0 0 50 100">
@@ -854,7 +840,7 @@
       </div>
     </div>
 
-    <button class="btn bottom-left-btn" id="lbl-terms" onclick="openModal('terms-modal')">📋 Terms & Services</button>
+    <button class="btn bottom-left-btn" onclick="openModal('terms-modal')">📋 Terms & Services</button>
     <button class="btn bottom-right-btn" id="home-login-btn" onclick="openModal('login-modal')">🔑 Log In</button>
   </div>
 
@@ -872,20 +858,10 @@
             <span class="player-status-tag" id="header-player-status">Guest (Temp Session)</span>
           </div>
         </div>
-
-        <div class="clock-badge">
-          <span id="country-clock-time">00:00:00 AM</span>
-          <span id="country-clock-name" style="font-size:0.65rem; color:#666;">UTC</span>
-        </div>
         
         <div class="resources-bar">
           <div class="resource-item">
-            <svg class="bamboo-icon-svg" viewBox="0 0 50 100">
-              <rect x="10" y="10" width="8" height="80" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
-              <rect x="28" y="0" width="10" height="95" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
-              <path d="M 8 20 C 0 15, -2 25, 8 25 Z" fill="var(--bamboo-leaf)"/>
-            </svg>
-            <span id="bamboo-count">120</span> 
+            🪵 <span id="bamboo-count">120</span> 
             <span class="add-btn" onclick="openShopCategory('bamboos')">+</span>
           </div>
           <div class="resource-item">
@@ -896,12 +872,12 @@
             💎 <span id="diamond-count">15</span> 
             <span class="add-btn" onclick="openShopCategory('diamonds')">+</span>
           </div>
-          <button class="btn" id="lbl-shop-btn" style="padding: 4px 12px; font-size: 0.85rem;" onclick="openModal('shop-modal')">🛒 Shop</button>
+          <button class="btn" style="padding: 4px 12px; font-size: 0.85rem;" onclick="openModal('shop-modal')">🛒 Shop</button>
         </div>
 
         <div style="display:flex; gap:8px;">
-          <button class="btn" id="lbl-home-btn" style="background:var(--accent-red); color:#fff; padding:8px 14px;" onclick="goToHome()">🏠 Home</button>
-          <button class="btn" id="lbl-menu-btn" style="background:var(--accent-green); color:#fff; padding:8px 14px;" onclick="openModal('town-menu-modal')">☰ Menu</button>
+          <button class="btn" style="background:var(--accent-red); color:#fff; padding:8px 14px;" onclick="goToHome()">🏠 Home</button>
+          <button class="btn" style="background:var(--accent-green); color:#fff; padding:8px 14px;" onclick="openModal('town-menu-modal')">☰ Menu</button>
         </div>
       </div>
 
@@ -969,14 +945,15 @@
 
   <!-- ==================== MODALS ==================== -->
 
-  <!-- Construction Menu Modal -->
+  <!-- Construction Facilities Display Menu Modal -->
   <div id="construction-menu-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('construction-menu-modal')">&times;</button>
       <div class="modal-title">🔨 Unlocked Constructions</div>
-      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Toggle facilities to display or hide them on the town map:</p>
+      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Toggle facilities to display or hide them on the pavement town map:</p>
       
-      <div id="constructions-toggle-list" style="max-height: 250px; overflow-y: auto;"></div>
+      <div id="constructions-toggle-list" style="max-height: 250px; overflow-y: auto;">
+      </div>
 
       <div style="text-align: center; margin-top: 15px;">
         <button class="btn-ok" onclick="closeModal('construction-menu-modal')">OK</button>
@@ -989,9 +966,32 @@
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('missions-modal')">&times;</button>
       <div class="modal-title">📜 Town Missions</div>
-      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Complete goals to earn rewards!</p>
+      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Complete tasks to expand your animal town!</p>
       
-      <div id="missions-list" style="max-height: 300px; overflow-y: auto;">
+      <div id="missions-list">
+        <div class="mission-item">
+          <div class="mission-details">
+            <span class="mission-title">🔨 Construct 2 Town Benches</span>
+            <span class="mission-reward">Reward: +100 Coins, +10 Bamboos</span>
+          </div>
+          <button class="btn" style="padding:4px 12px; font-size:0.8rem;" onclick="claimMission(this, 100, 10)">Claim</button>
+        </div>
+
+        <div class="mission-item">
+          <div class="mission-details">
+            <span class="mission-title">🌿 Plant 3 Bamboo Trees</span>
+            <span class="mission-reward">Reward: +150 Coins, +2 Diamonds</span>
+          </div>
+          <button class="btn" style="padding:4px 12px; font-size:0.8rem;" onclick="claimMission(this, 150, 0, 2)">Claim</button>
+        </div>
+
+        <div class="mission-item">
+          <div class="mission-details">
+            <span class="mission-title">🐰 Welcome 5 Pedestrian Animals</span>
+            <span class="mission-reward">Reward: +50 Bamboos</span>
+          </div>
+          <button class="btn" style="padding:4px 12px; font-size:0.8rem;" onclick="claimMission(this, 0, 50)">Claim</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1010,15 +1010,15 @@
     </div>
   </div>
 
-  <!-- Settings Modal -->
+  <!-- Settings Modal (With Exit Cross, Language Picker, and OK Confirm Button) -->
   <div id="settings-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('settings-modal')">&times;</button>
-      <div class="modal-title" id="setting-modal-title">⚙️ Game Settings</div>
+      <div class="modal-title">⚙️ Game Settings</div>
       
       <div class="setting-row">
         <div class="setting-header">
-          <span id="lbl-theme">Theme Mode</span>
+          <span>Theme Mode</span>
           <div class="mode-toggle-group">
             <button class="mode-btn active" id="light-mode-btn" onclick="setTheme('light')">Light</button>
             <button class="mode-btn" id="dark-mode-btn" onclick="setTheme('dark')">Dark</button>
@@ -1026,17 +1026,19 @@
         </div>
       </div>
 
+      <!-- Language Selector -->
       <div class="setting-row">
         <div class="setting-header">
           <span>Language / 語言 / 言語</span>
         </div>
         <select id="language-select" class="modal-select">
+          <!-- Populated dynamically via JS -->
         </select>
       </div>
 
       <div class="setting-row">
         <div class="setting-header">
-          <span id="lbl-bgm">Background Music</span>
+          <span>Background Music (Canon in D)</span>
           <span id="bgm-vol-text">50%</span>
         </div>
         <input type="range" class="volume-slider" id="bgm-slider" min="0" max="100" value="50" oninput="updateBgmVolume(this.value)">
@@ -1044,7 +1046,7 @@
 
       <div class="setting-row">
         <div class="setting-header">
-          <span id="lbl-sfx">Sound Effects</span>
+          <span>Sound Effects</span>
           <span id="sfx-vol-text">70%</span>
         </div>
         <input type="range" class="volume-slider" id="sfx-slider" min="0" max="100" value="70" oninput="updateSfxVolume(this.value)">
@@ -1056,32 +1058,13 @@
     </div>
   </div>
 
-  <!-- Comprehensive Terms and Services Modal -->
+  <!-- Terms and Services Modal -->
   <div id="terms-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width: 600px;">
+    <div class="modal-card">
       <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
       <div class="modal-title">📋 Terms & Services</div>
-      <div style="max-height:280px; overflow-y:auto; font-size:0.8rem; line-height:1.5; font-weight:600; text-align: left; padding-right: 8px;">
-        <h4>1. Acceptance of Terms</h4>
-        <p>By downloading, accessing, or playing BAMBUILD, you agree to be bound by these Terms of Service. If you do not agree, please do not use the service.</p><br>
-        
-        <h4>2. User Accounts & Data</h4>
-        <p>Guest sessions store temporary game data locally. Unregistered guest sessions may expire or reset upon clearing browser caches. Registered account holders' progress is tied to their respective OAuth/Email login profile.</p><br>
-        
-        <h4>3. In-Game Virtual Currencies & Purchases</h4>
-        <p>BAMBUILD includes virtual currencies (Coins, Bamboos, and Diamonds). These items are licensed, non-transferable, non-refundable, and cannot be redeemed for real-world currency or monetary value.</p><br>
-        
-        <h4>4. Code of Conduct</h4>
-        <p>Users agree not to exploit glitches, use unauthorized third-party automation tools, modify game assets, or engage in behavior harmful to other players or the service infrastructure.</p><br>
-
-        <h4>5. Intellectual Property</h4>
-        <p>All graphics, sound effects, vector artwork, designs, and source code associated with BAMBUILD are the property of the developers and protected by international intellectual property laws.</p><br>
-
-        <h4>6. Service Modifications & Termination</h4>
-        <p>We reserve the right to modify, suspend, or terminate game operations or user access at any time for maintenance, safety, or legal reasons without prior notice.</p>
-      </div>
-      <div style="text-align: center; margin-top: 15px;">
-        <button class="btn-ok" onclick="closeModal('terms-modal')">I Accept</button>
+      <div style="max-height:200px; overflow-y:auto; font-size:0.85rem; line-height:1.5; font-weight:600;">
+        Welcome to BAMBUILD! Unregistered guest sessions clear all game data 30 minutes after closing the browser. Logged in users will have their town saved permanently across sessions.
       </div>
     </div>
   </div>
@@ -1115,7 +1098,7 @@
     </div>
   </div>
 
-  <!-- Region Selection Modal -->
+  <!-- Region Selection Modal (With Exit Cross and Full Regions/Territories List) -->
   <div id="region-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('region-modal')">&times;</button>
@@ -1123,6 +1106,7 @@
       <p style="font-size:0.85rem; font-weight:600; opacity:0.8; text-align:center;">Daily free coins and bamboos reset according to your local time zone!</p>
       
       <select id="region-select" class="modal-select" style="max-height: 180px;">
+        <!-- Populated dynamically via JS with all world countries & regions -->
       </select>
 
       <div style="margin-top:15px; background:rgba(0,0,0,0.03); padding:10px; border-radius:12px; border:2px solid var(--card-border); text-align:center; font-weight:700; font-size:0.85rem;">
@@ -1135,7 +1119,7 @@
     </div>
   </div>
 
-  <!-- Starter Character Selection Modal -->
+  <!-- Starter Character Selection Modal (Animals Only with OK button) -->
   <div id="character-modal" class="modal-overlay">
     <div class="modal-card" style="max-width:520px;">
       <button class="modal-close" onclick="closeModal('character-modal')">&times;</button>
@@ -1199,8 +1183,9 @@
     </div>
   </div>
 
-  <!-- Audio Synthesizer Script -->
+  <!-- Audio Synthesizer for Canon in D (Web Audio API) -->
   <script>
+    /* --- AUDIO SYNTHESIZER: CANON IN D BGM & SFX --- */
     let audioCtx = null;
     let bgmGainNode = null;
     let sfxGainNode = null;
@@ -1293,100 +1278,52 @@
     }, { once: true });
   </script>
 
-  <!-- Main Engine Script -->
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    /* --- I18N DICTIONARIES --- */
-    const TRANSLATIONS = {
-      'en': {
-        follow: "📣 Follow Us!",
-        settings: "⚙️ Settings",
-        terms: "📋 Terms & Services",
-        login: "🔑 Log In",
-        theme: "Theme Mode",
-        bgm: "Background Music",
-        sfx: "Sound Effects",
-        shop: "🛒 Shop",
-        home: "🏠 Home",
-        menu: "☰ Menu"
-      },
-      'zh-HK': {
-        follow: "📣 關注我們！",
-        settings: "⚙️ 設定",
-        terms: "📋 服務條款",
-        login: "🔑 登入",
-        theme: "主題模式",
-        bgm: "背景音樂",
-        sfx: "音效",
-        shop: "🛒 商店",
-        home: "🏠 主頁",
-        menu: "☰ 選單"
-      },
-      'zh-TW': {
-        follow: "📣 追蹤我們！",
-        settings: "⚙️ 設定",
-        terms: "📋 服務條款",
-        login: "🔑 登入",
-        theme: "主題模式",
-        bgm: "背景音樂",
-        sfx: "音效",
-        shop: "🛒 商店",
-        home: "🏠 主頁",
-        menu: "選單"
-      },
-      'zh-CN': {
-        follow: "📣 关注我们！",
-        settings: "⚙️ 设置",
-        terms: "📋 服务条款",
-        login: "🔑 登录",
-        theme: "主题模式",
-        bgm: "背景音乐",
-        sfx: "音效",
-        shop: "🛒 商店",
-        home: "🏠 主页",
-        menu: "☰ 菜单"
-      },
-      'ja': {
-        follow: "📣 フォロー",
-        settings: "⚙️ 設定",
-        terms: "📋 利用規約",
-        login: "🔑 ログイン",
-        theme: "テーマ",
-        bgm: "BGM",
-        sfx: "効果音",
-        shop: "🛒 ショップ",
-        home: "🏠 ホーム",
-        menu: "☰ メニュー"
-      }
-    };
-
+    /* --- ALL LANGUAGES CONFIGURATION --- */
     const LANGUAGES_LIST = [
       { code: 'en', name: 'English' },
       { code: 'zh-HK', name: '繁體中文 (香港)' },
       { code: 'zh-TW', name: '繁體中文 (台灣)' },
       { code: 'zh-CN', name: '简体中文 (中国)' },
-      { code: 'ja', name: '日本語' }
+      { code: 'ja', name: '日本語' },
+      { code: 'ko', name: '한국어' },
+      { code: 'es', name: 'Español' },
+      { code: 'fr', name: 'Français' },
+      { code: 'de', name: 'Deutsch' },
+      { code: 'pt', name: 'Português' },
+      { code: 'ru', name: 'Русский' },
+      { code: 'ar', name: 'العربية' },
+      { code: 'hi', name: 'हिन्दी' },
+      { code: 'it', name: 'Italiano' },
+      { code: 'nl', name: 'Nederlands' },
+      { code: 'pl', name: 'Polski' },
+      { code: 'tr', name: 'Türkçe' },
+      { code: 'vi', name: 'Tiếng Việt' },
+      { code: 'th', name: 'ไทย' },
+      { code: 'id', name: 'Bahasa Indonesia' },
+      { code: 'uk', name: 'Українська' }
     ];
 
-    /* Timezone Matrix Mapping */
-    const TIMEZONES = {
-      "United States": "America/New_York",
-      "United Kingdom": "Europe/London",
-      "Hong Kong (SAR, China)": "Asia/Hong_Kong",
-      "Japan": "Asia/Tokyo",
-      "Germany": "Europe/Berlin",
-      "Australia": "Australia/Sydney",
-      "Canada": "America/Toronto",
-      "France": "Europe/Paris",
-      "Taiwan / Chinese Taipei": "Asia/Taipei",
-      "Singapore": "Asia/Singapore"
-    };
+    /* --- GLOBAL REGIONS LIST (Including Hong Kong & Taiwan distinct state notes) --- */
+    const REGIONS_LIST = [
+      "Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+      "Bahrain", "Bangladesh", "Belarus", "Belgium", "Brazil", "Canada", "Chile", "China (Mainland)", "Colombia",
+      "Croatia", "Czech Republic", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece",
+      "Hong Kong (SAR, China)", "Hungary", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
+      "Japan", "Jordan", "Kazakhstan", "Korea, South", "Kuwait", "Macau (SAR, China)", "Malaysia", "Mexico",
+      "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal",
+      "Qatar", "Romania", "Russian Federation", "Saudi Arabia", "Singapore", "South Africa", "Spain", "Sweden",
+      "Switzerland", "Taiwan / Chinese Taipei", "Thailand", "Turkey", "Ukraine", "United Arab Emirates",
+      "United Kingdom", "United States", "Vietnam"
+    ];
 
-    const REGIONS_LIST = Object.keys(TIMEZONES);
-
+    /* --- STARTER ANIMALS VECTOR DEFINITIONS --- */
     const STARTER_ANIMALS = [
       {
         id: 'poodle',
         name: 'Brown Poodle Dog',
+        colorName: '#8B5A2B',
         svg: `<svg width="40" height="40" viewBox="0 0 40 40">
           <circle cx="11" cy="16" r="6" fill="#8B5A2B" stroke="var(--card-border)" stroke-width="2"/>
           <circle cx="29" cy="16" r="6" fill="#8B5A2B" stroke="var(--card-border)" stroke-width="2"/>
@@ -1400,16 +1337,63 @@
       {
         id: 'rabbit',
         name: 'Pink Rabbit',
+        colorName: '#FFC0CB',
         svg: `<svg width="40" height="40" viewBox="0 0 40 40">
           <ellipse cx="14" cy="10" rx="4" ry="9" fill="#FFC0CB" stroke="var(--card-border)" stroke-width="2"/>
           <ellipse cx="26" cy="10" rx="4" ry="9" fill="#FFC0CB" stroke="var(--card-border)" stroke-width="2"/>
+          <ellipse cx="14" cy="10" rx="2" ry="5" fill="#FFB6C1"/>
+          <ellipse cx="26" cy="10" rx="2" ry="5" fill="#FFB6C1"/>
           <circle cx="20" cy="24" r="12" fill="#FFC0CB" stroke="var(--card-border)" stroke-width="2"/>
           <circle cx="16" cy="22" r="1.5" fill="#333"/>
           <circle cx="24" cy="22" r="1.5" fill="#333"/>
+          <polygon points="20,25 18,27 22,27" fill="#E88D72"/>
+        </svg>`
+      },
+      {
+        id: 'giraffe',
+        name: 'Yellow Giraffe',
+        colorName: '#FFD700',
+        svg: `<svg width="40" height="40" viewBox="0 0 40 40">
+          <rect x="18" y="18" width="4" height="18" fill="#FFD700" stroke="var(--card-border)" stroke-width="2"/>
+          <circle cx="15" cy="8" r="2.5" fill="#8B4513"/>
+          <circle cx="25" cy="8" r="2.5" fill="#8B4513"/>
+          <ellipse cx="20" cy="16" rx="10" ry="8" fill="#FFD700" stroke="var(--card-border)" stroke-width="2"/>
+          <circle cx="16" cy="15" r="1.5" fill="#333"/>
+          <circle cx="24" cy="15" r="1.5" fill="#333"/>
+          <circle cx="17" cy="20" r="2" fill="#CD853F"/>
+          <circle cx="23" cy="20" r="2" fill="#CD853F"/>
+        </svg>`
+      },
+      {
+        id: 'pigeon',
+        name: 'Blue Grey Pigeon',
+        colorName: '#708090',
+        svg: `<svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="22" r="12" fill="#708090" stroke="var(--card-border)" stroke-width="2"/>
+          <circle cx="20" cy="14" r="9" fill="#87CEEB" stroke="var(--card-border)" stroke-width="2"/>
+          <circle cx="16" cy="12" r="1.8" fill="#FFF"/>
+          <circle cx="16" cy="12" r="0.9" fill="#000"/>
+          <polygon points="24,14 31,16 24,18" fill="#FF8C00" stroke="var(--card-border)" stroke-width="1.5"/>
+        </svg>`
+      },
+      {
+        id: 'frog',
+        name: 'Green Frog',
+        colorName: '#90EE90',
+        svg: `<svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="13" cy="12" r="5" fill="#90EE90" stroke="var(--card-border)" stroke-width="2"/>
+          <circle cx="27" cy="12" r="5" fill="#90EE90" stroke="var(--card-border)" stroke-width="2"/>
+          <circle cx="13" cy="11" r="2" fill="#FFF"/>
+          <circle cx="27" cy="11" r="2" fill="#FFF"/>
+          <circle cx="13" cy="11" r="1" fill="#000"/>
+          <circle cx="27" cy="11" r="1" fill="#000"/>
+          <ellipse cx="20" cy="24" rx="13" ry="10" fill="#90EE90" stroke="var(--card-border)" stroke-width="2"/>
+          <path d="M 14 26 Q 20 30 26 26" stroke="var(--card-border)" stroke-width="2" fill="none"/>
         </svg>`
       }
     ];
 
+    /* --- UNLOCKED FACILITIES DATA SYSTEM --- */
     const TOWN_FACILITIES = [
       {
         id: 'tree',
@@ -1429,52 +1413,45 @@
         svg: `<svg class="outlined-art" width="65" height="50" viewBox="0 0 100 70">
             <path d="M 15 30 Q 50 10 85 30 Z" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
             <line x1="50" y1="30" x2="50" y2="65" stroke="var(--card-border)" stroke-width="3.5"/>
+            <ellipse cx="50" cy="55" rx="25" ry="8" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
+          </svg>`
+      },
+      {
+        id: 'neon',
+        name: 'HK Neon Light',
+        x: 400, y: 90,
+        displayed: true,
+        svg: `<svg class="outlined-art" width="60" height="60" viewBox="0 0 60 60">
+            <rect x="20" y="10" width="20" height="35" rx="4" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
+            <line x1="30" y1="45" x2="30" y2="55" stroke="var(--card-border)" stroke-width="3.5"/>
+          </svg>`
+      },
+      {
+        id: 'bamboo_stalk',
+        name: 'Light Bamboo',
+        x: 140, y: 240,
+        displayed: true,
+        svg: `<svg class="outlined-art" width="55" height="55" viewBox="0 0 100 100">
+            <rect x="30" y="15" width="12" height="75" rx="3" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
+            <line x1="30" y1="40" x2="42" y2="40" stroke="var(--card-border)" stroke-width="3.5"/>
+            <rect x="55" y="30" width="10" height="60" rx="3" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
+            <path d="M 25 30 C 15 25, 10 35, 25 35 Z" fill="none" stroke="var(--card-border)" stroke-width="3"/>
+          </svg>`
+      },
+      {
+        id: 'minibus',
+        name: 'HK Minibus',
+        x: 320, y: 260,
+        displayed: true,
+        svg: `<svg class="outlined-art" width="65" height="55" viewBox="0 0 100 80">
+            <rect x="10" y="20" width="80" height="45" rx="8" fill="none" stroke="var(--card-border)" stroke-width="4"/>
+            <circle cx="30" cy="65" r="8" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
+            <circle cx="70" cy="65" r="8" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
           </svg>`
       }
     ];
 
-    /* Dynamic Mission Registry with Instructions / Aim Criteria */
-    let MISSIONS_REGISTRY = [
-      {
-        id: 'm1',
-        type: 'daily',
-        title: 'Place 2 Facilities on Map',
-        reward: { coins: 100, bamboo: 10, diamonds: 0 },
-        checkCondition: () => TOWN_FACILITIES.filter(f => f.displayed).length >= 2,
-        instruction: 'Display at least 2 facilities via Construction Menu 🔨',
-        status: 'active',
-        cooldownUntil: 0
-      },
-      {
-        id: 'm2',
-        type: 'daily',
-        title: 'Gather 100 Bamboos Stock',
-        reward: { coins: 150, bamboo: 0, diamonds: 2 },
-        checkCondition: () => gameState.bamboo >= 100,
-        instruction: 'Reach a balance of 100 Bamboos',
-        status: 'active',
-        cooldownUntil: 0
-      },
-      {
-        id: 'm3',
-        type: 'weekly',
-        title: 'Accumulate 500 Coins',
-        reward: { coins: 300, bamboo: 50, diamonds: 5 },
-        checkCondition: () => gameState.coins >= 500,
-        instruction: 'Reach a total balance of 500 Coins',
-        status: 'active'
-      },
-      {
-        id: 'm4',
-        type: 'golden',
-        title: 'Golden Pioneer Badge',
-        reward: { coins: 1000, bamboo: 200, diamonds: 20 },
-        checkCondition: () => gameState.isLoggedIn === true,
-        instruction: 'Link an account to permanently back up data',
-        status: 'active'
-      }
-    ];
-
+    /* --- GAME STATE MANAGEMENT --- */
     const DEFAULT_GAME_STATE = {
       isLoggedIn: false,
       playerName: "Guest Builder",
@@ -1482,6 +1459,7 @@
       bamboo: 120,
       coins: 450,
       diamonds: 15,
+      activeMissions: 3,
       selectedLanguage: 'en',
       selectedRegion: 'Hong Kong (SAR, China)'
     };
@@ -1489,7 +1467,9 @@
     let gameState = { ...DEFAULT_GAME_STATE };
     let activeFacilityId = null;
 
+    /* --- POPULATE DROPDOWNS --- */
     function populateDropdowns() {
+      // Populate Language Dropdown
       const langSelect = document.getElementById('language-select');
       langSelect.innerHTML = '';
       LANGUAGES_LIST.forEach(lang => {
@@ -1500,6 +1480,7 @@
         langSelect.appendChild(opt);
       });
 
+      // Populate Region Dropdown
       const regionSelect = document.getElementById('region-select');
       regionSelect.innerHTML = '';
       REGIONS_LIST.forEach(reg => {
@@ -1511,57 +1492,14 @@
       });
     }
 
-    function applyTranslations(lang) {
-      const dict = TRANSLATIONS[lang] || TRANSLATIONS['en'];
-      if(document.getElementById('lbl-follow')) document.getElementById('lbl-follow').innerText = dict.follow;
-      if(document.getElementById('lbl-settings')) document.getElementById('lbl-settings').innerText = dict.settings;
-      if(document.getElementById('lbl-terms')) document.getElementById('lbl-terms').innerText = dict.terms;
-      if(document.getElementById('lbl-theme')) document.getElementById('lbl-theme').innerText = dict.theme;
-      if(document.getElementById('lbl-bgm')) document.getElementById('lbl-bgm').innerText = dict.bgm;
-      if(document.getElementById('lbl-sfx')) document.getElementById('lbl-sfx').innerText = dict.sfx;
-      if(document.getElementById('lbl-shop-btn')) document.getElementById('lbl-shop-btn').innerText = dict.shop;
-      if(document.getElementById('lbl-home-btn')) document.getElementById('lbl-home-btn').innerText = dict.home;
-      if(document.getElementById('lbl-menu-btn')) document.getElementById('lbl-menu-btn').innerText = dict.menu;
-    }
-
+    /* --- SAVE SETTINGS (Press OK toConfirm) --- */
     function saveSettings() {
       const selectedLang = document.getElementById('language-select').value;
       gameState.selectedLanguage = selectedLang;
-      applyTranslations(selectedLang);
       closeModal('settings-modal');
     }
 
-    /* Local Country Clock Alignment Timer Engine */
-    setInterval(() => {
-      const timeZone = TIMEZONES[gameState.selectedRegion] || "UTC";
-      try {
-        const now = new Date();
-        const formatter = new Intl.DateTimeFormat('en-US', {
-          timeZone,
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: true
-        });
-        document.getElementById('country-clock-time').innerText = formatter.format(now);
-        document.getElementById('country-clock-name').innerText = gameState.selectedRegion;
-      } catch (e) {
-        document.getElementById('country-clock-time').innerText = new Date().toLocaleTimeString();
-      }
-
-      /* Cooldown Timer Processor for Daily Missions */
-      const nowMs = Date.now();
-      MISSIONS_REGISTRY.forEach(m => {
-        if (m.type === 'daily' && m.status === 'cooldown') {
-          if (nowMs >= m.cooldownUntil) {
-            m.status = 'active'; // Refresh Mission after 5 mins
-          }
-        }
-      });
-      
-      updateMissionsListUI();
-    }, 1000);
-
+    /* --- RENDER TOWN FACILITIES & MOVEMENT ENGINE --- */
     const GRID_UNIT_PX = 30;
 
     function renderTownFacilities() {
@@ -1582,10 +1520,10 @@
           ${fac.svg}
           <div class="facility-label">${fac.name}</div>
           <div class="arrow-controls ${isControlsActive ? 'active' : ''}">
-            <div class="arrow-btn arrow-north" onclick="moveFacility('${fac.id}', 0, -${GRID_UNIT_PX}, event)"></div>
-            <div class="arrow-btn arrow-south" onclick="moveFacility('${fac.id}', 0, ${GRID_UNIT_PX}, event)"></div>
-            <div class="arrow-btn arrow-east" onclick="moveFacility('${fac.id}', ${GRID_UNIT_PX}, 0, event)"></div>
-            <div class="arrow-btn arrow-west" onclick="moveFacility('${fac.id}', -${GRID_UNIT_PX}, 0, event)"></div>
+            <div class="arrow-btn arrow-north" title="Move North" onclick="moveFacility('${fac.id}', 0, -${GRID_UNIT_PX}, event)"></div>
+            <div class="arrow-btn arrow-south" title="Move South" onclick="moveFacility('${fac.id}', 0, ${GRID_UNIT_PX}, event)"></div>
+            <div class="arrow-btn arrow-east" title="Move East" onclick="moveFacility('${fac.id}', ${GRID_UNIT_PX}, 0, event)"></div>
+            <div class="arrow-btn arrow-west" title="Move West" onclick="moveFacility('${fac.id}', -${GRID_UNIT_PX}, 0, event)"></div>
           </div>
         `;
 
@@ -1618,6 +1556,7 @@
       }
     });
 
+    /* --- CONSTRUCTION MENU TOGGLE CHECKBOX LIST --- */
     function renderConstructionChecklist() {
       const listContainer = document.getElementById('constructions-toggle-list');
       listContainer.innerHTML = '';
@@ -1646,6 +1585,7 @@
       });
     }
 
+    /* --- UI UPDATE HELPERS --- */
     function updateUIHeaderAndAvatars() {
       const currentAnimal = STARTER_ANIMALS.find(a => a.id === gameState.selectedAnimalId) || STARTER_ANIMALS[0];
 
@@ -1658,9 +1598,7 @@
       document.getElementById('bamboo-count').innerText = gameState.bamboo;
       document.getElementById('coin-count').innerText = gameState.coins;
       document.getElementById('diamond-count').innerText = gameState.diamonds;
-
-      const activeCount = MISSIONS_REGISTRY.filter(m => m.status === 'active' && m.checkCondition()).length;
-      document.getElementById('active-missions-count').innerText = activeCount;
+      document.getElementById('active-missions-count').innerText = gameState.activeMissions;
 
       const loginBtn = document.getElementById('home-login-btn');
       if (gameState.isLoggedIn) {
@@ -1672,68 +1610,7 @@
       }
     }
 
-    /* Render Mission System UI */
-    function updateMissionsListUI() {
-      const container = document.getElementById('missions-list');
-      if(!container) return;
-      container.innerHTML = '';
-
-      MISSIONS_REGISTRY.forEach(m => {
-        const isMet = m.checkCondition();
-        const item = document.createElement('div');
-        item.className = 'mission-item';
-
-        let tagClass = m.type === 'daily' ? 'tag-daily' : (m.type === 'weekly' ? 'tag-weekly' : 'tag-golden');
-        let tagLabel = m.type.toUpperCase();
-
-        let actionArea = '';
-        if (m.status === 'claimed') {
-          actionArea = `<button class="btn" disabled style="padding:4px 10px; font-size:0.75rem;">Done ✓</button>`;
-        } else if (m.status === 'cooldown') {
-          const remSec = Math.max(0, Math.ceil((m.cooldownUntil - Date.now()) / 1000));
-          const mins = Math.floor(remSec / 60);
-          const secs = remSec % 60;
-          actionArea = `<span style="font-size:0.75rem; font-weight:800; color:var(--accent-red);">Refreshes in ${mins}:${secs < 10 ? '0' : ''}${secs}</span>`;
-        } else {
-          actionArea = `<button class="btn" ${!isMet ? 'disabled' : ''} style="padding:4px 12px; font-size:0.8rem;" onclick="claimMissionDirect('${m.id}')">Claim</button>`;
-        }
-
-        item.innerHTML = `
-          <div class="mission-details">
-            <div><span class="mission-tag ${tagClass}">${tagLabel}</span></div>
-            <span class="mission-title">${m.title}</span>
-            <span style="font-size:0.75rem; color:#777;">Instruction: ${m.instruction}</span>
-            <span class="mission-reward">Reward: +${m.reward.coins} Coins, +${m.reward.bamboo} Bamboo, +${m.reward.diamonds} Diamonds</span>
-          </div>
-          <div>${actionArea}</div>
-        `;
-
-        container.appendChild(item);
-      });
-    }
-
-    function claimMissionDirect(id) {
-      const mission = MISSIONS_REGISTRY.find(m => m.id === id);
-      if (!mission || !mission.checkCondition()) return;
-
-      playSfxClick();
-      gameState.coins += mission.reward.coins;
-      gameState.bamboo += mission.reward.bamboo;
-      gameState.diamonds += mission.reward.diamonds;
-
-      if (mission.type === 'daily') {
-        mission.status = 'cooldown';
-        // 5 Minutes Cooldown Timer for Daily Missions
-        mission.cooldownUntil = Date.now() + 5 * 60 * 1000;
-      } else {
-        // No refreshing for Weekly or Golden Missions
-        mission.status = 'claimed';
-      }
-
-      updateUIHeaderAndAvatars();
-      updateMissionsListUI();
-    }
-
+    /* --- MODALS & NAVIGATION --- */
     function openModal(id) {
       playSfxClick();
       document.getElementById(id).style.display = 'flex';
@@ -1742,7 +1619,6 @@
       if (id === 'shop-modal') switchShopTab('facilities');
       if (id === 'character-modal') renderStarterAnimalCards();
       if (id === 'construction-menu-modal') renderConstructionChecklist();
-      if (id === 'missions-modal') updateMissionsListUI();
     }
 
     function closeModal(id) {
@@ -1763,10 +1639,12 @@
       document.getElementById('home-screen').style.display = 'flex';
     }
 
+    /* --- AUTHENTICATION & LOGIN --- */
     function finishLogin(name) {
       gameState.isLoggedIn = true;
       gameState.playerName = name || "Mayor " + gameState.selectedAnimalId.toUpperCase();
       updateUIHeaderAndAvatars();
+      alert("Welcome back! Your town progress is now permanently saved.");
       closeModal('login-modal');
     }
 
@@ -1776,9 +1654,11 @@
         alert("Please enter a valid email address!");
         return;
       }
-      finishLogin(email.split('@')[0]);
+      const userName = email.split('@')[0];
+      finishLogin(userName);
     }
 
+    /* --- STARTER ANIMAL SELECTION RENDER --- */
     function renderStarterAnimalCards() {
       const grid = document.getElementById('starter-animals-grid');
       grid.innerHTML = '';
@@ -1805,6 +1685,27 @@
       renderStarterAnimalCards();
     }
 
+    /* --- MISSION SYSTEM --- */
+    function claimMission(btnElement, rewardCoins = 0, rewardBamboo = 0, rewardDiamonds = 0) {
+      playSfxClick();
+      gameState.coins += rewardCoins;
+      gameState.bamboo += rewardBamboo;
+      gameState.diamonds += rewardDiamonds;
+
+      if (gameState.activeMissions > 0) {
+        gameState.activeMissions -= 1;
+      }
+
+      updateUIHeaderAndAvatars();
+
+      const item = btnElement.parentElement;
+      item.style.opacity = '0.5';
+      btnElement.disabled = true;
+      btnElement.innerText = "Completed ✓";
+      btnElement.style.background = "rgba(0,0,0,0.1)";
+    }
+
+    /* --- THEMES & SHOP --- */
     function setTheme(mode) {
       playSfxClick();
       const lightBtn = document.getElementById('light-mode-btn');
@@ -1824,22 +1725,29 @@
     const shopItems = {
       facilities: [
         { name: 'Wooden Bench', cost: '50 Coins', icon: '🪑' },
-        { name: 'City Fountain', cost: '200 Coins', icon: '⛲' }
+        { name: 'City Fountain', cost: '200 Coins', icon: '⛲' },
+        { name: 'Barcelona Cafe Seat', cost: '120 Coins', icon: '☕' }
       ],
       plants: [
+        { name: 'Bauhinia Flower (HK)', cost: '80 Coins', icon: '🌸' },
+        { name: 'Banyan Tree (HK)', cost: '100 Coins', icon: '🌳' },
         { name: 'Flower Bed', cost: '30 Bamboos', icon: '💐' }
       ],
       lights: [
-        { name: 'Retro Lamp', cost: '60 Coins', icon: '💡' }
+        { name: 'Cyber Neon Sign (HK)', cost: '150 Coins', icon: '🏮' },
+        { name: 'Retro Street Lamp', cost: '60 Coins', icon: '💡' }
       ],
       bamboos: [
-        { name: '50x Bamboo Bundle', cost: '10 Diamonds', icon: '🪵' }
+        { name: '50x Bamboo Bundle', cost: '10 Diamonds', icon: '🪵' },
+        { name: '200x Bamboo Sack', cost: '35 Diamonds', icon: '🪵' }
       ],
       coins: [
-        { name: '500x Coins', cost: '20 Diamonds', icon: '🪙' }
+        { name: '500x Coins', cost: '20 Diamonds', icon: '🪙' },
+        { name: '2000x Coins', cost: '70 Diamonds', icon: '🪙' }
       ],
       diamonds: [
-        { name: '10x Diamonds', cost: '$0.99', icon: '💎' }
+        { name: '10x Diamonds', cost: '$0.99', icon: '💎' },
+        { name: '50x Diamonds', cost: '$4.99', icon: '💎' }
       ]
     };
 
@@ -1874,4 +1782,4 @@
     };
   </script>
 </body>
-</html>
+          </html>

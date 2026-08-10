@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animal Restaurant - Cartoon Town</title>
-  <!-- Quicksand Font for cute, rounded text -->
+  <title>Town Simulator</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ==========================================
-       ANIMAL RESTAURANT COLOR PALETTE & STYLES
+       COLOR PALETTE & DYNAMIC STYLES
        ========================================== */
     :root {
-      /* Light Mode Palette */
+      /* Light Mode */
       --bg-color: #f6efdf;
       --card-bg: #fffbf0;
       --card-border: #7c5c43;
@@ -28,7 +27,7 @@
     }
 
     [data-theme="dark"] {
-      /* Dark Mode Palette */
+      /* Dark Mode */
       --bg-color: #2b2420;
       --card-bg: #3d3531;
       --card-border: #8c6d56;
@@ -62,7 +61,6 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* App Frame Container */
     .app-container {
       width: 100%;
       max-width: 450px;
@@ -118,7 +116,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 3px 0 var(--card-border);
-      transition: transform 0.1s, background-color 0.2s;
+      transition: transform 0.1s;
     }
 
     .btn-icon:active {
@@ -156,7 +154,7 @@
       background-color: var(--accent-yellow);
     }
 
-    /* Main Content Canvas */
+    /* Main Viewport */
     .content-viewport {
       flex: 1;
       position: relative;
@@ -174,7 +172,7 @@
       display: block;
     }
 
-    /* Cartoon Town Background */
+    /* Cartoon Town Background (Home Page) */
     .town-bg {
       position: absolute;
       top: 0;
@@ -209,7 +207,7 @@
     .path {
       position: absolute;
       background-color: var(--path-color);
-      width: 80px;
+      width: 90px;
       height: 100%;
       left: 50%;
       transform: translateX(-50%);
@@ -217,14 +215,14 @@
       border-right: 3px dashed var(--card-border);
     }
 
-    /* Outlined Facility Items (No Extra Bottom/Shape Background) */
+    /* Outlined Facilities (No Bottom Background Shape) */
     .town-layout {
       position: relative;
       z-index: 2;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 35px;
       align-items: center;
     }
 
@@ -235,14 +233,13 @@
       position: relative;
     }
 
-    /* SVG Art Stroke/Outline Focus */
     .outlined-art {
       filter: drop-shadow(0px 2px 0px var(--card-border));
       transition: transform 0.2s ease;
     }
 
     .facility-node:hover .outlined-art {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     .facility-label {
@@ -256,7 +253,7 @@
       box-shadow: 0 2px 0 var(--card-border);
     }
 
-    /* Construction Showcase Page */
+    /* Construction Section */
     .construction-view {
       padding: 20px;
       display: flex;
@@ -285,7 +282,6 @@
       border-radius: 10px;
       margin: 15px 0;
       overflow: hidden;
-      position: relative;
     }
 
     .progress-bar-fill {
@@ -314,7 +310,7 @@
       box-shadow: 0 1px 0 var(--card-border);
     }
 
-    /* Animal Restaurant Style Facilities Menu */
+    /* Menu Section */
     .menu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -333,19 +329,7 @@
       box-shadow: 0 3px 0 var(--card-border);
     }
 
-    .buy-btn {
-      background: var(--accent-green);
-      border: 2px solid var(--card-border);
-      border-radius: 12px;
-      padding: 4px 12px;
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: #fff;
-      margin-top: 8px;
-      cursor: pointer;
-    }
-
-    /* Modal / Settings overlay */
+    /* Modal / Settings Overlay */
     .modal-overlay {
       position: absolute;
       top: 0;
@@ -431,31 +415,27 @@
 
   <div class="app-container">
     
-    <!-- Top Header Bar -->
+    <!-- Top Bar -->
     <header class="header">
       <div class="currency-container">
-        <div class="currency-badge">
-          <span>🐟</span> <span id="cod-count">12,500</span>
-        </div>
-        <div class="currency-badge">
-          <span>🌟</span> <span id="star-count">850</span>
-        </div>
+        <div class="currency-badge">💰 <span>12,500</span></div>
+        <div class="currency-badge">⭐ <span>850</span></div>
       </div>
       <button class="btn-icon" id="open-settings-btn" title="Settings">⚙️</button>
     </header>
 
-    <!-- Navigation Tabs -->
+    <!-- Navigation Bar -->
     <nav class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab('town-tab', this)">Town View</button>
+      <button class="tab-btn active" onclick="switchTab('home-tab', this)">Home (Town)</button>
       <button class="tab-btn" onclick="switchTab('construction-tab', this)">Construction</button>
       <button class="tab-btn" onclick="switchTab('menu-tab', this)">Facilities</button>
     </nav>
 
-    <!-- Content Area -->
+    <!-- Content Viewport -->
     <main class="content-viewport">
 
-      <!-- TAB 1: TOWN VIEW (Cartoon Town Theme with Outlined Facilities & Light Brown Bamboo) -->
-      <section id="town-tab" class="tab-content active">
+      <!-- HOME PAGE: Cartoon Town Background & Outlined Items -->
+      <section id="home-tab" class="tab-content active">
         <div class="town-bg">
           <div class="hill hill-1"></div>
           <div class="hill hill-2"></div>
@@ -463,10 +443,10 @@
         </div>
 
         <div class="town-layout">
-          <!-- Light Brown Bamboo Decoration (Requested: Light Brown Color) -->
+          
+          <!-- Light Brown Bamboo Feature -->
           <div class="facility-node">
             <svg class="outlined-art" width="90" height="90" viewBox="0 0 100 100">
-              <!-- Bamboo Stalks (Light Brown Palette) -->
               <rect x="25" y="20" width="10" height="65" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
               <line x1="25" y1="40" x2="35" y2="40" stroke="var(--card-border)" stroke-width="3"/>
               <line x1="25" y1="60" x2="35" y2="60" stroke="var(--card-border)" stroke-width="3"/>
@@ -477,86 +457,52 @@
 
               <rect x="67" y="30" width="9" height="55" rx="3" fill="var(--bamboo-dark)" stroke="var(--card-border)" stroke-width="3"/>
               
-              <!-- Leaves in light brown tone -->
               <path d="M 20 25 C 10 20, 5 30, 20 30 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
               <path d="M 57 20 C 70 15, 75 25, 57 28 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
               <path d="M 45 45 C 30 40, 25 50, 45 50 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
             </svg>
-            <div class="facility-label">Dried Bamboo Hedge</div>
+            <div class="facility-label">Light Brown Bamboo</div>
           </div>
 
-          <!-- Bakery Stall Facility (Direct Outline, No Extra Bottom Base Shape) -->
+          <!-- Outlined Town Structure (No extra background pad at bottom) -->
           <div class="facility-node">
             <svg class="outlined-art" width="110" height="90" viewBox="0 0 120 100">
-              <!-- Roof -->
               <path d="M 10 40 L 60 10 L 110 40 Z" fill="#e88d72" stroke="var(--card-border)" stroke-width="3.5" stroke-linejoin="round"/>
-              <!-- Pillars -->
               <line x1="25" y1="40" x2="25" y2="85" stroke="var(--card-border)" stroke-width="3.5"/>
               <line x1="95" y1="40" x2="95" y2="85" stroke="var(--card-border)" stroke-width="3.5"/>
-              <!-- Counter Table -->
               <rect x="20" y="55" width="80" height="30" rx="5" fill="#f8c057" stroke="var(--card-border)" stroke-width="3.5"/>
-              <!-- Bread / Pastry -->
-              <circle cx="45" cy="50" r="8" fill="#d28c46" stroke="var(--card-border)" stroke-width="2.5"/>
-              <circle cx="60" cy="48" r="10" fill="#e5b04c" stroke="var(--card-border)" stroke-width="2.5"/>
-              <circle cx="76" cy="51" r="7" fill="#d28c46" stroke="var(--card-border)" stroke-width="2.5"/>
             </svg>
-            <div class="facility-label">Cat Bakery Stand</div>
+            <div class="facility-label">Town Kiosk</div>
           </div>
 
-          <!-- Tea House / Outdoor Bench (Outlined directly on background) -->
+          <!-- Outlined Bench Structure -->
           <div class="facility-node">
-            <svg class="outlined-art" width="100" height="80" viewBox="0 0 100 80">
-              <!-- Umbrella -->
-              <path d="M 15 35 Q 50 10 85 35 Z" fill="#78a0d0" stroke="var(--card-border)" stroke-width="3"/>
-              <line x1="50" y1="35" x2="50" y2="75" stroke="var(--card-border)" stroke-width="3"/>
-              <!-- Table -->
-              <ellipse cx="50" cy="60" rx="25" ry="8" fill="#f6efdf" stroke="var(--card-border)" stroke-width="3"/>
-              <!-- Teapot -->
-              <rect x="46" y="50" width="8" height="8" rx="2" fill="#e88d72" stroke="var(--card-border)" stroke-width="2"/>
+            <svg class="outlined-art" width="100" height="70" viewBox="0 0 100 70">
+              <path d="M 15 30 Q 50 10 85 30 Z" fill="#78a0d0" stroke="var(--card-border)" stroke-width="3"/>
+              <line x1="50" y1="30" x2="50" y2="65" stroke="var(--card-border)" stroke-width="3"/>
+              <ellipse cx="50" cy="55" rx="25" ry="8" fill="#f6efdf" stroke="var(--card-border)" stroke-width="3"/>
             </svg>
-            <div class="facility-label">Town Tea Corner</div>
-          </div>
-
-          <!-- Animal Character: Eggy the Chef Cat -->
-          <div class="facility-node" style="position: absolute; right: 25px; top: 120px;">
-            <svg class="outlined-art" width="60" height="60" viewBox="0 0 60 60">
-              <!-- Chef Hat -->
-              <path d="M 22 18 C 20 10, 40 10, 38 18 Z" fill="#fff" stroke="var(--card-border)" stroke-width="2"/>
-              <!-- Cat Head -->
-              <circle cx="30" cy="32" r="16" fill="#fce3ad" stroke="var(--card-border)" stroke-width="3"/>
-              <!-- Ears -->
-              <polygon points="16,22 22,12 26,22" fill="#fce3ad" stroke="var(--card-border)" stroke-width="2"/>
-              <polygon points="44,22 38,12 34,22" fill="#fce3ad" stroke="var(--card-border)" stroke-width="2"/>
-              <!-- Eyes & Whiskers -->
-              <circle cx="24" cy="32" r="2" fill="var(--card-border)"/>
-              <circle cx="36" cy="32" r="2" fill="var(--card-border)"/>
-              <path d="M 28 36 Q 30 38 32 36" fill="none" stroke="var(--card-border)" stroke-width="2"/>
-            </svg>
+            <div class="facility-label">Rest Area</div>
           </div>
 
         </div>
       </section>
 
-      <!-- TAB 2: CONSTRUCTION SHOWCASE -->
+      <!-- CONSTRUCTION PAGE (Updates on 'Update Display' button click) -->
       <section id="construction-tab" class="tab-content">
         <div class="construction-view">
           
           <div class="construction-card">
-            <h3 style="font-weight: 700; margin-bottom: 6px;">Town Square Construction</h3>
-            <p style="font-size: 0.85rem; opacity: 0.8;">Status: <span id="status-phase-text" style="font-weight: 700;">Phase 1 - Scaffolding</span></p>
+            <h3 style="font-weight: 700; margin-bottom: 6px;">Town Construction</h3>
+            <p style="font-size: 0.85rem; opacity: 0.8;">Current Stage: <span id="status-phase-text" style="font-weight: 700;">Stage 1 - Framing</span></p>
 
-            <!-- Outlined Construction Site Illustration -->
             <div style="margin: 25px 0;">
               <svg id="construction-svg" class="outlined-art" width="130" height="110" viewBox="0 0 120 100">
-                <!-- Crane Structure -->
                 <path d="M 20 90 L 20 20 L 80 20" fill="none" stroke="#e88d72" stroke-width="4" stroke-linecap="round"/>
                 <line x1="20" y1="35" x2="35" y2="20" stroke="#e88d72" stroke-width="3"/>
-                <!-- Hook -->
                 <line x1="70" y1="20" x2="70" y2="45" stroke="var(--card-border)" stroke-width="2" stroke-dasharray="3,3"/>
-                <!-- Building in Progress -->
                 <rect id="build-rect-1" x="45" y="60" width="50" height="30" fill="none" stroke="var(--card-border)" stroke-width="3.5" stroke-dasharray="4,4"/>
                 <rect id="build-rect-2" x="55" y="40" width="30" height="20" fill="none" stroke="var(--card-border)" stroke-width="3" stroke-dasharray="3,3"/>
-                <!-- Ground line -->
                 <line x1="10" y1="90" x2="110" y2="90" stroke="var(--card-border)" stroke-width="3.5"/>
               </svg>
             </div>
@@ -564,69 +510,42 @@
             <div class="progress-bar-container">
               <div id="construction-progress" class="progress-bar-fill"></div>
             </div>
-            <p id="progress-text" style="font-size: 0.85rem; font-weight: 700;">25% Completed</p>
+            <p id="progress-text" style="font-size: 0.85rem; font-weight: 700;">25% Progress</p>
           </div>
 
-          <!-- Update Display Button -->
-          <button class="btn-action" id="update-display-btn">🔨 Update Display</button>
+          <button class="btn-action" id="update-display-btn">Update Display</button>
 
         </div>
       </section>
 
-      <!-- TAB 3: FACILITIES MENU -->
+      <!-- FACILITIES MENU PAGE -->
       <section id="menu-tab" class="tab-content">
         <div class="menu-grid">
-          
           <div class="menu-item">
             <svg width="50" height="50" viewBox="0 0 60 60">
-              <rect x="15" y="10" width="8" height="40" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="2"/>
-              <rect x="30" y="5" width="8" height="45" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="2"/>
+              <rect x="20" y="10" width="8" height="40" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="2"/>
+              <rect x="32" y="5" width="8" height="45" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="2"/>
             </svg>
             <div style="font-weight: 700; font-size: 0.85rem; margin-top: 4px;">Light Bamboo</div>
-            <div style="font-size: 0.75rem;">🐟 800</div>
-            <button class="buy-btn">Owned</button>
           </div>
-
           <div class="menu-item">
             <svg width="50" height="50" viewBox="0 0 60 60">
               <rect x="10" y="25" width="40" height="20" fill="#f8c057" stroke="var(--card-border)" stroke-width="2"/>
             </svg>
-            <div style="font-weight: 700; font-size: 0.85rem; margin-top: 4px;">Wooden Table</div>
-            <div style="font-size: 0.75rem;">🐟 1,500</div>
-            <button class="buy-btn">Unlock</button>
+            <div style="font-weight: 700; font-size: 0.85rem; margin-top: 4px;">Town Table</div>
           </div>
-
-          <div class="menu-item">
-            <svg width="50" height="50" viewBox="0 0 60 60">
-              <circle cx="30" cy="30" r="18" fill="#e88d72" stroke="var(--card-border)" stroke-width="2"/>
-            </svg>
-            <div style="font-weight: 700; font-size: 0.85rem; margin-top: 4px;">Coffee Roaster</div>
-            <div style="font-size: 0.75rem;">🌟 300 Req</div>
-            <button class="buy-btn" style="background:#ccc;">Locked</button>
-          </div>
-
-          <div class="menu-item">
-            <svg width="50" height="50" viewBox="0 0 60 60">
-              <path d="M 10 40 Q 30 15 50 40 Z" fill="#78a0d0" stroke="var(--card-border)" stroke-width="2"/>
-            </svg>
-            <div style="font-weight: 700; font-size: 0.85rem; margin-top: 4px;">Blue Parasol</div>
-            <div style="font-size: 0.75rem;">🐟 3,000</div>
-            <button class="buy-btn">Unlock</button>
-          </div>
-
         </div>
       </section>
 
     </main>
   </div>
 
-  <!-- SETTINGS MODAL (GRAPHICS OPTION REMOVED; MODES ADDED) -->
+  <!-- SETTINGS MODAL (NO GRAPHICS OPTION, MODES OPTION ADDED) -->
   <div class="modal-overlay" id="settings-modal">
     <div class="modal">
       <button class="close-btn" id="close-settings-btn">&times;</button>
       <div class="modal-title">Settings</div>
 
-      <!-- Mode Setting (Light Mode / Dark Mode Option) -->
       <div class="setting-row">
         <span>Modes</span>
         <div class="mode-toggle-group">
@@ -635,13 +554,11 @@
         </div>
       </div>
 
-      <!-- Sound Toggle -->
       <div class="setting-row">
         <span>Sound Effects</span>
         <input type="checkbox" checked style="accent-color: var(--accent-yellow); transform: scale(1.3);">
       </div>
 
-      <!-- Music Toggle -->
       <div class="setting-row">
         <span>Background Music</span>
         <input type="checkbox" checked style="accent-color: var(--accent-yellow); transform: scale(1.3);">
@@ -650,9 +567,9 @@
     </div>
   </div>
 
-  <!-- JavaScript Interactions -->
+  <!-- SCRIPT LOGIC -->
   <script>
-    // Tab Switching Logic
+    // Tab Navigation
     function switchTab(tabId, btnElement) {
       document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -661,7 +578,7 @@
       btnElement.classList.add('active');
     }
 
-    // Modal Control Logic
+    // Settings Modal Toggle
     const settingsModal = document.getElementById('settings-modal');
     document.getElementById('open-settings-btn').addEventListener('click', () => {
       settingsModal.classList.add('active');
@@ -670,7 +587,7 @@
       settingsModal.classList.remove('active');
     });
 
-    // Theme Switcher (Dark / Light Modes)
+    // Dark/Light Mode Switcher
     function setTheme(mode) {
       const lightBtn = document.getElementById('light-mode-btn');
       const darkBtn = document.getElementById('dark-mode-btn');
@@ -686,25 +603,23 @@
       }
     }
 
-    // Construction Display Update Button Logic
+    // Construction Display Update Function
     let constructionStage = 0;
     const stages = [
-      { percent: 25, title: "Phase 1 - Scaffolding", fill1: "none", fill2: "none" },
-      { percent: 55, title: "Phase 2 - Bricklaying", fill1: "#f8c057", fill2: "none" },
-      { percent: 85, title: "Phase 3 - Roofing & Paint", fill1: "#f8c057", fill2: "#e88d72" },
-      { percent: 100, title: "Phase 4 - Construction Complete!", fill1: "#90b078", fill2: "#f8c057" }
+      { percent: 25, title: "Stage 1 - Framing", fill1: "none", fill2: "none" },
+      { percent: 55, title: "Stage 2 - Walls & Foundation", fill1: "#f8c057", fill2: "none" },
+      { percent: 85, title: "Stage 3 - Exterior Finish", fill1: "#f8c057", fill2: "#e88d72" },
+      { percent: 100, title: "Stage 4 - Construction Complete", fill1: "#90b078", fill2: "#f8c057" }
     ];
 
     document.getElementById('update-display-btn').addEventListener('click', () => {
       constructionStage = (constructionStage + 1) % stages.length;
       const current = stages[constructionStage];
 
-      // Update UI texts & progress bar
       document.getElementById('construction-progress').style.width = current.percent + '%';
-      document.getElementById('progress-text').innerText = current.percent + '% Completed';
+      document.getElementById('progress-text').innerText = current.percent + '% Progress';
       document.getElementById('status-phase-text').innerText = current.title;
 
-      // Dynamically update SVG elements inside construction showcase
       const rect1 = document.getElementById('build-rect-1');
       const rect2 = document.getElementById('build-rect-2');
 

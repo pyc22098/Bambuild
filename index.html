@@ -798,4 +798,885 @@
     
     <button class="btn top-left-btn" onclick="openModal('follow-modal')">📣 Follow Us!</button>
     <button class="btn top-right-btn" onclick="openModal('s2px solid var(--card-border);
-      border-ra
+    border-radius: 12px;
+      padding: 12px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      background: rgba(0,0,0,0.02);
+      margin-bottom: 15px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reusable Universal Bamboo Vector Template -->
+  <svg style="display: none;">
+    <g id="universal-bamboo">
+      <path d="M12 20 V4 M12 11 H18 M12 6 H16" stroke="var(--bamboo-color)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="12" cy="11" r="1.5" fill="var(--bamboo-dark)"/>
+      <circle cx="12" cy="6" r="1.5" fill="var(--bamboo-dark)"/>
+      <path d="M18 11 Q22 8 20 5 Q17 8 18 11 Z" fill="var(--bamboo-leaf)"/>
+      <path d="M16 6 Q20 3 18 0 Q15 3 16 6 Z" fill="var(--bamboo-leaf)"/>
+    </g>
+  </svg>
+
+  <!-- ==================== HOME SCREEN ==================== -->
+  <div id="home-screen">
+    <div class="town-bg">
+      <div class="hill hill-1"></div>
+      <div class="hill hill-2"></div>
+      <div class="path"></div>
+    </div>
+    
+    <button class="btn top-left-btn" onclick="openModal('follow-modal')" id="btn-follow">📣 Follow Us!</button>
+    <button class="btn top-right-btn" onclick="openModal('shop-modal')" id="btn-shop">🛒 Shop</button>
+
+    <div class="title-wrapper">
+      <svg class="bamboo-art" width="45" height="55" viewBox="0 0 24 24">
+        <use href="#universal-bamboo"/>
+      </svg>
+      <span class="title-text">BAMBUILD</span>
+      <svg class="bamboo-art" width="45" height="55" viewBox="0 0 24 24" style="transform: scaleX(-1);">
+        <use href="#universal-bamboo"/>
+      </svg>
+    </div>
+
+    <!-- Middle Center Action Trio -->
+    <div class="home-center-buttons">
+      <!-- Left: Bear Friend -->
+      <div class="circle-btn bear" onclick="openModal('bear-modal')" title="Bear Friend">
+        <svg width="45" height="45" viewBox="0 0 100 100">
+          <circle cx="30" cy="30" r="15" fill="#8c683c" stroke="var(--card-border)" stroke-width="4"/>
+          <circle cx="70" cy="30" r="15" fill="#8c683c" stroke="var(--card-border)" stroke-width="4"/>
+          <circle cx="50" cy="55" r="32" fill="#a67c4e" stroke="var(--card-border)" stroke-width="4"/>
+          <ellipse cx="50" cy="62" rx="16" ry="12" fill="#dfc49d"/>
+          <circle cx="50" cy="56" r="4" fill="#3d2612"/>
+          <circle cx="38" cy="48" r="4" fill="#3d2612"/>
+          <circle cx="62" cy="48" r="4" fill="#3d2612"/>
+        </svg>
+      </div>
+
+      <!-- Center: Giant Play Button -->
+      <div class="circle-btn start pulse-icon" onclick="enterTown()" title="Play Game">
+        <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="6 3 20 12 6 21 6 3" fill="#fff"/>
+        </svg>
+      </div>
+
+      <!-- Right: Character Selector -->
+      <div class="circle-btn character" onclick="openModal('character-modal')" title="Choose Character">
+        <svg width="45" height="45" viewBox="0 0 100 100">
+          <circle cx="50" cy="38" r="22" fill="#f8c057" stroke="var(--card-border)" stroke-width="4"/>
+          <path d="M20 88 C20 62 35 56 50 56 C65 56 80 62 80 88" fill="#78a0d0" stroke="var(--card-border)" stroke-width="4"/>
+          <circle cx="42" cy="35" r="3" fill="#333"/>
+          <circle cx="58" cy="35" r="3" fill="#333"/>
+        </svg>
+      </div>
+    </div>
+
+    <button class="btn bottom-left-btn" onclick="openModal('settings-modal')" id="btn-settings">⚙️ Settings</button>
+    <button class="btn bottom-right-btn" onclick="openModal('language-modal')" id="btn-language">🌐 Language</button>
+  </div>
+
+  <!-- ==================== TOWN SCREEN ==================== -->
+  <div id="town-screen">
+    <div class="town-viewport">
+      <!-- Header HUD Bar -->
+      <div class="town-header">
+        <div class="player-profile-badge">
+          <div class="player-avatar-circle" id="hud-avatar">
+            <svg width="30" height="30" viewBox="0 0 100 100">
+              <circle cx="50" cy="38" r="22" fill="#f8c057" stroke="var(--card-border)" stroke-width="4"/>
+              <circle cx="42" cy="35" r="3" fill="#333"/>
+              <circle cx="58" cy="35" r="3" fill="#333"/>
+            </svg>
+          </div>
+          <div class="player-info-text">
+            <span class="player-name" id="hud-username">Mayor Bunny</span>
+            <span class="player-status-tag" id="hud-clock">Tokyo (UTC+9) 12:00</span>
+          </div>
+        </div>
+
+        <div class="resources-bar">
+          <div class="resource-item">
+            <svg width="18" height="22" viewBox="0 0 24 24" class="bamboo-art">
+              <use href="#universal-bamboo"/>
+            </svg>
+            <span id="bamboo-count">1,250</span>
+            <div class="add-btn" onclick="openModal('shop-modal')">+</div>
+          </div>
+          <div class="resource-item">
+            <span style="font-size: 1.1rem;">💎</span>
+            <span id="gem-count">45</span>
+            <div class="add-btn" onclick="openModal('shop-modal')">+</div>
+          </div>
+        </div>
+      </div>
+      <!-- Left Action Stack -->
+      <div class="town-left-controls">
+        <button class="btn btn-icon missions-btn" onclick="openModal('missions-modal')" title="Missions">
+          📋
+          <div class="mission-badge-count" id="mission-badge">2</div>
+        </button>
+      </div>
+
+      <!-- Pavement Town Canvas Base -->
+      <div class="town-map-area" id="map-area">
+        <!-- Distant Short Buildings Background Row -->
+        <div class="short-buildings-row">
+          <svg width="40" height="40" viewBox="0 0 40 40"><rect x="5" y="10" width="30" height="30" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2"/><polygon points="20,0 0,12 40,12" fill="var(--accent-red)" stroke="var(--card-border)" stroke-width="2"/></svg>
+          <svg width="35" height="35" viewBox="0 0 40 40"><rect x="5" y="15" width="30" height="25" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2"/><polygon points="20,2 2,16 38,16" fill="var(--accent-blue)" stroke="var(--card-border)" stroke-width="2"/></svg>
+          <svg width="45" height="40" viewBox="0 0 40 40"><rect x="5" y="10" width="30" height="30" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2"/><polygon points="20,0 0,12 40,12" fill="var(--accent-yellow)" stroke="var(--card-border)" stroke-width="2"/></svg>
+        </div>
+
+        <!-- Pedestrians walking -->
+        <div class="pedestrian-wrapper" style="top: 20%; left: 10%;">
+          <svg width="40" height="40" viewBox="0 0 100 100">
+            <circle cx="50" cy="35" r="20" fill="#f8c057" stroke="var(--card-border)" stroke-width="4"/>
+            <path d="M30 85 C30 60 40 52 50 52 C60 52 70 60 70 85" fill="#78a0d0" stroke="var(--card-border)" stroke-width="4"/>
+            <circle cx="43" cy="32" r="3" fill="#333"/><circle cx="57" cy="32" r="3" fill="#333"/>
+          </svg>
+        </div>
+        <div class="pedestrian-wrapper" style="top: 55%; left: 40%; animation-duration: 14s;">
+          <svg width="40" height="40" viewBox="0 0 100 100">
+            <circle cx="50" cy="35" r="20" fill="#e88d72" stroke="var(--card-border)" stroke-width="4"/>
+            <path d="M30 85 C30 60 40 52 50 52 C60 52 70 60 70 85" fill="#90b078" stroke="var(--card-border)" stroke-width="4"/>
+            <circle cx="43" cy="32" r="3" fill="#333"/><circle cx="57" cy="32" r="3" fill="#333"/>
+          </svg>
+        </div>
+
+        <!-- Interactive Placed Facilities Grid Container -->
+        <div id="placed-facilities-container"></div>
+      </div>
+
+      <!-- Bottom Controls -->
+      <div class="town-bottom-left">
+        <button class="btn" onclick="returnToHome()" id="btn-back-home">🏠 Home</button>
+        <button class="btn" onclick="openModal('construction-modal')" style="background: var(--accent-green); color:#fff;" id="btn-build">🏗️ Build</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- Follow Modal -->
+  <div class="modal-overlay" id="follow-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('follow-modal')">×</button>
+      <div class="modal-title" id="t-follow-title">📣 Follow Our Community</div>
+      <p style="text-align: center; margin-bottom: 20px; font-weight: 600;" id="t-follow-desc">Join our official channels for bamboo codes, development updates, and player contests!</p>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn" style="background: #7289da; color: #fff;">Discord Community</button>
+        <button class="btn" style="background: #1da1f2; color: #fff;">Twitter / X</button>
+        <button class="btn" style="background: #ff0000; color: #fff;">YouTube Channel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bear Friend Modal -->
+  <div class="modal-overlay" id="bear-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('bear-modal')">×</button>
+      <div class="modal-title" id="t-bear-title">🐻 Barnaby the Bear</div>
+      <div style="text-align: center; margin-bottom: 15px;">
+        <svg width="80" height="80" viewBox="0 0 100 100">
+          <circle cx="30" cy="30" r="15" fill="#8c683c" stroke="var(--card-border)" stroke-width="4"/>
+          <circle cx="70" cy="30" r="15" fill="#8c683c" stroke="var(--card-border)" stroke-width="4"/>
+          <circle cx="50" cy="55" r="32" fill="#a67c4e" stroke="var(--card-border)" stroke-width="4"/>
+          <ellipse cx="50" cy="62" rx="16" ry="12" fill="#dfc49d"/>
+          <circle cx="50" cy="56" r="4" fill="#3d2612"/>
+          <circle cx="38" cy="48" r="4" fill="#3d2612"/>
+          <circle cx="62" cy="48" r="4" fill="#3d2612"/>
+        </svg>
+      </div>
+      <p style="text-align: center; font-weight: 600; margin-bottom: 15px;" id="t-bear-desc">"Hello Mayor! I manage the town's bamboo stockpiles. Keep building facilities to welcome new animal citizens!"</p>
+      <div style="text-align: center;">
+        <button class="btn-ok" onclick="closeModal('bear-modal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Character Selector Modal -->
+  <div class="modal-overlay" id="character-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('character-modal')">×</button>
+      <div class="modal-title" id="t-char-title">🐱 Choose Starter Resident</div>
+      <div class="character-selection-grid">
+        <div class="char-card selected" onclick="selectCharacter('Bunny', '#f8c057', this)">
+          <svg width="50" height="50" viewBox="0 0 100 100">
+            <ellipse cx="40" cy="20" rx="8" ry="20" fill="#fff" stroke="var(--card-border)" stroke-width="3"/>
+            <ellipse cx="60" cy="20" rx="8" ry="20" fill="#fff" stroke="var(--card-border)" stroke-width="3"/>
+            <circle cx="50" cy="55" r="25" fill="#f8c057" stroke="var(--card-border)" stroke-width="4"/>
+            <circle cx="42" cy="52" r="3" fill="#333"/><circle cx="58" cy="52" r="3" fill="#333"/>
+          </svg>
+          <div style="font-weight: 800; font-size: 0.85rem; margin-top: 4px;">Mayor Bunny</div>
+        </div>
+        <div class="char-card" onclick="selectCharacter('Shiba', '#e88d72', this)">
+          <svg width="50" height="50" viewBox="0 0 100 100">
+            <polygon points="25,25 40,45 20,50" fill="#e88d72" stroke="var(--card-border)" stroke-width="3"/>
+            <polygon points="75,25 60,45 80,50" fill="#e88d72" stroke="var(--card-border)" stroke-width="3"/>
+            <circle cx="50" cy="55" r="25" fill="#e88d72" stroke="var(--card-border)" stroke-width="4"/>
+            <circle cx="42" cy="52" r="3" fill="#333"/><circle cx="58" cy="52" r="3" fill="#333"/>
+          </svg>
+          <div style="font-weight: 800; font-size: 0.85rem; margin-top: 4px;">Shiba Pup</div>
+        </div>
+        <div class="char-card" onclick="selectCharacter('Panda', '#90b078', this)">
+          <svg width="50" height="50" viewBox="0 0 100 100">
+            <circle cx="30" cy="35" r="10" fill="#333"/>
+            <circle cx="70" cy="35" r="10" fill="#333"/>
+            <circle cx="50" cy="55" r="25" fill="#fff" stroke="var(--card-border)" stroke-width="4"/>
+            <circle cx="40" cy="52" r="5" fill="#333"/><circle cx="60" cy="52" r="5" fill="#333"/>
+          </svg>
+          <div style="font-weight: 800; font-size: 0.85rem; margin-top: 4px;">Panda Kid</div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" onclick="closeModal('character-modal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('settings-modal')">×</button>
+      <div class="modal-title" id="t-settings-title">⚙️ Game Settings</div>
+      
+      <div class="setting-row">
+        <div class="setting-header">
+          <span id="t-theme-label">Visual Theme</span>
+          <div class="mode-toggle-group">
+            <button class="mode-btn active" id="mode-light" onclick="setTheme('light')">Light</button>
+            <button class="mode-btn" id="mode-dark" onclick="setTheme('dark')">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-header">
+          <span id="t-music-label">Music Volume</span>
+          <span id="music-val">80%</span>
+        </div>
+        <input type="range" class="volume-slider" min="0" max="100" value="80" oninput="document.getElementById('music-val').innerText = this.value + '%'">
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-header">
+          <span id="t-sfx-label">Sound Effects</span>
+          <span id="sfx-val">100%</span>
+        </div>
+        <input type="range" class="volume-slider" min="0" max="100" value="100" oninput="document.getElementById('sfx-val').innerText = this.value + '%'">
+      </div>
+
+      <div style="margin-top: 10px; text-align: center;">
+        <button class="btn" onclick="openModal('tos-modal')" style="font-size: 0.85rem; padding: 6px 16px;" id="btn-view-tos">📜 Terms of Service</button>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" onclick="closeModal('settings-modal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms of Service Modal -->
+  <div class="modal-overlay" id="tos-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('tos-modal')">×</button>
+      <div class="modal-title" id="t-tos-title">📜 Terms of Service</div>
+      <div class="tos-text-box" id="tos-content">
+        <!-- Text populated by JS depending on selected language -->
+      </div>
+      <div style="text-align: center;">
+        <button class="btn-ok" onclick="closeModal('tos-modal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language Selection Modal -->
+  <div class="modal-overlay" id="language-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('language-modal')">×</button>
+      <div class="modal-title" id="t-lang-title">🌐 Region & Language Settings</div>
+      
+      <div class="setting-row">
+        <label id="t-select-lang">Select Language</label>
+        <select class="modal-select" id="lang-select">
+          <option value="en">English</option>
+          <option value="zh-HK">繁體中文 (Traditional Chinese)</option>
+          <option value="zh-CN">简体中文 (Simplified Chinese)</option>
+          <option value="ja">日本語 (Japanese)</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <label id="t-select-country">Select Target Timezone / Country</label>
+        <select class="modal-select" id="country-select">
+          <option value="Japan">Japan (Tokyo) [UTC+9]</option>
+          <option value="Hong Kong">Hong Kong [UTC+8]</option>
+          <option value="China">China (Beijing) [UTC+8]</option>
+          <option value="United States">United States (New York) [UTC-4]</option>
+          <option value="United Kingdom">United Kingdom (London) [UTC+1]</option>
+        </select>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" onclick="applyLanguageAndRegion()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop Modal -->
+  <div class="modal-overlay" id="shop-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('shop-modal')">×</button>
+      <div class="modal-title" id="t-shop-title">🛒 Town Shop</div>
+      
+      <div class="tab-bar">
+        <div class="tab-btn active" id="t-tab-bamboo">Bamboo Bundles</div>
+        <div class="tab-btn" id="t-tab-gems">Gems Store</div>
+      </div>
+
+      <div class="shop-grid">
+        <div class="shop-item">
+          <svg width="28" height="34" viewBox="0 0 24 24" class="bamboo-art"><use href="#universal-bamboo"/></svg>
+          <div style="font-weight: 800; font-size: 0.9rem;">500 Bamboos</div>
+          <button class="btn" style="padding: 4px 10px; font-size: 0.8rem; margin-top: 4px;" onclick="addBamboo(500)">💎 10</button>
+        </div>
+        <div class="shop-item">
+          <svg width="34" height="40" viewBox="0 0 24 24" class="bamboo-art"><use href="#universal-bamboo"/></svg>
+          <div style="font-weight: 800; font-size: 0.9rem;">1,500 Bamboos</div>
+          <button class="btn" style="padding: 4px 10px; font-size: 0.8rem; margin-top: 4px;" onclick="addBamboo(1500)">💎 25</button>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" onclick="closeModal('shop-modal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Construction Menu Modal -->
+  <div class="modal-overlay" id="construction-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('construction-modal')">×</button>
+      <div class="modal-title" id="t-build-title">🏗️ Town Facilities</div>
+      
+      <div style="max-height: 300px; overflow-y: auto; padding-right: 4px;" id="facilities-list-container">
+        <!-- Facility Items Generated Dynamically -->
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" onclick="closeModal('construction-modal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Missions Modal -->
+  <div class="modal-overlay" id="missions-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('missions-modal')">×</button>
+      <div class="modal-title" id="t-missions-title">📋 Town Missions</div>
+      
+      <div class="tab-bar">
+        <div class="tab-btn active" id="tab-daily" onclick="switchMissionTab('daily')">Daily</div>
+        <div class="tab-btn" id="tab-weekly" onclick="switchMissionTab('weekly')">Weekly</div>
+        <div class="tab-btn" id="tab-golden" onclick="switchMissionTab('golden')">Golden</div>
+      </div>
+
+      <div id="missions-container">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" onclick="closeModal('missions-modal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    /* --- GAME STATE & TRANSLATIONS --- */
+    const gameState = {
+      language: 'en',
+      country: 'Japan',
+      bamboo: 1250,
+      gems: 45,
+      character: 'Bunny',
+      charColor: '#f8c057',
+      facilities: [
+        { id: 'f1', name: 'Ramen Stand', cost: 100, placed: true, top: 40, left: 20 },
+        { id: 'f2', name: 'Bamboo Park', cost: 200, placed: false, top: 50, left: 50 },
+        { id: 'f3', name: 'Tea House', cost: 350, placed: false, top: 30, left: 70 },
+        { id: 'f4', name: 'Panda Bakery', cost: 500, placed: false, top: 60, left: 30 }
+      ],
+      selectedFacilityId: null,
+      activeMissionTab: 'daily',
+      missions: {
+        daily: [
+          { id: 'd1', title: 'Place 1 Facility in Town', reqType: 'placedCount', reqVal: 1, reward: 150, claimed: false, refreshTimer: null },
+          { id: 'd2', title: 'Collect 1,000 Bamboos', reqType: 'bambooCount', reqVal: 1000, reward: 200, claimed: false, refreshTimer: null }
+        ],
+        weekly: [
+          { id: 'w1', title: 'Build 3 Town Facilities', reqType: 'placedCount', reqVal: 3, reward: 500, claimed: false }
+        ],
+        golden: [
+          { id: 'g1', title: 'Accumulate 2,000 Bamboos', reqType: 'bambooCount', reqVal: 2000, reward: 50, rewardType: 'gems', claimed: false }
+        ]
+      }
+    };
+
+    const i18n = {
+      'en': {
+        follow: "📣 Follow Us!",
+        shop: "🛒 Shop",
+        settings: "⚙️ Settings",
+        language: "🌐 Language",
+        backHome: "🏠 Home",
+        build: "🏗️ Build",
+        followTitle: "📣 Follow Our Community",
+        followDesc: "Join our official channels for bamboo codes, development updates, and player contests!",
+        bearTitle: "🐻 Barnaby the Bear",
+        bearDesc: '"Hello Mayor! I manage the town\'s bamboo stockpiles. Keep building facilities to welcome new animal citizens!"',
+        charTitle: "🐱 Choose Starter Resident",
+        settingsTitle: "⚙️ Game Settings",
+        themeLabel: "Visual Theme",
+        musicLabel: "Music Volume",
+        sfxLabel: "Sound Effects",
+        viewTos: "📜 Terms of Service",
+        tosTitle: "📜 Terms of Service",
+        langTitle: "🌐 Region & Language Settings",
+        selectLang: "Select Language",
+        selectCountry: "Select Target Timezone / Country",
+        shopTitle: "🛒 Town Shop",
+        tabBamboo: "Bamboo Bundles",
+        tabGems: "Gems Store",
+        buildTitle: "🏗️ Town Facilities",
+        missionsTitle: "📋 Town Missions",
+        claim: "Claim",
+        claimed: "Claimed",
+        refreshIn: "Refreshes in ",
+        tosText: `<strong>1. Acceptance of Terms</strong><br>By playing BAMBUILD, you agree to these Terms. If you disagree, please do not access the game.<br><br><strong>2. Virtual Currencies & Items</strong><br>Bamboos and Gems are virtual items with no real-world monetary value. They are non-transferable and non-refundable.<br><br><strong>3. User Conduct</strong><br>Cheating, exploiting bugs, or modifying game code is strictly prohibited.<br><br><strong>4. Service Availability</strong><br>We reserve the right to modify or update gameplay features at any time.`
+      },
+      'zh-HK': {
+        follow: "📣 關注我們！",
+        shop: "🛒 商店",
+        settings: "⚙️ 設定",
+        language: "🌐 語言/地區",
+        backHome: "🏠 主頁",
+        build: "🏗️ 建設",
+        followTitle: "📣 關注社群",
+        followDesc: "加入官方頻道以獲取竹子兌換碼、最新開發動態與玩家活動！",
+        bearTitle: "🐻 竹子管家 貝爾",
+        bearDesc: "「鎮長好！我負責管理小鎮的竹子庫存。請繼續建造設施以吸引更多動物居民吧！」",
+        charTitle: "🐱 選擇初始居民",
+        settingsTitle: "⚙️ 遊戲設定",
+        themeLabel: "視覺主題",
+        musicLabel: "背景音樂",
+        sfxLabel: "音效音量",
+        viewTos: "📜 服務條款",
+        tosTitle: "📜 服務條款",
+        langTitle: "🌐 地區與語言設定",
+        selectLang: "選擇語言",
+        selectCountry: "選擇目標時區 / 國家",
+        shopTitle: "🛒 小鎮商店",
+        tabBamboo: "竹子禮包",
+        tabGems: "寶石商店",
+        buildTitle: "🏗️ 小鎮設施",
+        missionsTitle: "📋 小鎮任務",
+        claim: "領取",
+        claimed: "已領取",
+        refreshIn: "刷新剩餘 ",
+        tosText: `<strong>1. 條款確認</strong><br>進入 BAMBUILD 即表示您同意本條款。如不同意，請勿繼續使用本服務。<br><br><strong>2. 虛擬貨幣與物品</strong><br>竹子與寶石屬遊戲內虛擬物品，不具備現實貨幣價值，且不可轉讓或退款。<br><br><strong>3. 行為規範</strong><br>嚴禁使用外掛、利用漏洞或篡改遊戲程式碼。<br><br><strong>4. 服務變更</strong><br>我們保留隨時更新或修改遊戲內容的權利。`
+      },
+      'zh-CN': {
+        follow: "📣 关注我们！",
+        shop: "🛒 商店",
+        settings: "⚙️ 设置",
+        language: "🌐 语言/地区",
+        backHome: "🏠 主页",
+        build: "🏗️ 建设",
+        followTitle: "📣 关注社区",
+        followDesc: "加入官方频道以获取竹子兑换码、最新开发动态与玩家活动！",
+        bearTitle: "🐻 竹子管家 贝尔",
+        bearDesc: "“镇长好！我负责管理小镇的竹子库存。请继续建造设施以吸引更多动物居民吧！”",
+        charTitle: "🐱 选择初始居民",
+        settingsTitle: "⚙️ 游戏设置",
+        themeLabel: "视觉主题",
+        musicLabel: "背景音乐",
+        sfxLabel: "音效音量",
+        viewTos: "📜 服务条款",
+        tosTitle: "📜 服务条款",
+        langTitle: "🌐 地区与语言设置",
+        selectLang: "选择语言",
+        selectCountry: "选择目标时区 / 国家",
+        shopTitle: "🛒 小镇商店",
+        tabBamboo: "竹子礼包",
+        tabGems: "宝石商店",
+        buildTitle: "🏗️ 小镇设施",
+        missionsTitle: "📋 小镇任务",
+        claim: "领取",
+        claimed: "已领取",
+        refreshIn: "刷新剩余 ",
+        tosText: `<strong>1. 条款确认</strong><br>进入 BAMBUILD 即表示您同意本条款。如不同意，请勿继续使用本服务。<br><br><strong>2. 虚拟货币与物品</strong><br>竹子与宝石属游戏内虚拟物品，不具备现实货币价值，且不可转让或退款。<br><br><strong>3. 行为规范</strong><br>严禁使用外挂、利用漏洞或篡改游戏代码。<br><br><strong>4. 服务变更</strong><br>我们保留随时更新或修改游戏内容的权利。`
+      },
+      'ja': {
+        follow: "📣 フォロー",
+        shop: "🛒 ショップ",
+        settings: "⚙️ 設定",
+        language: "🌐 言語/地域",
+        backHome: "🏠 ホーム",
+        build: "🏗️ 建築",
+        followTitle: "📣 公式コミュニティ",
+        followDesc: "公式チャンネルに参加して、バンブーコードやアップデート情報を手に入れよう！",
+        bearTitle: "🐻 くまのバーナビー",
+        bearDesc: "「町長さん、こんにちは！竹の備蓄を管理しています。施設を建てて住民を呼び込みましょう！」",
+        charTitle: "🐱 初期住民の選択",
+        settingsTitle: "⚙️ ゲーム設定",
+        themeLabel: "カラーテーマ",
+        musicLabel: "BGM音量",
+        sfxLabel: "SE音量",
+        viewTos: "📜 利用規約",
+        tosTitle: "📜 利用規約",
+        langTitle: "🌐 地域と言語の設定",
+        selectLang: "言語を選択",
+        selectCountry: "対象のタイムゾーン/国を選択",
+        shopTitle: "🛒 タウンショップ",
+        tabBamboo: "バンブーパック",
+        tabGems: "ジェムショップ",
+        buildTitle: "🏗️ 街の施設",
+        missionsTitle: "📋 ミッション",
+        claim: "受取",
+        claimed: "受取済",
+        refreshIn: "更新まで ",
+        tosText: `<strong>1. 規約の同意</strong><br>BAMBUILDをプレイすることで、本利用規約に同意した meみなされます。<br><br><strong>2. 仮想通貨とアイテム</strong><br>バンブーおよびジェムはゲーム内アイテムであり、現実の金銭的価値はありません。<br><br><strong>3. 禁止事項</strong><br>不正行為、バグの悪用、コードの改ざんは固く禁止されています。<br><br><strong>4. サービスの変更</strong><br>当社は事前告知なくゲーム内容を変更する権利を有します。`
+      }
+    };
+
+    const timezoneOffsets = {
+      'Japan': { name: 'Tokyo', offset: 9 },
+      'Hong Kong': { name: 'Hong Kong', offset: 8 },
+      'China': { name: 'Beijing', offset: 8 },
+      'United States': { name: 'New York', offset: -4 },
+      'United Kingdom': { name: 'London', offset: 1 }
+    };
+
+    /* --- MODAL CONTROLS --- */
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+      if (id === 'construction-modal') renderFacilitiesList();
+      if (id === 'missions-modal') renderMissions();
+      if (id === 'tos-modal') updateTosText();
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    /* --- NAVIGATION --- */
+    function enterTown() {
+      document.getElementById('home-screen').style.display = 'none';
+      document.getElementById('town-screen').style.display = 'block';
+      renderPlacedFacilities();
+      updateClockDisplay();
+      updateBadgeCount();
+    }
+
+    function returnToHome() {
+      document.getElementById('town-screen').style.display = 'none';
+      document.getElementById('home-screen').style.display = 'flex';
+    }
+
+    /* --- THEME TOGGLE --- */
+    function setTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
+      document.getElementById('mode-light').classList.toggle('active', theme === 'light');
+      document.getElementById('mode-dark').classList.toggle('active', theme === 'dark');
+    }
+
+    /* --- LANGUAGE & TIMEZONE SYSTEM --- */
+    function applyLanguageAndRegion() {
+      const selectedLang = document.getElementById('lang-select').value;
+      const selectedCountry = document.getElementById('country-select').value;
+      
+      gameState.language = selectedLang;
+      gameState.country = selectedCountry;
+
+      const t = i18n[selectedLang];
+
+      // Update Home UI Text
+      document.getElementById('btn-follow').innerText = t.follow;
+      document.getElementById('btn-shop').innerText = t.shop;
+      document.getElementById('btn-settings').innerText = t.settings;
+      document.getElementById('btn-language').innerText = t.language;
+      document.getElementById('btn-back-home').innerText = t.backHome;
+      document.getElementById('btn-build').innerText = t.build;
+
+      // Update Modal Titles & Content
+      document.getElementById('t-follow-title').innerText = t.followTitle;
+      document.getElementById('t-follow-desc').innerText = t.followDesc;
+      document.getElementById('t-bear-title').innerText = t.bearTitle;
+      document.getElementById('t-bear-desc').innerText = t.bearDesc;
+      document.getElementById('t-char-title').innerText = t.charTitle;
+      document.getElementById('t-settings-title').innerText = t.settingsTitle;
+      document.getElementById('t-theme-label').innerText = t.themeLabel;
+      document.getElementById('t-music-label').innerText = t.musicLabel;
+      document.getElementById('t-sfx-label').innerText = t.sfxLabel;
+      document.getElementById('btn-view-tos').innerText = t.viewTos;
+      document.getElementById('t-tos-title').innerText = t.tosTitle;
+      document.getElementById('t-lang-title').innerText = t.langTitle;
+      document.getElementById('t-select-lang').innerText = t.selectLang;
+      document.getElementById('t-select-country').innerText = t.selectCountry;
+      document.getElementById('t-shop-title').innerText = t.shopTitle;
+      document.getElementById('t-tab-bamboo').innerText = t.tabBamboo;
+      document.getElementById('t-tab-gems').innerText = t.tabGems;
+      document.getElementById('t-build-title').innerText = t.buildTitle;
+      document.getElementById('t-missions-title').innerText = t.missionsTitle;
+
+      updateClockDisplay();
+      closeModal('language-modal');
+    }
+
+    function updateTosText() {
+      const t = i18n[gameState.language];
+      document.getElementById('tos-content').innerHTML = t.tosText;
+    }
+
+    /* --- CLOCK ACCORDING TO TARGET COUNTRY --- */
+    function updateClockDisplay() {
+      const tzData = timezoneOffsets[gameState.country];
+      const now = new Date();
+      const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const targetTime = new Date(utcTime + (3600000 * tzData.offset));
+
+      const hours = String(targetTime.getHours()).padStart(2, '0');
+      const mins = String(targetTime.getMinutes()).padStart(2, '0');
+      const sign = tzData.offset >= 0 ? '+' : '';
+
+      document.getElementById('hud-clock').innerText = `${tzData.name} (UTC${sign}${tzData.offset}) ${hours}:${mins}`;
+    }
+    setInterval(updateClockDisplay, 10000);
+
+    /* --- CHARACTER SELECTOR --- */
+    function selectCharacter(name, color, cardEl) {
+      document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+      cardEl.classList.add('selected');
+      gameState.character = name;
+      gameState.charColor = color;
+      document.getElementById('hud-username').innerText = 'Mayor ' + name;
+    }
+
+    /* --- SHOP & CURRENCY --- */
+    function addBamboo(amt) {
+      gameState.bamboo += amt;
+      document.getElementById('bamboo-count').innerText = gameState.bamboo.toLocaleString();
+      checkMissionRequirements();
+    }
+
+    /* --- CONSTRUCTION & FACILITIES --- */
+    function renderFacilitiesList() {
+      const container = document.getElementById('facilities-list-container');
+      container.innerHTML = '';
+
+      gameState.facilities.forEach(fac => {
+        const item = document.createElement('div');
+        item.className = 'construction-toggle-item';
+        item.onclick = () => toggleFacilityPlacement(fac.id);
+
+        item.innerHTML = `
+          <div>
+            <div style="font-weight: 800; font-size: 0.95rem;">${fac.name}</div>
+            <div style="font-size: 0.8rem; font-weight:700; color:var(--bamboo-color); display:flex; align-items:center; gap:3px;">
+              <svg width="14" height="16" viewBox="0 0 24 24" class="bamboo-art"><use href="#universal-bamboo"/></svg>
+              ${fac.cost} Bamboos
+            </div>
+          </div>
+          <div class="checkbox-box ${fac.placed ? 'checked' : ''}">
+            ${fac.placed ? '✓' : ''}
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function toggleFacilityPlacement(id) {
+      const fac = gameState.facilities.find(f => f.id === id);
+      if (!fac) return;
+
+      if (!fac.placed) {
+        if (gameState.bamboo < fac.cost) {
+          alert('Not enough Bamboos!');
+          return;
+        }
+        gameState.bamboo -= fac.cost;
+        document.getElementById('bamboo-count').innerText = gameState.bamboo.toLocaleString();
+        fac.placed = true;
+      } else {
+        fac.placed = false;
+      }
+
+      renderFacilitiesList();
+      renderPlacedFacilities();
+      checkMissionRequirements();
+    }
+
+    function renderPlacedFacilities() {
+      const container = document.getElementById('placed-facilities-container');
+      container.innerHTML = '';
+
+      gameState.facilities.filter(f => f.placed).forEach(fac => {
+        const node = document.createElement('div');
+        node.className = 'facility-node';
+        node.style.top = fac.top + '%';
+        node.style.left = fac.left + '%';
+        
+        const isSelected = gameState.selectedFacilityId === fac.id;
+
+        node.innerHTML = `
+          <svg class="outlined-art" width="60" height="60" viewBox="0 0 40 40">
+            <rect x="5" y="10" width="30" height="25" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2.5" rx="4"/>
+            <polygon points="20,2 2,14 38,14" fill="var(--accent-yellow)" stroke="var(--card-border)" stroke-width="2.5"/>
+            <rect x="15" y="22" width="10" height="13" fill="var(--card-border)"/>
+          </svg>
+          <div class="facility-label">${fac.name}</div>
+          
+          <div class="arrow-controls ${isSelected ? 'active' : ''}">
+            <div class="arrow-btn arrow-north" onclick="moveFacility(event, '${fac.id}', -5, 0)"></div>
+            <div class="arrow-btn arrow-south" onclick="moveFacility(event, '${fac.id}', 5, 0)"></div>
+            <div class="arrow-btn arrow-east" onclick="moveFacility(event, '${fac.id}', 0, 5)"></div>
+            <div class="arrow-btn arrow-west" onclick="moveFacility(event, '${fac.id}', 0, -5)"></div>
+          </div>
+        `;
+
+        node.onclick = (e) => {
+          e.stopPropagation();
+          gameState.selectedFacilityId = gameState.selectedFacilityId === fac.id ? null : fac.id;
+          renderPlacedFacilities();
+        };
+
+        container.appendChild(node);
+      });
+    }function moveFacility(e, id, dTop, dLeft) {
+      e.stopPropagation();
+      const fac = gameState.facilities.find(f => f.id === id);
+      if (fac) {
+        fac.top = Math.max(10, Math.min(80, fac.top + dTop));
+        fac.left = Math.max(5, Math.min(85, fac.left + dLeft));
+        renderPlacedFacilities();
+      }
+    }
+
+    document.getElementById('map-area').onclick = () => {
+      gameState.selectedFacilityId = null;
+      renderPlacedFacilities();
+    };
+
+    /* --- MISSIONS & CLAIM REFRESH SYSTEM --- */
+    function switchMissionTab(tab) {
+      gameState.activeMissionTab = tab;
+      document.querySelectorAll('#missions-modal .tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      renderMissions();
+    }
+
+    function checkMissionRequirements() {
+      const placedCount = gameState.facilities.filter(f => f.placed).length;
+      
+      ['daily', 'weekly', 'golden'].forEach(type => {
+        gameState.missions[type].forEach(m => {
+          if (m.claimed) return;
+          if (m.reqType === 'placedCount') m.isReady = placedCount >= m.reqVal;
+          if (m.reqType === 'bambooCount') m.isReady = gameState.bamboo >= m.reqVal;
+        });
+      });
+
+      updateBadgeCount();
+    }
+
+    function updateBadgeCount() {
+      checkMissionRequirements();
+      let readyCount = 0;
+      ['daily', 'weekly', 'golden'].forEach(type => {
+        readyCount += gameState.missions[type].filter(m => m.isReady && !m.claimed).length;
+      });
+      document.getElementById('mission-badge').innerText = readyCount;
+    }
+
+    function renderMissions() {
+      checkMissionRequirements();
+      const container = document.getElementById('missions-container');
+      container.innerHTML = '';
+
+      const list = gameState.missions[gameState.activeMissionTab];
+      const t = i18n[gameState.language];
+
+      list.forEach(m => {
+        const item = document.createElement('div');
+        item.className = 'mission-item';
+
+        let rewardIcon = m.rewardType === 'gems' ? '💎' : `<svg width="14" height="16" viewBox="0 0 24 24" class="bamboo-art"><use href="#universal-bamboo"/></svg>`;
+        
+        let buttonHtml = '';
+        if (m.claimed) {
+          if (m.refreshTimer) {
+            buttonHtml = `<span style="font-size:0.75rem; font-weight:700; color:#888;">${t.refreshIn}${m.refreshTimer}s</span>`;
+          } else {
+            buttonHtml = `<button class="btn" disabled>${t.claimed}</button>`;
+          }
+        } else {
+          buttonHtml = `<button class="btn" ${!m.isReady ? 'disabled' : ''} onclick="claimMission('${gameState.activeMissionTab}', '${m.id}')">${t.claim}</button>`;
+        }
+
+        item.innerHTML = `
+          <div class="mission-details">
+            <div class="mission-title">${m.title}</div>
+            <div class="mission-reward">+${m.reward} ${rewardIcon}</div>
+          </div>
+          <div>${buttonHtml}</div>
+        `;
+
+        container.appendChild(item);
+      });
+    }
+
+    function claimMission(tab, id) {
+      const mission = gameState.missions[tab].find(m => m.id === id);
+      if (!mission || mission.claimed || !mission.isReady) return;
+
+      mission.claimed = true;
+      if (mission.rewardType === 'gems') {
+        gameState.gems += mission.reward;
+        document.getElementById('gem-count').innerText = gameState.gems;
+      } else {
+        addBamboo(mission.reward);
+      }
+
+      // 5-Minute Auto Refresh Trigger ONLY for Daily Missions
+      if (tab === 'daily') {
+        let timeLeft = 300; // 5 minutes (300 seconds)
+        mission.refreshTimer = timeLeft;
+
+        const interval = setInterval(() => {
+          timeLeft--;
+          mission.refreshTimer = timeLeft;
+          if (gameState.activeMissionTab === 'daily') renderMissions();
+
+          if (timeLeft <= 0) {
+            clearInterval(interval);
+            mission.claimed = false;
+            mission.refreshTimer = null;
+            checkMissionRequirements();
+            if (gameState.activeMissionTab === 'daily') renderMissions();
+          }
+        }, 1000);
+      }
+
+      renderMissions();
+      updateBadgeCount();
+    }
+
+    // Initial Startup Setup
+    checkMissionRequirements();
+  </script>
+</body>
+</html>

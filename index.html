@@ -189,6 +189,23 @@
       font-weight: 700;
       background: none;
       border: none;
+      transition: transform 0.1s ease;
+    }
+    .modal-close:hover {
+      transform: scale(1.2);
+    }
+
+    /* Form Selects & Inputs */
+    .modal-select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 12px;
+      border: 2px solid var(--card-border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      background: var(--card-bg);
+      color: var(--text-color);
     }
 
     /* Mode Toggles */
@@ -391,7 +408,6 @@
       width: 100%;
       height: 85%;
       background-color: var(--path-color);
-      /* Pavement tile pattern with short buildings background */
       background-image: 
         linear-gradient(var(--card-border) 1px, transparent 1px),
         linear-gradient(90deg, var(--card-border) 1px, transparent 1px);
@@ -544,7 +560,7 @@
       align-items: center;
       justify-content: center;
       filter: drop-shadow(0 3px 0 var(--card-border));
-      z-index: 100 !important; /* Always on top of facilities */
+      z-index: 100 !important;
       cursor: pointer;
     }
 
@@ -703,7 +719,7 @@
       background: var(--accent-yellow);
     }
 
-    /* Pure Outlined Vector Facilities (No Background Containers) */
+    /* Pure Outlined Vector Facilities */
     .outlined-art {
       filter: drop-shadow(0px 2px 0px var(--card-border));
       transition: transform 0.2s ease;
@@ -774,78 +790,57 @@
 
   <!-- ==================== HOME SCREEN ==================== -->
   <div id="home-screen">
-    <!-- Cartoon Town Background -->
     <div class="town-bg">
       <div class="hill hill-1"></div>
       <div class="hill hill-2"></div>
       <div class="path"></div>
     </div>
     
-    <!-- Top Left: Follow Us -->
     <button class="btn top-left-btn" onclick="openModal('follow-modal')">📣 Follow Us!</button>
-
-    <!-- Top Right: Settings -->
     <button class="btn top-right-btn" onclick="openModal('settings-modal')">⚙️ Settings</button>
 
-    <!-- Center: Logo + Light Brown Bamboo Outlines -->
     <div class="title-wrapper">
-      
-      <!-- Outlined Light Brown Bamboo SVG (Left) -->
       <svg class="bamboo-art" width="50" height="100" viewBox="0 0 50 100">
         <rect x="10" y="10" width="8" height="80" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="10" y1="35" x2="18" y2="35" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="10" y1="65" x2="18" y2="65" stroke="var(--card-border)" stroke-width="3"/>
-        
         <rect x="28" y="0" width="10" height="95" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="28" y1="25" x2="38" y2="25" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="28" y1="55" x2="38" y2="55" stroke="var(--card-border)" stroke-width="3"/>
-
         <path d="M 8 20 C 0 15, -2 25, 8 25 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
         <path d="M 38 15 C 48 10, 50 20, 38 22 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
       </svg>
 
-      <!-- BAMBUILD Title -->
       <div class="title-text">BAMBUILD</div>
 
-      <!-- Outlined Light Brown Bamboo SVG (Right) -->
       <svg class="bamboo-art" width="50" height="100" viewBox="0 0 50 100">
         <rect x="12" y="0" width="10" height="95" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="12" y1="25" x2="22" y2="25" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="12" y1="55" x2="22" y2="55" stroke="var(--card-border)" stroke-width="3"/>
-
         <rect x="32" y="10" width="8" height="80" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="32" y1="35" x2="40" y2="35" stroke="var(--card-border)" stroke-width="3"/>
         <line x1="32" y1="65" x2="40" y2="65" stroke="var(--card-border)" stroke-width="3"/>
-        
         <path d="M 12 15 C 2 10, 0 20, 12 22 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
         <path d="M 40 20 C 48 15, 50 25, 40 25 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
       </svg>
     </div>
 
-    <!-- Center 3 Buttons -->
     <div class="home-center-buttons">
-      <!-- Left: How to Play -->
       <div class="circle-btn bear" title="How to Play" onclick="openModal('help-modal')">
         <span style="font-size:36px; color:#FFF; font-weight:900; text-shadow: 2px 2px 0 var(--card-border);">?</span>
       </div>
 
-      <!-- Middle: Start Game Button -->
       <div class="circle-btn start pulse-icon" title="Start Game" onclick="openModal('region-modal')">
         <svg width="42" height="42" viewBox="0 0 24 24" fill="white" style="filter: drop-shadow(2px 2px 0px var(--card-border));">
           <path d="M8 5v14l11-7z"/>
         </svg>
       </div>
 
-      <!-- Right: Starter Character -->
       <div class="circle-btn character" id="home-char-btn-icon" title="Choose Starter Animal" onclick="openModal('character-modal')">
-        <!-- Dynamic Avatar render -->
       </div>
     </div>
 
-    <!-- Bottom Left: Terms and Services -->
     <button class="btn bottom-left-btn" onclick="openModal('terms-modal')">📋 Terms & Services</button>
-
-    <!-- Bottom Right: Log In -->
     <button class="btn bottom-right-btn" id="home-login-btn" onclick="openModal('login-modal')">🔑 Log In</button>
   </div>
 
@@ -854,12 +849,9 @@
   <div id="town-screen">
     <div class="town-viewport">
       
-      <!-- Top Header & Reserved Space for Profile -->
       <div class="town-header">
-        <!-- Player Avatar + Name Display Slot -->
         <div class="player-profile-badge">
           <div class="player-avatar-circle" id="header-avatar-circle">
-            <!-- Dynamic SVG Animal Icon -->
           </div>
           <div class="player-info-text">
             <span class="player-name" id="header-player-name">Guest Builder</span>
@@ -867,7 +859,6 @@
           </div>
         </div>
         
-        <!-- Center Resource Bar -->
         <div class="resources-bar">
           <div class="resource-item">
             🪵 <span id="bamboo-count">120</span> 
@@ -884,14 +875,12 @@
           <button class="btn" style="padding: 4px 12px; font-size: 0.85rem;" onclick="openModal('shop-modal')">🛒 Shop</button>
         </div>
 
-        <!-- Top Right Navigation -->
         <div style="display:flex; gap:8px;">
           <button class="btn" style="background:var(--accent-red); color:#fff; padding:8px 14px;" onclick="goToHome()">🏠 Home</button>
           <button class="btn" style="background:var(--accent-green); color:#fff; padding:8px 14px;" onclick="openModal('town-menu-modal')">☰ Menu</button>
         </div>
       </div>
 
-      <!-- Left Side Stack - Town Missions Button -->
       <div class="town-left-controls">
         <button class="btn-icon missions-btn" onclick="openModal('missions-modal')" title="Town Missions">
           📜
@@ -899,10 +888,7 @@
         </button>
       </div>
 
-      <!-- Pavement Town Canvas Area with Short Buildings -->
       <div class="town-map-area" id="town-map">
-        
-        <!-- Short Buildings Background Horizon -->
         <div class="short-buildings-row">
           <svg width="60" height="40" viewBox="0 0 60 40">
             <rect x="5" y="10" width="50" height="30" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="2"/>
@@ -919,9 +905,7 @@
           </svg>
         </div>
 
-        <!-- Pedestrian Animals (Enlarged, always on top) -->
         <div class="pedestrian-wrapper" style="top:120px; left:80px;">
-          <!-- White Rabbit Pedestrian -->
           <svg width="48" height="56" viewBox="0 0 30 35">
             <ellipse cx="10" cy="8" rx="3" ry="7" fill="#FFFFFF" stroke="var(--card-border)" stroke-width="2"/>
             <ellipse cx="20" cy="8" rx="3" ry="7" fill="#FFFFFF" stroke="var(--card-border)" stroke-width="2"/>
@@ -936,7 +920,6 @@
         </div>
 
         <div class="pedestrian-wrapper" style="top:260px; left:300px; animation-delay: -4s;">
-          <!-- Orange Cat Pedestrian -->
           <svg width="52" height="56" viewBox="0 0 32 35">
             <polygon points="7,14 11,4 15,12" fill="#FFA500" stroke="var(--card-border)" stroke-width="2"/>
             <polygon points="17,12 21,4 25,14" fill="#FFA500" stroke="var(--card-border)" stroke-width="2"/>
@@ -949,12 +932,9 @@
           </svg>
         </div>
 
-        <!-- Dynamic Placed Facilities Rendered Here by JS -->
         <div id="facilities-layer"></div>
-
       </div>
 
-      <!-- Bottom Tools -->
       <div class="town-bottom-left">
         <button class="btn-icon" style="width: 58px; height: 58px; font-size: 24px; background:var(--accent-green);" onclick="openModal('construction-menu-modal')" title="Active Constructions Menu">🔨</button>
       </div>
@@ -973,7 +953,6 @@
       <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Toggle facilities to display or hide them on the pavement town map:</p>
       
       <div id="constructions-toggle-list" style="max-height: 250px; overflow-y: auto;">
-        <!-- Dynamically rendered checklist -->
       </div>
 
       <div style="text-align: center; margin-top: 15px;">
@@ -1031,7 +1010,7 @@
     </div>
   </div>
 
-  <!-- Settings Modal (Volume Control Bars 0-100) -->
+  <!-- Settings Modal (With Exit Cross, Language Picker, and OK Confirm Button) -->
   <div id="settings-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('settings-modal')">&times;</button>
@@ -1045,6 +1024,16 @@
             <button class="mode-btn" id="dark-mode-btn" onclick="setTheme('dark')">Dark</button>
           </div>
         </div>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="setting-row">
+        <div class="setting-header">
+          <span>Language / 語言 / 言語</span>
+        </div>
+        <select id="language-select" class="modal-select">
+          <!-- Populated dynamically via JS -->
+        </select>
       </div>
 
       <div class="setting-row">
@@ -1063,7 +1052,9 @@
         <input type="range" class="volume-slider" id="sfx-slider" min="0" max="100" value="70" oninput="updateSfxVolume(this.value)">
       </div>
 
-      <button class="btn" style="width:100%; margin-top:10px; background:var(--accent-green); color:#fff;" onclick="closeModal('settings-modal')">Save Changes</button>
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" onclick="saveSettings()">OK</button>
+      </div>
     </div>
   </div>
 
@@ -1107,28 +1098,24 @@
     </div>
   </div>
 
-  <!-- Region Selection Modal -->
+  <!-- Region Selection Modal (With Exit Cross and Full Regions/Territories List) -->
   <div id="region-modal" class="modal-overlay">
     <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('region-modal')">&times;</button>
       <div class="modal-title">Select Your Region</div>
-      <p style="font-size:0.85rem; font-weight:600; opacity:0.8;">Daily free coins and bamboos reset according to your local time zone!</p>
+      <p style="font-size:0.85rem; font-weight:600; opacity:0.8; text-align:center;">Daily free coins and bamboos reset according to your local time zone!</p>
       
-      <select id="region-select" style="width:100%; padding:10px; margin-top:12px; border-radius:12px; border:2px solid var(--card-border); font-size:0.95rem; font-weight:700; background:var(--card-bg); color:var(--text-color);">
-        <option>Hong Kong</option>
-        <option>Japan</option>
-        <option>United Kingdom</option>
-        <option>United States</option>
-        <option>Australia</option>
-        <option>Canada</option>
-        <option>South Korea</option>
-        <option>Singapore</option>
+      <select id="region-select" class="modal-select" style="max-height: 180px;">
+        <!-- Populated dynamically via JS with all world countries & regions -->
       </select>
 
       <div style="margin-top:15px; background:rgba(0,0,0,0.03); padding:10px; border-radius:12px; border:2px solid var(--card-border); text-align:center; font-weight:700; font-size:0.85rem;">
         🎁 <strong>Daily Free Gift:</strong> +50 Coins & +10 Bamboos!
       </div>
 
-      <button class="btn" style="width:100%; margin-top:15px; background:var(--accent-red); color:#fff; font-size:1.05rem;" onclick="startGame()">Confirm & Enter Town 🚀</button>
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" style="background:var(--accent-red); color:#fff;" onclick="startGame()">OK & Enter Town 🚀</button>
+      </div>
     </div>
   </div>
 
@@ -1140,7 +1127,6 @@
       <p style="font-size:0.8rem; text-align:center; font-weight:600; margin-bottom:10px;">Select your animal avatar to represent you in town!</p>
       
       <div class="character-selection-grid" id="starter-animals-grid">
-        <!-- Rendered by JavaScript -->
       </div>
 
       <div style="text-align:center; margin-top:15px;">
@@ -1158,7 +1144,7 @@
         1. Click <b>START (Red Button)</b> to select your region.<br>
         2. Double click any facility in town to open movement triangles!<br>
         3. Press 🔨 to hide/display unlocked constructions.<br>
-        4. Adjust music loudness slider in ⚙️ Settings.<br>
+        4. Adjust music loudness & language in ⚙️ Settings.<br>
         5. Log in to permanently back up your town progress!
       </div>
     </div>
@@ -1180,7 +1166,6 @@
       </div>
 
       <div class="shop-grid" id="shop-content">
-        <!-- Loaded Dynamically -->
       </div>
     </div>
   </div>
@@ -1204,9 +1189,7 @@
     let audioCtx = null;
     let bgmGainNode = null;
     let sfxGainNode = null;
-    let isBgmPlaying = false;
 
-    // Canon in D Melody Frequencies (Pachelbel Canon in D Key)
     const CANON_NOTES = [
       { f: 587.33, d: 0.6 }, { f: 523.25, d: 0.6 }, { f: 440.00, d: 0.6 }, { f: 392.00, d: 0.6 },
       { f: 349.23, d: 0.6 }, { f: 329.63, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 392.00, d: 0.6 },
@@ -1279,7 +1262,7 @@
     function updateBgmVolume(val) {
       document.getElementById('bgm-vol-text').innerText = val + '%';
       if (bgmGainNode) {
-        bgmGainNode.gain.value = (val / 100) * 0.5; // Scale max volume
+        bgmGainNode.gain.value = (val / 100) * 0.5;
       }
     }
 
@@ -1290,7 +1273,6 @@
       }
     }
 
-    // Trigger user gesture sound init
     window.addEventListener('click', () => {
       initAudio();
     }, { once: true });
@@ -1298,6 +1280,44 @@
 
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
+    /* --- ALL LANGUAGES CONFIGURATION --- */
+    const LANGUAGES_LIST = [
+      { code: 'en', name: 'English' },
+      { code: 'zh-HK', name: '繁體中文 (香港)' },
+      { code: 'zh-TW', name: '繁體中文 (台灣)' },
+      { code: 'zh-CN', name: '简体中文 (中国)' },
+      { code: 'ja', name: '日本語' },
+      { code: 'ko', name: '한국어' },
+      { code: 'es', name: 'Español' },
+      { code: 'fr', name: 'Français' },
+      { code: 'de', name: 'Deutsch' },
+      { code: 'pt', name: 'Português' },
+      { code: 'ru', name: 'Русский' },
+      { code: 'ar', name: 'العربية' },
+      { code: 'hi', name: 'हिन्दी' },
+      { code: 'it', name: 'Italiano' },
+      { code: 'nl', name: 'Nederlands' },
+      { code: 'pl', name: 'Polski' },
+      { code: 'tr', name: 'Türkçe' },
+      { code: 'vi', name: 'Tiếng Việt' },
+      { code: 'th', name: 'ไทย' },
+      { code: 'id', name: 'Bahasa Indonesia' },
+      { code: 'uk', name: 'Українська' }
+    ];
+
+    /* --- GLOBAL REGIONS LIST (Including Hong Kong & Taiwan distinct state notes) --- */
+    const REGIONS_LIST = [
+      "Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+      "Bahrain", "Bangladesh", "Belarus", "Belgium", "Brazil", "Canada", "Chile", "China (Mainland)", "Colombia",
+      "Croatia", "Czech Republic", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece",
+      "Hong Kong (SAR, China)", "Hungary", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
+      "Japan", "Jordan", "Kazakhstan", "Korea, South", "Kuwait", "Macau (SAR, China)", "Malaysia", "Mexico",
+      "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal",
+      "Qatar", "Romania", "Russian Federation", "Saudi Arabia", "Singapore", "South Africa", "Spain", "Sweden",
+      "Switzerland", "Taiwan / Chinese Taipei", "Thailand", "Turkey", "Ukraine", "United Arab Emirates",
+      "United Kingdom", "United States", "Vietnam"
+    ];
+
     /* --- STARTER ANIMALS VECTOR DEFINITIONS --- */
     const STARTER_ANIMALS = [
       {
@@ -1439,14 +1459,48 @@
       bamboo: 120,
       coins: 450,
       diamonds: 15,
-      activeMissions: 3
+      activeMissions: 3,
+      selectedLanguage: 'en',
+      selectedRegion: 'Hong Kong (SAR, China)'
     };
 
     let gameState = { ...DEFAULT_GAME_STATE };
     let activeFacilityId = null;
 
+    /* --- POPULATE DROPDOWNS --- */
+    function populateDropdowns() {
+      // Populate Language Dropdown
+      const langSelect = document.getElementById('language-select');
+      langSelect.innerHTML = '';
+      LANGUAGES_LIST.forEach(lang => {
+        const opt = document.createElement('option');
+        opt.value = lang.code;
+        opt.innerText = lang.name;
+        if (lang.code === gameState.selectedLanguage) opt.selected = true;
+        langSelect.appendChild(opt);
+      });
+
+      // Populate Region Dropdown
+      const regionSelect = document.getElementById('region-select');
+      regionSelect.innerHTML = '';
+      REGIONS_LIST.forEach(reg => {
+        const opt = document.createElement('option');
+        opt.value = reg;
+        opt.innerText = reg;
+        if (reg === gameState.selectedRegion) opt.selected = true;
+        regionSelect.appendChild(opt);
+      });
+    }
+
+    /* --- SAVE SETTINGS (Press OK toConfirm) --- */
+    function saveSettings() {
+      const selectedLang = document.getElementById('language-select').value;
+      gameState.selectedLanguage = selectedLang;
+      closeModal('settings-modal');
+    }
+
     /* --- RENDER TOWN FACILITIES & MOVEMENT ENGINE --- */
-    const GRID_UNIT_PX = 30; // 1 square unit step = 30px
+    const GRID_UNIT_PX = 30;
 
     function renderTownFacilities() {
       const container = document.getElementById('facilities-layer');
@@ -1473,15 +1527,10 @@
           </div>
         `;
 
-        // Double Click listener to trigger directional movement triangles
         facDiv.ondblclick = (e) => {
           e.stopPropagation();
           playSfxClick();
-          if (activeFacilityId === fac.id) {
-            activeFacilityId = null;
-          } else {
-            activeFacilityId = fac.id;
-          }
+          activeFacilityId = activeFacilityId === fac.id ? null : fac.id;
           renderTownFacilities();
         };
 
@@ -1500,7 +1549,6 @@
       }
     }
 
-    // Dismiss active directional triangles when clicking map background
     document.getElementById('town-map').addEventListener('click', (e) => {
       if (!e.target.closest('.facility-node')) {
         activeFacilityId = null;
@@ -1566,6 +1614,8 @@
     function openModal(id) {
       playSfxClick();
       document.getElementById(id).style.display = 'flex';
+      if (id === 'settings-modal') populateDropdowns();
+      if (id === 'region-modal') populateDropdowns();
       if (id === 'shop-modal') switchShopTab('facilities');
       if (id === 'character-modal') renderStarterAnimalCards();
       if (id === 'construction-menu-modal') renderConstructionChecklist();
@@ -1577,6 +1627,7 @@
     }
 
     function startGame() {
+      gameState.selectedRegion = document.getElementById('region-select').value;
       closeModal('region-modal');
       document.getElementById('home-screen').style.display = 'none';
       document.getElementById('town-screen').style.display = 'block';
@@ -1671,7 +1722,6 @@
       }
     }
 
-    // Shop Catalog Config
     const shopItems = {
       facilities: [
         { name: 'Wooden Bench', cost: '50 Coins', icon: '🪑' },
@@ -1726,8 +1776,8 @@
       switchShopTab(category);
     }
 
-    // Initialize application on load
     window.onload = () => {
+      populateDropdowns();
       updateUIHeaderAndAvatars();
     };
   </script>

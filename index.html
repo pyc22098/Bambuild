@@ -96,13 +96,6 @@
       box-shadow: 0 1px 0 var(--card-border);
     }
 
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none !important;
-      box-shadow: 0 4px 0 var(--card-border) !important;
-    }
-
     /* Custom OK Button */
     .btn-ok {
       background-color: var(--accent-yellow);
@@ -166,7 +159,7 @@
       border: 4px solid var(--card-border);
       border-radius: 24px;
       width: 90%;
-      max-width: 520px;
+      max-width: 500px;
       padding: 24px;
       position: relative;
       box-shadow: 0 8px 0 rgba(0,0,0,0.15);
@@ -321,8 +314,6 @@
 
     .bamboo-art {
       filter: drop-shadow(0px 2px 0px var(--card-border));
-      display: inline-block;
-      vertical-align: middle;
     }
 
     .title-text {
@@ -447,7 +438,7 @@
       z-index: 50;
     }
 
-    /* Player Profile Area & Clock Tag */
+    /* Player Profile Area */
     .player-profile-badge {
       display: flex;
       align-items: center;
@@ -485,14 +476,14 @@
     }
 
     .player-status-tag {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       color: #666;
     }
 
     .resources-bar {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       background: var(--card-bg);
       padding: 6px 16px;
       border-radius: 20px;
@@ -504,7 +495,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 0.95rem;
       color: var(--text-color);
     }
@@ -625,7 +616,7 @@
       transform: scale(1.2);
     }
 
-    /* Triangles pointing N, E, S, W */
+    /* Triangle Triangles pointing N, E, S, W */
     .arrow-north {
       top: -12px; left: 50%; transform: translateX(-50%);
       border-left: 10px solid transparent;
@@ -792,13 +783,19 @@
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--accent-green);
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
+  </style>
+</head>
+<body>
 
-    .tos-text-box {
-      max-height: 260px;
-      overflow-y: auto;
-      border: 2px solid var(--card-border);
+  <!-- ==================== HOME SCREEN ==================== -->
+  <div id="home-screen">
+    <div class="town-bg">
+      <div class="hill hill-1"></div>
+      <div class="hill hill-2"></div>
+      <div class="path"></div>
+    </div>
+    
+    <button class="btn top-left-btn" onclick="openModal('follow-modal')">📣 Follow Us!</button>
+    <button class="btn top-right-btn" onclick="openModal('s2px solid var(--card-border);
       border-ra

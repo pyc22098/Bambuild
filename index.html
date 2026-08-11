@@ -10,9 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 
   <style>
-    /* --- COLOR PALETTE & DYNAMIC STYLES --- */
     :root {
-      /* Light Mode Palette */
       --bg-color: #f6efdf;
       --card-bg: #fffbf0;
       --card-border: #7c5c43;
@@ -31,7 +29,6 @@
     }
 
     [data-theme="dark"] {
-      /* Dark Mode Palette */
       --bg-color: #2b2420;
       --card-bg: #3d3531;
       --card-border: #8c6d56;
@@ -66,7 +63,6 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Standard Town-Simulator Button Style */
     .btn {
       cursor: pointer;
       border: 3px solid var(--card-border);
@@ -96,7 +92,13 @@
       box-shadow: 0 1px 0 var(--card-border);
     }
 
-    /* Custom OK Button */
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 0 4px 0 var(--card-border) !important;
+    }
+
     .btn-ok {
       background-color: var(--accent-yellow);
       color: var(--text-color);
@@ -142,7 +144,6 @@
       box-shadow: 0 1px 0 var(--card-border);
     }
 
-    /* Modal Styling */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -195,7 +196,6 @@
       transform: scale(1.2);
     }
 
-    /* Form Selects & Inputs */
     .modal-select {
       width: 100%;
       padding: 10px;
@@ -208,7 +208,6 @@
       color: var(--text-color);
     }
 
-    /* Mode Toggles */
     .setting-row {
       display: flex;
       flex-direction: column;
@@ -254,7 +253,6 @@
       border: 1.5px solid var(--card-border);
     }
 
-    /* --- HOME SCREEN --- */
     #home-screen {
       position: absolute;
       width: 100%;
@@ -268,7 +266,6 @@
       overflow: hidden;
     }
 
-    /* Cartoon Town Background Elements */
     .town-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -296,13 +293,11 @@
       border-right: 3px dashed var(--card-border);
     }
 
-    /* Corner Buttons */
     .top-left-btn { position: absolute; top: 20px; left: 20px; background-color: var(--accent-yellow); }
     .top-right-btn { position: absolute; top: 20px; right: 20px; background-color: var(--accent-green); color: #fff; }
     .bottom-left-btn { position: absolute; bottom: 20px; left: 20px; background-color: var(--accent-blue); color: #fff; }
     .bottom-right-btn { position: absolute; bottom: 20px; right: 20px; background-color: var(--accent-red); color: #fff; }
 
-    /* Title Container */
     .title-wrapper {
       display: flex;
       align-items: center;
@@ -325,7 +320,6 @@
       font-family: 'Mochiy Pop One', cursive;
     }
 
-    /* Middle Center Buttons */
     .home-center-buttons {
       display: flex;
       align-items: center;
@@ -384,7 +378,6 @@
       animation: pulse 1.6s infinite ease-in-out;
     }
 
-    /* --- TOWN SCREEN & PAVEMENT CANVAS --- */
     #town-screen {
       position: absolute;
       width: 100%;
@@ -401,7 +394,6 @@
       overflow: hidden;
     }
 
-    /* Pavement Town Map Grid */
     .town-map-area {
       position: absolute;
       bottom: 0;
@@ -415,7 +407,6 @@
       border-top: 4px solid var(--card-border);
     }
 
-    /* Distant Short Buildings Background Row */
     .short-buildings-row {
       position: absolute;
       top: -45px;
@@ -438,7 +429,6 @@
       z-index: 50;
     }
 
-    /* Player Profile Area */
     .player-profile-badge {
       display: flex;
       align-items: center;
@@ -481,6 +471,19 @@
       color: #666;
     }
 
+    .clock-badge {
+      background: var(--card-bg);
+      border: 3px solid var(--card-border);
+      padding: 6px 12px;
+      border-radius: 20px;
+      box-shadow: 0 4px 0 var(--card-border);
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .resources-bar {
       display: flex;
       gap: 12px;
@@ -515,7 +518,6 @@
       font-weight: 700;
     }
 
-    /* Left Side Missions Stack */
     .town-left-controls {
       position: absolute;
       top: 80px;
@@ -552,7 +554,6 @@
       justify-content: center;
     }
 
-    /* Enlarged Pedestrians - Always Top Z-Index */
     .pedestrian-wrapper {
       position: absolute;
       animation: walk 10s infinite alternate ease-in-out;
@@ -571,7 +572,6 @@
 
     .town-bottom-left { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 15px; z-index: 50; }
 
-    /* Interactive Facility Placement Container */
     .facility-node {
       position: absolute;
       display: flex;
@@ -591,7 +591,6 @@
       pointer-events: none;
     }
 
-    /* Directional Triangles for Facility Movement */
     .arrow-controls {
       position: absolute;
       top: -25px; left: -25px; right: -25px; bottom: -25px;
@@ -616,7 +615,6 @@
       transform: scale(1.2);
     }
 
-    /* Triangle Triangles pointing N, E, S, W */
     .arrow-north {
       top: -12px; left: 50%; transform: translateX(-50%);
       border-left: 10px solid transparent;
@@ -688,7 +686,6 @@
       background: var(--accent-yellow);
     }
 
-    /* Starter Character Cards Grid */
     .character-selection-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -719,13 +716,11 @@
       background: var(--accent-yellow);
     }
 
-    /* Pure Outlined Vector Facilities */
     .outlined-art {
       filter: drop-shadow(0px 2px 0px var(--card-border));
       transition: transform 0.2s ease;
     }
 
-    /* Construction Menu List Item with Checkbox Toggle */
     .construction-toggle-item {
       display: flex;
       align-items: center;
@@ -756,7 +751,6 @@
       background: #eafaf1;
     }
 
-    /* Mission Item Component */
     .mission-item {
       background: var(--card-bg);
       border: 2px solid var(--card-border);
@@ -783,6 +777,30 @@
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .mission-tag {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .tag-daily { background: var(--accent-yellow); color: var(--text-color); }
+    .tag-weekly { background: var(--accent-blue); color: #fff; }
+    .tag-golden { background: #ffd700; color: #000; }
+
+    /* Unified Bamboo Icon Template - Match Homepage Art */
+    .bamboo-icon-svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      display: inline-block;
     }
   </style>
 </head>
@@ -796,8 +814,8 @@
       <div class="path"></div>
     </div>
     
-    <button class="btn top-left-btn" onclick="openModal('follow-modal')">📣 Follow Us!</button>
-    <button class="btn top-right-btn" onclick="openModal('settings-modal')">⚙️ Settings</button>
+    <button class="btn top-left-btn" id="lbl-follow" onclick="openModal('follow-modal')">📣 Follow Us!</button>
+    <button class="btn top-right-btn" id="lbl-settings" onclick="openModal('settings-modal')">⚙️ Settings</button>
 
     <div class="title-wrapper">
       <svg class="bamboo-art" width="50" height="100" viewBox="0 0 50 100">
@@ -840,7 +858,7 @@
       </div>
     </div>
 
-    <button class="btn bottom-left-btn" onclick="openModal('terms-modal')">📋 Terms & Services</button>
+    <button class="btn bottom-left-btn" id="lbl-terms" onclick="openModal('terms-modal')">📋 Terms & Services</button>
     <button class="btn bottom-right-btn" id="home-login-btn" onclick="openModal('login-modal')">🔑 Log In</button>
   </div>
 
@@ -858,10 +876,25 @@
             <span class="player-status-tag" id="header-player-status">Guest (Temp Session)</span>
           </div>
         </div>
+
+        <div class="clock-badge">
+          <span id="country-clock-time">00:00:00 AM</span>
+          <span id="country-clock-name" style="font-size:0.65rem; color:#666;">UTC</span>
+        </div>
         
         <div class="resources-bar">
           <div class="resource-item">
-            🪵 <span id="bamboo-count">120</span> 
+            <svg class="bamboo-icon-svg" viewBox="0 0 50 100">
+              <rect x="10" y="10" width="8" height="80" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
+              <line x1="10" y1="35" x2="18" y2="35" stroke="var(--card-border)" stroke-width="3"/>
+              <line x1="10" y1="65" x2="18" y2="65" stroke="var(--card-border)" stroke-width="3"/>
+              <rect x="28" y="0" width="10" height="95" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
+              <line x1="28" y1="25" x2="38" y2="25" stroke="var(--card-border)" stroke-width="3"/>
+              <line x1="28" y1="55" x2="38" y2="55" stroke="var(--card-border)" stroke-width="3"/>
+              <path d="M 8 20 C 0 15, -2 25, 8 25 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
+              <path d="M 38 15 C 48 10, 50 20, 38 22 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
+            </svg>
+            <span id="bamboo-count">120</span> 
             <span class="add-btn" onclick="openShopCategory('bamboos')">+</span>
           </div>
           <div class="resource-item">
@@ -872,19 +905,19 @@
             💎 <span id="diamond-count">15</span> 
             <span class="add-btn" onclick="openShopCategory('diamonds')">+</span>
           </div>
-          <button class="btn" style="padding: 4px 12px; font-size: 0.85rem;" onclick="openModal('shop-modal')">🛒 Shop</button>
+          <button class="btn" id="lbl-shop-btn" style="padding: 4px 12px; font-size: 0.85rem;" onclick="openModal('shop-modal')">🛒 Shop</button>
         </div>
 
         <div style="display:flex; gap:8px;">
-          <button class="btn" style="background:var(--accent-red); color:#fff; padding:8px 14px;" onclick="goToHome()">🏠 Home</button>
-          <button class="btn" style="background:var(--accent-green); color:#fff; padding:8px 14px;" onclick="openModal('town-menu-modal')">☰ Menu</button>
+          <button class="btn" id="lbl-home-btn" style="background:var(--accent-red); color:#fff; padding:8px 14px;" onclick="goToHome()">🏠 Home</button>
+          <button class="btn" id="lbl-menu-btn" style="background:var(--accent-green); color:#fff; padding:8px 14px;" onclick="openModal('town-menu-modal')">☰ Menu</button>
         </div>
       </div>
 
       <div class="town-left-controls">
         <button class="btn-icon missions-btn" onclick="openModal('missions-modal')" title="Town Missions">
           📜
-          <div class="mission-badge-count" id="active-missions-count">3</div>
+          <div class="mission-badge-count" id="active-missions-count">0</div>
         </button>
       </div>
 
@@ -945,15 +978,14 @@
 
   <!-- ==================== MODALS ==================== -->
 
-  <!-- Construction Facilities Display Menu Modal -->
+  <!-- Construction Menu Modal -->
   <div id="construction-menu-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('construction-menu-modal')">&times;</button>
-      <div class="modal-title">🔨 Unlocked Constructions</div>
-      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Toggle facilities to display or hide them on the pavement town map:</p>
+      <div class="modal-title" id="lbl-const-title">🔨 Unlocked Constructions</div>
+      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;" id="lbl-const-sub">Toggle facilities to display or hide them on the town map:</p>
       
-      <div id="constructions-toggle-list" style="max-height: 250px; overflow-y: auto;">
-      </div>
+      <div id="constructions-toggle-list" style="max-height: 250px; overflow-y: auto;"></div>
 
       <div style="text-align: center; margin-top: 15px;">
         <button class="btn-ok" onclick="closeModal('construction-menu-modal')">OK</button>
@@ -965,33 +997,10 @@
   <div id="missions-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('missions-modal')">&times;</button>
-      <div class="modal-title">📜 Town Missions</div>
-      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Complete tasks to expand your animal town!</p>
+      <div class="modal-title" id="lbl-missions-title">📜 Town Missions</div>
+      <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;" id="lbl-missions-sub">Complete goals to earn rewards!</p>
       
-      <div id="missions-list">
-        <div class="mission-item">
-          <div class="mission-details">
-            <span class="mission-title">🔨 Construct 2 Town Benches</span>
-            <span class="mission-reward">Reward: +100 Coins, +10 Bamboos</span>
-          </div>
-          <button class="btn" style="padding:4px 12px; font-size:0.8rem;" onclick="claimMission(this, 100, 10)">Claim</button>
-        </div>
-
-        <div class="mission-item">
-          <div class="mission-details">
-            <span class="mission-title">🌿 Plant 3 Bamboo Trees</span>
-            <span class="mission-reward">Reward: +150 Coins, +2 Diamonds</span>
-          </div>
-          <button class="btn" style="padding:4px 12px; font-size:0.8rem;" onclick="claimMission(this, 150, 0, 2)">Claim</button>
-        </div>
-
-        <div class="mission-item">
-          <div class="mission-details">
-            <span class="mission-title">🐰 Welcome 5 Pedestrian Animals</span>
-            <span class="mission-reward">Reward: +50 Bamboos</span>
-          </div>
-          <button class="btn" style="padding:4px 12px; font-size:0.8rem;" onclick="claimMission(this, 0, 50)">Claim</button>
-        </div>
+      <div id="missions-list" style="max-height: 300px; overflow-y: auto;">
       </div>
     </div>
   </div>
@@ -1000,8 +1009,8 @@
   <div id="follow-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('follow-modal')">&times;</button>
-      <div class="modal-title">📣 Follow BAMBUILD!</div>
-      <p style="text-align:center; font-weight:600; margin-bottom:15px; font-size: 0.9rem;">Get official updates & free bamboo gifts:</p>
+      <div class="modal-title" id="lbl-follow-title">📣 Follow BAMBUILD!</div>
+      <p style="text-align:center; font-weight:600; margin-bottom:15px; font-size: 0.9rem;" id="lbl-follow-sub">Get official updates & free bamboo gifts:</p>
       <div style="display:flex; flex-direction:column; gap:10px;">
         <button class="btn" style="background:#3b5998; color:#fff;">📘 Facebook Official</button>
         <button class="btn" style="background:#C13584; color:#fff;">📷 Instagram (@bambuild.game)</button>
@@ -1010,15 +1019,15 @@
     </div>
   </div>
 
-  <!-- Settings Modal (With Exit Cross, Language Picker, and OK Confirm Button) -->
+  <!-- Settings Modal -->
   <div id="settings-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('settings-modal')">&times;</button>
-      <div class="modal-title">⚙️ Game Settings</div>
+      <div class="modal-title" id="setting-modal-title">⚙️ Game Settings</div>
       
       <div class="setting-row">
         <div class="setting-header">
-          <span>Theme Mode</span>
+          <span id="lbl-theme">Theme Mode</span>
           <div class="mode-toggle-group">
             <button class="mode-btn active" id="light-mode-btn" onclick="setTheme('light')">Light</button>
             <button class="mode-btn" id="dark-mode-btn" onclick="setTheme('dark')">Dark</button>
@@ -1026,19 +1035,17 @@
         </div>
       </div>
 
-      <!-- Language Selector -->
       <div class="setting-row">
         <div class="setting-header">
           <span>Language / 語言 / 言語</span>
         </div>
         <select id="language-select" class="modal-select">
-          <!-- Populated dynamically via JS -->
         </select>
       </div>
 
       <div class="setting-row">
         <div class="setting-header">
-          <span>Background Music (Canon in D)</span>
+          <span id="lbl-bgm">Background Music</span>
           <span id="bgm-vol-text">50%</span>
         </div>
         <input type="range" class="volume-slider" id="bgm-slider" min="0" max="100" value="50" oninput="updateBgmVolume(this.value)">
@@ -1046,7 +1053,7 @@
 
       <div class="setting-row">
         <div class="setting-header">
-          <span>Sound Effects</span>
+          <span id="lbl-sfx">Sound Effects</span>
           <span id="sfx-vol-text">70%</span>
         </div>
         <input type="range" class="volume-slider" id="sfx-slider" min="0" max="100" value="70" oninput="updateSfxVolume(this.value)">
@@ -1058,13 +1065,15 @@
     </div>
   </div>
 
-  <!-- Terms and Services Modal -->
+  <!-- Comprehensive Terms and Services Modal -->
   <div id="terms-modal" class="modal-overlay">
-    <div class="modal-card">
+    <div class="modal-card" style="max-width: 600px;">
       <button class="modal-close" onclick="closeModal('terms-modal')">&times;</button>
-      <div class="modal-title">📋 Terms & Services</div>
-      <div style="max-height:200px; overflow-y:auto; font-size:0.85rem; line-height:1.5; font-weight:600;">
-        Welcome to BAMBUILD! Unregistered guest sessions clear all game data 30 minutes after closing the browser. Logged in users will have their town saved permanently across sessions.
+      <div class="modal-title" id="lbl-terms-title">📋 Terms & Services</div>
+      <div id="terms-body" style="max-height:280px; overflow-y:auto; font-size:0.8rem; line-height:1.5; font-weight:600; text-align: left; padding-right: 8px;">
+      </div>
+      <div style="text-align: center; margin-top: 15px;">
+        <button class="btn-ok" id="lbl-terms-accept" onclick="closeModal('terms-modal')">I Accept</button>
       </div>
     </div>
   </div>
@@ -1073,8 +1082,8 @@
   <div id="login-modal" class="modal-overlay">
     <div class="modal-card" style="text-align:center;">
       <button class="modal-close" onclick="closeModal('login-modal')">&times;</button>
-      <div class="modal-title">🔑 Player Log In</div>
-      <p style="font-weight:600; font-size: 0.85rem; margin-bottom: 15px;">Save progress permanently across devices:</p>
+      <div class="modal-title" id="lbl-login-title">🔑 Player Log In</div>
+      <p style="font-weight:600; font-size: 0.85rem; margin-bottom: 15px;" id="lbl-login-sub">Save progress permanently across devices:</p>
       
       <div style="display:flex; justify-content:center; gap:20px; margin-bottom:15px;">
         <div class="circle-btn" style="width:60px; height:60px;" title="Google Login" onclick="finishLogin('Google Player')">
@@ -1094,37 +1103,36 @@
       </div>
 
       <input id="login-email-input" type="email" placeholder="Enter your email address" style="width:100%; padding:10px; border-radius:12px; border:2px solid var(--card-border); font-size:0.9rem; font-weight:700; background: var(--card-bg); color: var(--text-color);">
-      <button class="btn" style="width:100%; margin-top:10px; background:var(--accent-green); color:#fff;" onclick="finishLoginWithInput()">Continue with Email</button>
+      <button class="btn" style="width:100%; margin-top:10px; background:var(--accent-green); color:#fff;" id="lbl-login-email-btn" onclick="finishLoginWithInput()">Continue with Email</button>
     </div>
   </div>
 
-  <!-- Region Selection Modal (With Exit Cross and Full Regions/Territories List) -->
+  <!-- Region Selection Modal -->
   <div id="region-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('region-modal')">&times;</button>
-      <div class="modal-title">Select Your Region</div>
-      <p style="font-size:0.85rem; font-weight:600; opacity:0.8; text-align:center;">Daily free coins and bamboos reset according to your local time zone!</p>
+      <div class="modal-title" id="lbl-region-title">Select Your Region</div>
+      <p style="font-size:0.85rem; font-weight:600; opacity:0.8; text-align:center;" id="lbl-region-sub">Daily free coins and bamboos reset according to your local time zone!</p>
       
       <select id="region-select" class="modal-select" style="max-height: 180px;">
-        <!-- Populated dynamically via JS with all world countries & regions -->
       </select>
 
-      <div style="margin-top:15px; background:rgba(0,0,0,0.03); padding:10px; border-radius:12px; border:2px solid var(--card-border); text-align:center; font-weight:700; font-size:0.85rem;">
+      <div style="margin-top:15px; background:rgba(0,0,0,0.03); padding:10px; border-radius:12px; border:2px solid var(--card-border); text-align:center; font-weight:700; font-size:0.85rem;" id="lbl-region-gift">
         🎁 <strong>Daily Free Gift:</strong> +50 Coins & +10 Bamboos!
       </div>
 
       <div style="text-align: center; margin-top: 15px;">
-        <button class="btn-ok" style="background:var(--accent-red); color:#fff;" onclick="startGame()">OK & Enter Town 🚀</button>
+        <button class="btn-ok" style="background:var(--accent-red); color:#fff;" id="lbl-region-ok" onclick="startGame()">OK & Enter Town 🚀</button>
       </div>
     </div>
   </div>
 
-  <!-- Starter Character Selection Modal (Animals Only with OK button) -->
+  <!-- Starter Character Selection Modal -->
   <div id="character-modal" class="modal-overlay">
     <div class="modal-card" style="max-width:520px;">
       <button class="modal-close" onclick="closeModal('character-modal')">&times;</button>
-      <div class="modal-title">Choose Starter Animal</div>
-      <p style="font-size:0.8rem; text-align:center; font-weight:600; margin-bottom:10px;">Select your animal avatar to represent you in town!</p>
+      <div class="modal-title" id="lbl-char-title">Choose Starter Animal</div>
+      <p style="font-size:0.8rem; text-align:center; font-weight:600; margin-bottom:10px;" id="lbl-char-sub">Select your animal avatar to represent you in town!</p>
       
       <div class="character-selection-grid" id="starter-animals-grid">
       </div>
@@ -1139,13 +1147,8 @@
   <div id="help-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('help-modal')">&times;</button>
-      <div class="modal-title">❓ How to Play</div>
-      <div style="line-height:1.6; font-size:0.9rem; font-weight:600;">
-        1. Click <b>START (Red Button)</b> to select your region.<br>
-        2. Double click any facility in town to open movement triangles!<br>
-        3. Press 🔨 to hide/display unlocked constructions.<br>
-        4. Adjust music loudness & language in ⚙️ Settings.<br>
-        5. Log in to permanently back up your town progress!
+      <div class="modal-title" id="lbl-help-title">❓ How to Play</div>
+      <div style="line-height:1.6; font-size:0.9rem; font-weight:600;" id="help-body">
       </div>
     </div>
   </div>
@@ -1154,15 +1157,15 @@
   <div id="shop-modal" class="modal-overlay">
     <div class="modal-card" style="max-width:550px;">
       <button class="modal-close" onclick="closeModal('shop-modal')">&times;</button>
-      <div class="modal-title">🛒 BAMBUILD Shop</div>
+      <div class="modal-title" id="lbl-shop-title">🛒 BAMBUILD Shop</div>
 
       <div class="tab-bar">
-        <div class="tab-btn active" onclick="switchShopTab('facilities')">Facilities</div>
-        <div class="tab-btn" onclick="switchShopTab('plants')">Plants</div>
-        <div class="tab-btn" onclick="switchShopTab('lights')">Neon Lights</div>
-        <div class="tab-btn" onclick="switchShopTab('bamboos')">Bamboos</div>
-        <div class="tab-btn" onclick="switchShopTab('coins')">Coins</div>
-        <div class="tab-btn" onclick="switchShopTab('diamonds')">Diamonds</div>
+        <div class="tab-btn active" id="tab-fac" onclick="switchShopTab('facilities')">Facilities</div>
+        <div class="tab-btn" id="tab-plants" onclick="switchShopTab('plants')">Plants</div>
+        <div class="tab-btn" id="tab-lights" onclick="switchShopTab('lights')">Neon Lights</div>
+        <div class="tab-btn" id="tab-bamboos" onclick="switchShopTab('bamboos')">Bamboos</div>
+        <div class="tab-btn" id="tab-coins" onclick="switchShopTab('coins')">Coins</div>
+        <div class="tab-btn" id="tab-diamonds" onclick="switchShopTab('diamonds')">Diamonds</div>
       </div>
 
       <div class="shop-grid" id="shop-content">
@@ -1174,18 +1177,17 @@
   <div id="town-menu-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('town-menu-modal')">&times;</button>
-      <div class="modal-title">☰ Town Menu</div>
+      <div class="modal-title" id="lbl-menu-title">☰ Town Menu</div>
       <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
-        <button class="btn" style="background:var(--accent-green); color:#fff;" onclick="openModal('settings-modal'); closeModal('town-menu-modal');">⚙️ Settings</button>
-        <button class="btn" onclick="openModal('help-modal'); closeModal('town-menu-modal');">❓ How to Play</button>
-        <button class="btn" style="background:var(--accent-red); color:#fff;" onclick="goToHome(); closeModal('town-menu-modal');">🚪 Exit to Main Menu</button>
+        <button class="btn" style="background:var(--accent-green); color:#fff;" id="lbl-menu-settings" onclick="openModal('settings-modal'); closeModal('town-menu-modal');">⚙️ Settings</button>
+        <button class="btn" id="lbl-menu-help" onclick="openModal('help-modal'); closeModal('town-menu-modal');">❓ How to Play</button>
+        <button class="btn" style="background:var(--accent-red); color:#fff;" id="lbl-menu-exit" onclick="goToHome(); closeModal('town-menu-modal');">🚪 Exit to Main Menu</button>
       </div>
     </div>
   </div>
 
-  <!-- Audio Synthesizer for Canon in D (Web Audio API) -->
+  <!-- Audio Synthesizer Script -->
   <script>
-    /* --- AUDIO SYNTHESIZER: CANON IN D BGM & SFX --- */
     let audioCtx = null;
     let bgmGainNode = null;
     let sfxGainNode = null;
@@ -1278,52 +1280,403 @@
     }, { once: true });
   </script>
 
-  <!-- ==================== JAVASCRIPT ==================== -->
+  <!-- Main Engine Script -->
   <script>
-    /* --- ALL LANGUAGES CONFIGURATION --- */
+    /* Bamboo SVG template - reusable across interface */
+    const BAMBOO_SVG_ICON = `
+      <svg class="bamboo-icon-svg" viewBox="0 0 50 100">
+        <rect x="10" y="10" width="8" height="80" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
+        <line x1="10" y1="35" x2="18" y2="35" stroke="var(--card-border)" stroke-width="3"/>
+        <line x1="10" y1="65" x2="18" y2="65" stroke="var(--card-border)" stroke-width="3"/>
+        <rect x="28" y="0" width="10" height="95" rx="3" fill="var(--bamboo-color)" stroke="var(--card-border)" stroke-width="3"/>
+        <line x1="28" y1="25" x2="38" y2="25" stroke="var(--card-border)" stroke-width="3"/>
+        <line x1="28" y1="55" x2="38" y2="55" stroke="var(--card-border)" stroke-width="3"/>
+        <path d="M 8 20 C 0 15, -2 25, 8 25 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
+        <path d="M 38 15 C 48 10, 50 20, 38 22 Z" fill="var(--bamboo-leaf)" stroke="var(--card-border)" stroke-width="2"/>
+      </svg>
+    `;
+
+    /* --- I18N DICTIONARIES --- */
+    const TRANSLATIONS = {
+      'en': {
+        follow: "📣 Follow Us!",
+        settings: "⚙️ Settings",
+        terms: "📋 Terms & Services",
+        login: "🔑 Log In",
+        theme: "Theme Mode",
+        bgm: "Background Music",
+        sfx: "Sound Effects",
+        shop: "🛒 Shop",
+        home: "🏠 Home",
+        menu: "☰ Menu",
+        settingTitle: "⚙️ Game Settings",
+        followTitle: "📣 Follow BAMBUILD!",
+        followSub: "Get official updates & free bamboo gifts:",
+        termsTitle: "📋 Terms & Services",
+        termsAccept: "I Accept",
+        loginTitle: "🔑 Player Log In",
+        loginSub: "Save progress permanently across devices:",
+        loginEmailBtn: "Continue with Email",
+        regionTitle: "Select Your Region",
+        regionSub: "Daily free coins and bamboos reset according to your local time zone!",
+        regionGift: "🎁 <strong>Daily Free Gift:</strong> +50 Coins & +10 Bamboos!",
+        regionOk: "OK & Enter Town 🚀",
+        charTitle: "Choose Starter Animal",
+        charSub: "Select your animal avatar to represent you in town!",
+        helpTitle: "❓ How to Play",
+        helpBody: "1. Click <b>START (Red Button)</b> to select your region.<br>2. Double click any facility in town to open movement triangles!<br>3. Press 🔨 to hide/display unlocked constructions.<br>4. Adjust music loudness & language in ⚙️ Settings.<br>5. Log in to permanently back up your town progress!",
+        shopTitle: "🛒 BAMBUILD Shop",
+        tabFac: "Facilities",
+        tabPlants: "Plants",
+        tabLights: "Neon Lights",
+        tabBamboos: "Bamboos",
+        tabCoins: "Coins",
+        tabDiamonds: "Diamonds",
+        menuTitle: "☰ Town Menu",
+        menuSettings: "⚙️ Settings",
+        menuHelp: "❓ How to Play",
+        menuExit: "🚪 Exit to Main Menu",
+        constTitle: "🔨 Unlocked Constructions",
+        constSub: "Toggle facilities to display or hide them on the town map:",
+        missionsTitle: "📜 Town Missions",
+        missionsSub: "Complete goals to earn rewards!",
+        claimBtn: "Claim",
+        doneBtn: "Done ✓",
+        guestName: "Guest Builder",
+        guestStatus: "Guest (Temp Session)",
+        userStatus: "🟢 Logged In",
+        refreshesIn: "Refreshes in "
+      },
+      'zh-HK': {
+        follow: "📣 關注我們！",
+        settings: "⚙️ 設定",
+        terms: "📋 服務條款",
+        login: "🔑 登入",
+        theme: "主題模式",
+        bgm: "背景音樂",
+        sfx: "音效",
+        shop: "🛒 商店",
+        home: "🏠 主頁",
+        menu: "☰ 選單",
+        settingTitle: "⚙️ 遊戲設定",
+        followTitle: "📣 關注 BAMBUILD！",
+        followSub: "獲取官方最新動態與免費竹子禮包：",
+        termsTitle: "📋 服務條款",
+        termsAccept: "我同意",
+        loginTitle: "🔑 玩家登入",
+        loginSub: "跨裝置永久儲存你的城鎮進度：",
+        loginEmailBtn: "使用 電子郵件 繼續",
+        regionTitle: "選擇你所在的地區",
+        regionSub: "每日免費金幣與竹子將根據你的在地時區進行重置！",
+        regionGift: "🎁 <strong>每日免費獎勵：</strong> +50 金幣 & +10 竹子！",
+        regionOk: "確定並進入城鎮 🚀",
+        charTitle: "選擇初始動物角色",
+        charSub: "選擇代表你在城鎮中移動的動物頭像！",
+        helpTitle: "❓ 遊戲玩法說明",
+        helpBody: "1. 點擊 <b>開始 (紅色按鈕)</b> 選擇你的地區。<br>2. 雙擊城鎮中的任何設施即可開啟移動方向箭頭！<br>3. 點擊 🔨 按鈕可顯示或隱藏已解鎖的建築設施。<br>4. 在 ⚙️ 設定 中可調整音樂音量與遊戲語言。<br>5. 登入帳號以永久備份你的城鎮發展進度！",
+        shopTitle: "🛒 BAMBUILD 官方商店",
+        tabFac: "建築設施",
+        tabPlants: "植物景觀",
+        tabLights: "霓虹燈飾",
+        tabBamboos: "竹子資源",
+        tabCoins: "金幣",
+        tabDiamonds: "鑽石",
+        menuTitle: "☰ 城鎮主選單",
+        menuSettings: "⚙️ 遊戲設定",
+        menuHelp: "❓ 遊戲玩法",
+        menuExit: "🚪 返回主選單",
+        constTitle: "🔨 已解鎖的建造項目",
+        constSub: "切換開關以在城鎮地圖上顯示或隱藏設施：",
+        missionsTitle: "📜 城鎮任務",
+        missionsSub: "完成城鎮目標以領取豐厚獎勵！",
+        claimBtn: "領取",
+        doneBtn: "已完成 ✓",
+        guestName: "訪客建造者",
+        guestStatus: "訪客（臨時階段）",
+        userStatus: "🟢 已登入",
+        refreshesIn: "重置倒數 "
+      },
+      'zh-TW': {
+        follow: "📣 追蹤我們！",
+        settings: "⚙️ 設定",
+        terms: "📋 服務條款",
+        login: "🔑 登入",
+        theme: "主題模式",
+        bgm: "背景音樂",
+        sfx: "音效",
+        shop: "🛒 商店",
+        home: "🏠 主頁",
+        menu: "☰ 選單",
+        settingTitle: "⚙️ 遊戲設定",
+        followTitle: "📣 追蹤 BAMBUILD！",
+        followSub: "獲取官方最新動態與免費竹子禮包：",
+        termsTitle: "📋 服務條款",
+        termsAccept: "我同意",
+        loginTitle: "🔑 玩家登入",
+        loginSub: "跨裝置永久儲存您的城鎮進度：",
+        loginEmailBtn: "使用 電子郵件 繼續",
+        regionTitle: "選擇您所在的地區",
+        regionSub: "每日免費金幣與竹子將根據您的在地時區進行重置！",
+        regionGift: "🎁 <strong>每日免費獎勵：</strong> +50 金幣 & +10 竹子！",
+        regionOk: "確定並進入城鎮 🚀",
+        charTitle: "選擇初始動物角色",
+        charSub: "選擇代表您在城鎮中移動的動物頭像！",
+        helpTitle: "❓ 遊戲玩法說明",
+        helpBody: "1. 點擊 <b>開始 (紅色按鈕)</b> 選擇您的地區。<br>2. 雙擊城鎮中的任何設施即可開啟移動方向箭頭！<br>3. 點擊 🔨 按鈕可顯示或隱藏已解鎖的建築設施。<br>4. 在 ⚙️ 設定 中可調整音樂音量與遊戲語言。<br>5. 登入帳號以永久備份您的城鎮發展進度！",
+        shopTitle: "🛒 BAMBUILD 官方商店",
+        tabFac: "建築設施",
+        tabPlants: "植物景觀",
+        tabLights: "霓虹燈飾",
+        tabBamboos: "竹子資源",
+        tabCoins: "金幣",
+        tabDiamonds: "鑽石",
+        menuTitle: "☰ 城鎮主選單",
+        menuSettings: "⚙️ 遊戲設定",
+        menuHelp: "❓ 遊戲玩法",
+        menuExit: "🚪 返回主選單",
+        constTitle: "🔨 已解鎖的建造項目",
+        constSub: "切換開關以在城鎮地圖上顯示或隱藏設施：",
+        missionsTitle: "📜 城鎮任務",
+        missionsSub: "完成城鎮目標以領取豐厚獎勵！",
+        claimBtn: "領取",
+        doneBtn: "已完成 ✓",
+        guestName: "訪客建造者",
+        guestStatus: "訪客（臨時階段）",
+        userStatus: "🟢 已登入",
+        refreshesIn: "重置倒數 "
+      },
+      'zh-CN': {
+        follow: "📣 关注我们！",
+        settings: "⚙️ 设置",
+        terms: "📋 服务条款",
+        login: "🔑 登录",
+        theme: "主题模式",
+        bgm: "背景音乐",
+        sfx: "音效",
+        shop: "🛒 商店",
+        home: "🏠 主页",
+        menu: "☰ 菜单",
+        settingTitle: "⚙️ 游戏设置",
+        followTitle: "📣 关注 BAMBUILD！",
+        followSub: "获取官方最新动态与免费竹子礼包：",
+        termsTitle: "📋 服务条款",
+        termsAccept: "我同意",
+        loginTitle: "🔑 玩家登录",
+        loginSub: "跨设备永久保存您的小镇进度：",
+        loginEmailBtn: "使用 电子邮件 继续",
+        regionTitle: "选择您所在的大区",
+        regionSub: "每日免费金币与竹子将根据您的本地时区重置！",
+        regionGift: "🎁 <strong>每日免费奖励：</strong> +50 金币 & +10 竹子！",
+        regionOk: "确定并进入小镇 🚀",
+        charTitle: "选择初始动物角色",
+        charSub: "选择代表您在小镇中移动的动物头像！",
+        helpTitle: "❓ 游戏玩法说明",
+        helpBody: "1. 点击 <b>开始 (红色按钮)</b> 选择您的地区。<br>2. 双击小镇中的任何设施即可开启移动方向箭头！<br>3. 点击 🔨 按钮可显示或隐藏已解锁的建筑设施。<br>4. 在 ⚙️ 设置 中可调整音乐音量与游戏语言。<br>5. 登录账号以永久备份您的小镇发展进度！",
+        shopTitle: "🛒 BAMBUILD 官方商店",
+        tabFac: "建筑设施",
+        tabPlants: "植物景观",
+        tabLights: "霓虹灯饰",
+        tabBamboos: "竹子资源",
+        tabCoins: "金币",
+        tabDiamonds: "钻石",
+        menuTitle: "☰ 小镇主菜单",
+        menuSettings: "⚙️ 游戏设置",
+        menuHelp: "❓ 游戏玩法",
+        menuExit: "🚪 返回主菜单",
+        constTitle: "🔨 已解锁的建造项目",
+        constSub: "切换开关以在小镇地图上显示或隐藏设施：",
+        missionsTitle: "📜 小镇任务",
+        missionsSub: "完成小镇目标以领取丰厚奖励！",
+        claimBtn: "领取",
+        doneBtn: "已完成 ✓",
+        guestName: "访客建造者",
+        guestStatus: "访客（临时阶段）",
+        userStatus: "🟢 已登录",
+        refreshesIn: "重置倒计时 "
+      },
+      'ja': {
+        follow: "📣 フォロー",
+        settings: "⚙️ 設定",
+        terms: "📋 利用規約",
+        login: "🔑 ログイン",
+        theme: "テーマ",
+        bgm: "BGM",
+        sfx: "効果音",
+        shop: "🛒 ショップ",
+        home: "🏠 ホーム",
+        menu: "☰ メニュー",
+        settingTitle: "⚙️ ゲーム設定",
+        followTitle: "📣 BAMBUILDをフォロー！",
+        followSub: "公式アップデートと無料竹ギフトをゲット：",
+        termsTitle: "📋 利用規約",
+        termsAccept: "同意する",
+        loginTitle: "🔑 プレイヤーログイン",
+        loginSub: "デバイス間で進行状況を永久保存：",
+        loginEmailBtn: "メールアドレスで続行",
+        regionTitle: "地域を選択",
+        regionSub: "毎日の無料コインと竹は現地タイムゾーンに応じてリセットされます！",
+        regionGift: "🎁 <strong>毎日の無料ギフト：</strong> +50 コイン & +10 竹！",
+        regionOk: "決定して街に入る 🚀",
+        charTitle: "スターターアニマルを選択",
+        charSub: "街であなたを表すアニマルアバターを選択してください！",
+        helpTitle: "❓ 遊び方",
+        helpBody: "1. <b>スタート（赤いボタン）</b>を押して地域を選択します。<br>2. 街の施設をダブルクリックすると移動矢印が表示されます！<br>3. 🔨を押して解放された施設を表示/非表示にします。<br>4. ⚙️設定で音楽の音量と言語を調整できます。<br>5. ログインして街の進行状況を永久バックアップ！",
+        shopTitle: "🛒 BAMBUILD ショップ",
+        tabFac: "施設",
+        tabPlants: "植物",
+        tabLights: "ネオンライト",
+        tabBamboos: "竹",
+        tabCoins: "コイン",
+        tabDiamonds: "ダイヤ",
+        menuTitle: "☰ タウンメニュー",
+        menuSettings: "⚙️ 設定",
+        menuHelp: "❓ 遊び方",
+        menuExit: "🚪 メインメニューに戻る",
+        constTitle: "🔨 解放済みの建築物",
+        constSub: "スイッチを切り替えてマップ上の表示/非表示を変更：",
+        missionsTitle: "📜 タウンミッション",
+        missionsSub: "目標を達成して報酬を獲得しましょう！",
+        claimBtn: "受け取る",
+        doneBtn: "完了 ✓",
+        guestName: "ゲストビルダー",
+        guestStatus: "ゲスト（一時セッション）",
+        userStatus: "🟢 ログイン中",
+        refreshesIn: "リセットまで "
+      }
+    };
+
+    /* Exhaustive Legal Terms Content per Language */
+    const TERMS_CONTENT = {
+      'en': `
+        <h4>1. ACCEPTANCE OF TERMS & CONDITIONS</h4>
+        <p>By downloading, accessing, or playing BAMBUILD (the "Game"), provided by BAMBUILD Interactive ("Company", "we", "us", or "our"), you agree to be bound by these Terms of Service. If you do not agree with any portion of these Terms, you must refrain from accessing or playing the Game.</p><br>
+        
+        <h4>2. USER ACCOUNTS & DATA PRIVACY</h4>
+        <p><b>Guest Mode:</b> Unregistered guest sessions store temporary game state locally on your browser/device. Clearing browser storage or system cache will result in permanent loss of progress. We accept no liability for data lost in Guest Mode.</p>
+        <p><b>Registered Accounts:</b> Linking your account via Google, OAuth, or Email binds your saved progress to your credentials. You are solely responsible for maintaining account security and credentials confidentiality.</p><br>
+
+        <h4>3. VIRTUAL CURRENCIES AND IN-GAME PURCHASES</h4>
+        <p>The Game contains digital currencies including Bamboos, Coins, and Diamonds ("Virtual Goods"). Virtual Goods are licensed on a limited, revocable, non-transferable basis. Virtual Goods hold zero monetary value, cannot be redeemed for real-world fiat currency, and are strictly non-refundable once purchased.</p><br>
+
+        <h4>4. CODE OF CONDUCT & COMMUNITY STANDARDS</h4>
+        <p>Users are strictly prohibited from utilizing cheats, automated bots, speed-hacks, memory editors, or exploiting technical bugs to gain unfair advantages. Violation of community integrity may result in immediate and permanent account suspension without prior notice.</p><br>
+
+        <h4>5. INTELLECTUAL PROPERTY RIGHTS</h4>
+        <p>All graphical assets, standard bamboo vector icons, custom UI animations, audio compositions, and software source code integrated within BAMBUILD are exclusive intellectual property of the Company protected under international copyright treaties.</p><br>
+
+        <h4>6. SERVICE AVAILABILITY & DISCLAIMER OF WARRANTIES</h4>
+        <p>The Game is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind. We reserve the right to alter, modify, or shut down online servers at any time for routine maintenance or updates.</p>
+      `,
+      'zh-HK': `
+        <h4>1. 服務條款之接受與同意</h4>
+        <p>當您下載、造訪或遊玩由 BAMBUILD Interactive（以下簡稱「本公司」或「我們」）所提供之 BAMBUILD（以下簡稱「本遊戲」），即代表您已閱讀、理解並完全同意接受本服務條款。若您不同意本條款之任何部分，請立即停止使用本服務。</p><br>
+
+        <h4>2. 用戶帳號與資料保存</h4>
+        <p><b>訪客模式：</b> 未註冊之訪客體驗將進度儲存於您的瀏覽器本機快取中。清除瀏覽器快取、Cookie 或更換裝置將導致遊戲進度永久遺失。本公司對訪客模式下遺失之資料概不負責。</p>
+        <p><b>註冊帳號：</b> 透過 Google、OAuth 或電子郵件連結帳號，可將遊戲進度永久同步至雲端伺服器。使用者有責任妥善保管個人的登入憑證與帳號安全。</p><br>
+
+        <h4>3. 虛擬貨幣與內購說明</h4>
+        <p>本遊戲包含「竹子」、「金幣」及「鑽石」等虛擬物品（以下簡稱「虛擬商品」）。虛擬商品僅供遊戲內個人娛樂授權使用，不具備任何現實世界之貨幣價值，且在任何情況下皆不得兌換為法定貨幣、轉讓或要求退款。</p><br>
+
+        <h4>4. 玩家行為守則</h4>
+        <p>嚴禁使用任何外掛程式、自動化腳本、修改器、記憶體篡改工具或利用系統漏洞獲取不當利益。如有違反，本公司有權在不另行通知的情況下，終止或停權該帳號之存取權限。</p><br>
+
+        <h4>5. 智慧財產權聲明</h4>
+        <p>BAMBUILD 遊戲內所有視覺藝術、竹子標誌設計、向量圖形、音效配樂及程式碼，均屬本公司版權所有，受國際著作權法及智慧財產權法律保護。</p><br>
+
+        <h4>6. 服務變更與免責聲明</h4>
+        <p>本服務以「現狀」及「現有」基礎提供。本公司保留因系統維護、升級或營運策略調整而隨時修改、暫停或終止遊戲服務之權利。</p>
+      `,
+      'zh-TW': `
+        <h4>1. 服務條款之接受與同意</h4>
+        <p>當您下載、造訪或遊玩由 BAMBUILD Interactive（以下簡稱「本公司」或「我們」）所提供之 BAMBUILD（以下簡稱「本遊戲」），即代表您已閱讀、理解並完全同意接受本服務條款。若您不同意本條款之任何部分，請立即停止使用本服務。</p><br>
+
+        <h4>2. 用戶帳號與資料保存</h4>
+        <p><b>訪客模式：</b> 未註冊之訪客體驗將進度儲存於您的瀏覽器本機快取中。清除瀏覽器快取、Cookie 或更換裝置將導致遊戲進度永久遺失。本公司對訪客模式下遺失之資料概不負責。</p>
+        <p><b>註冊帳號：</b> 透過 Google、OAuth 或電子郵件連結帳號，可將遊戲進度永久同步至雲端伺服器。使用者有責任妥善保管個人的登入憑證與帳號安全。</p><br>
+
+        <h4>3. 虛擬貨幣與內購說明</h4>
+        <p>本遊戲包含「竹子」、「金幣」及「鑽石」等虛擬物品（以下簡稱「虛擬商品」）。虛擬商品僅供遊戲內個人娛樂授權使用，不具備任何現實世界之貨幣價值，且在任何情況下皆不得兌換為法定貨幣、轉讓或要求退款。</p><br>
+
+        <h4>4. 玩家行為守則</h4>
+        <p>嚴禁使用任何外掛程式、自動化腳本、修改器、記憶體篡改工具或利用系統漏洞獲取不當利益。如有違反，本公司有權在不另行通知的情況下，終止或停權該帳號之存取權限。</p><br>
+
+        <h4>5. 智慧財產權聲明</h4>
+        <p>BAMBUILD 遊戲內所有視覺藝術、竹子標誌設計、向量圖形、音效配樂及程式碼，均屬本公司版權所有，受國際著作權法及智慧財產權法律保護。</p><br>
+
+        <h4>6. 服務變更與免責聲明</h4>
+        <p>本服務以「現狀」及「現有」基礎提供。本公司保留因系統維護、升級或營運策略調整而隨時修改、暫停或終止遊戲服務之權利。</p>
+      `,
+      'zh-CN': `
+        <h4>1. 服务条款之接受与同意</h4>
+        <p>当您下载、访问或游玩由 BAMBUILD Interactive（以下简称“本公司”或“我们”）所提供之 BAMBUILD（以下简称“本游戏”），即代表您已阅读、理解并完全同意接受本服务条款。若您不同意本条款之任何部分，请立即停止使用本服务。</p><br>
+
+        <h4>2. 用户账号与数据保存</h4>
+        <p><b>访客模式：</b> 未注册之访客体验将进度保存于您的浏览器本地缓存中。清除浏览器缓存、Cookie 或更换设备将导致游戏进度永久丢失。本公司对访客模式下丢失之数据概不负责。</p>
+        <p><b>注册账号：</b> 通过 Google、OAuth 或电子邮件绑定账号，可将游戏进度永久同步至云端服务器。使用者有责任妥善保管个人的登录凭证与账号安全。</p><br>
+
+        <h4>3. 虚拟货币与内购说明</h4>
+        <p>本游戏包含“竹子”、“金币”及“钻石”等虚拟物品（以下简称“虚拟商品”）。虚拟商品仅供游戏内个人娱乐授权使用，不具备任何现实世界之货币价值，且在任何情况下皆不得兑换为法定货币、转让或要求退款。</p><br>
+
+        <h4>4. 玩家行为守则</h4>
+        <p>严禁使用任何外挂程序、自动化脚本、修改器、内存篡改工具或利用系统漏洞获取不当利益。如有违反，本公司有权在不另行通知的情况下，终止或封禁该账号之访问权限。</p><br>
+
+        <h4>5. 知识产权声明</h4>
+        <p>BAMBUILD 游戏内所有视觉艺术、竹子标志设计、矢量图形、音效配效及代码，均属本公司版权所有，受国际著作权法及知识产权法律保护。</p><br>
+
+        <h4>6. 服务变更与免责声明</h4>
+        <p>本服务以“现状”及“现有”基础提供。本公司保留因系统维护、升级或运营策略调整而随时修改、暂停或终止游戏服务之权利。</p>
+      `,
+      'ja': `
+        <h4>1. 利用規約の同意</h4>
+        <p>BAMBUILD Interactive（以下「当社」）が提供するゲーム「BAMBUILD」（以下「本ゲーム」）をダウンロード、アクセス、またはプレイすることにより、お客様は本利用規約に同意したものとみなされます。</p><br>
+
+        <h4>2. ユーザーアカウントとデータ保存</h4>
+        <p><b>ゲストモード：</b> 未登録のゲストセッションは端末のローカルキャッシュに保存されます。ブラウザキャッシュのクリアや端末の変更を行うと、進行状況が永久に失われます。当社は失われたデータについて一切の責任を負いません。</p>
+        <p><b>アカウント登録：</b> Googleまたはメールアドレスで連携することで、クラウド上に安全にデータをバックアップできます。アカウント情報の管理責任はユーザー自身にあります。</p><br>
+
+        <h4>3. ゲーム内通貨および購入</h4>
+        <p>本ゲームには「竹」「コイン」「ダイヤ」などの仮想アイテムが含まれます。これらはゲーム内エンターテインメント専用にライセンスされるものであり、現実の通貨に換金または返金することはできません。</p><br>
+
+        <h4>4. 禁止事項</h4>
+        <p>不正なツール、自動化ボット、メモリ改変、またはバグの不正利用は固く禁止されています。違反が確認された場合、事前通知なくアカウントを停止する場合があります。</p><br>
+
+        <h4>5. 知的財産権</h4>
+        <p>BAMBUILDに関するすべてのグラフィック、竹のデザインアイコン、音楽、コードは当社に帰属し、著作権法により保護されています。</p><br>
+
+        <h4>6. サービスの変更および免責</h4>
+        <p>本サービスは「現状有姿」で提供されます。当社はメンテナンスやアップデートのために事前の予告なくサービス内容を変更または停止する権利を有します。</p>
+      `
+    };
+
     const LANGUAGES_LIST = [
       { code: 'en', name: 'English' },
       { code: 'zh-HK', name: '繁體中文 (香港)' },
       { code: 'zh-TW', name: '繁體中文 (台灣)' },
       { code: 'zh-CN', name: '简体中文 (中国)' },
-      { code: 'ja', name: '日本語' },
-      { code: 'ko', name: '한국어' },
-      { code: 'es', name: 'Español' },
-      { code: 'fr', name: 'Français' },
-      { code: 'de', name: 'Deutsch' },
-      { code: 'pt', name: 'Português' },
-      { code: 'ru', name: 'Русский' },
-      { code: 'ar', name: 'العربية' },
-      { code: 'hi', name: 'हिन्दी' },
-      { code: 'it', name: 'Italiano' },
-      { code: 'nl', name: 'Nederlands' },
-      { code: 'pl', name: 'Polski' },
-      { code: 'tr', name: 'Türkçe' },
-      { code: 'vi', name: 'Tiếng Việt' },
-      { code: 'th', name: 'ไทย' },
-      { code: 'id', name: 'Bahasa Indonesia' },
-      { code: 'uk', name: 'Українська' }
+      { code: 'ja', name: '日本語' }
     ];
 
-    /* --- GLOBAL REGIONS LIST (Including Hong Kong & Taiwan distinct state notes) --- */
-    const REGIONS_LIST = [
-      "Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
-      "Bahrain", "Bangladesh", "Belarus", "Belgium", "Brazil", "Canada", "Chile", "China (Mainland)", "Colombia",
-      "Croatia", "Czech Republic", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece",
-      "Hong Kong (SAR, China)", "Hungary", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
-      "Japan", "Jordan", "Kazakhstan", "Korea, South", "Kuwait", "Macau (SAR, China)", "Malaysia", "Mexico",
-      "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal",
-      "Qatar", "Romania", "Russian Federation", "Saudi Arabia", "Singapore", "South Africa", "Spain", "Sweden",
-      "Switzerland", "Taiwan / Chinese Taipei", "Thailand", "Turkey", "Ukraine", "United Arab Emirates",
-      "United Kingdom", "United States", "Vietnam"
-    ];
+    /* Timezone Matrix Mapping */
+    const TIMEZONES = {
+      "United States": "America/New_York",
+      "United Kingdom": "Europe/London",
+      "Hong Kong (SAR, China)": "Asia/Hong_Kong",
+      "Japan": "Asia/Tokyo",
+      "Germany": "Europe/Berlin",
+      "Australia": "Australia/Sydney",
+      "Canada": "America/Toronto",
+      "France": "Europe/Paris",
+      "Taiwan / Chinese Taipei": "Asia/Taipei",
+      "Singapore": "Asia/Singapore"
+    };
 
-    /* --- STARTER ANIMALS VECTOR DEFINITIONS --- */
+    const REGIONS_LIST = Object.keys(TIMEZONES);
+
     const STARTER_ANIMALS = [
       {
         id: 'poodle',
         name: 'Brown Poodle Dog',
-        colorName: '#8B5A2B',
         svg: `<svg width="40" height="40" viewBox="0 0 40 40">
           <circle cx="11" cy="16" r="6" fill="#8B5A2B" stroke="var(--card-border)" stroke-width="2"/>
           <circle cx="29" cy="16" r="6" fill="#8B5A2B" stroke="var(--card-border)" stroke-width="2"/>
@@ -1337,63 +1690,16 @@
       {
         id: 'rabbit',
         name: 'Pink Rabbit',
-        colorName: '#FFC0CB',
         svg: `<svg width="40" height="40" viewBox="0 0 40 40">
           <ellipse cx="14" cy="10" rx="4" ry="9" fill="#FFC0CB" stroke="var(--card-border)" stroke-width="2"/>
           <ellipse cx="26" cy="10" rx="4" ry="9" fill="#FFC0CB" stroke="var(--card-border)" stroke-width="2"/>
-          <ellipse cx="14" cy="10" rx="2" ry="5" fill="#FFB6C1"/>
-          <ellipse cx="26" cy="10" rx="2" ry="5" fill="#FFB6C1"/>
           <circle cx="20" cy="24" r="12" fill="#FFC0CB" stroke="var(--card-border)" stroke-width="2"/>
           <circle cx="16" cy="22" r="1.5" fill="#333"/>
           <circle cx="24" cy="22" r="1.5" fill="#333"/>
-          <polygon points="20,25 18,27 22,27" fill="#E88D72"/>
-        </svg>`
-      },
-      {
-        id: 'giraffe',
-        name: 'Yellow Giraffe',
-        colorName: '#FFD700',
-        svg: `<svg width="40" height="40" viewBox="0 0 40 40">
-          <rect x="18" y="18" width="4" height="18" fill="#FFD700" stroke="var(--card-border)" stroke-width="2"/>
-          <circle cx="15" cy="8" r="2.5" fill="#8B4513"/>
-          <circle cx="25" cy="8" r="2.5" fill="#8B4513"/>
-          <ellipse cx="20" cy="16" rx="10" ry="8" fill="#FFD700" stroke="var(--card-border)" stroke-width="2"/>
-          <circle cx="16" cy="15" r="1.5" fill="#333"/>
-          <circle cx="24" cy="15" r="1.5" fill="#333"/>
-          <circle cx="17" cy="20" r="2" fill="#CD853F"/>
-          <circle cx="23" cy="20" r="2" fill="#CD853F"/>
-        </svg>`
-      },
-      {
-        id: 'pigeon',
-        name: 'Blue Grey Pigeon',
-        colorName: '#708090',
-        svg: `<svg width="40" height="40" viewBox="0 0 40 40">
-          <circle cx="20" cy="22" r="12" fill="#708090" stroke="var(--card-border)" stroke-width="2"/>
-          <circle cx="20" cy="14" r="9" fill="#87CEEB" stroke="var(--card-border)" stroke-width="2"/>
-          <circle cx="16" cy="12" r="1.8" fill="#FFF"/>
-          <circle cx="16" cy="12" r="0.9" fill="#000"/>
-          <polygon points="24,14 31,16 24,18" fill="#FF8C00" stroke="var(--card-border)" stroke-width="1.5"/>
-        </svg>`
-      },
-      {
-        id: 'frog',
-        name: 'Green Frog',
-        colorName: '#90EE90',
-        svg: `<svg width="40" height="40" viewBox="0 0 40 40">
-          <circle cx="13" cy="12" r="5" fill="#90EE90" stroke="var(--card-border)" stroke-width="2"/>
-          <circle cx="27" cy="12" r="5" fill="#90EE90" stroke="var(--card-border)" stroke-width="2"/>
-          <circle cx="13" cy="11" r="2" fill="#FFF"/>
-          <circle cx="27" cy="11" r="2" fill="#FFF"/>
-          <circle cx="13" cy="11" r="1" fill="#000"/>
-          <circle cx="27" cy="11" r="1" fill="#000"/>
-          <ellipse cx="20" cy="24" rx="13" ry="10" fill="#90EE90" stroke="var(--card-border)" stroke-width="2"/>
-          <path d="M 14 26 Q 20 30 26 26" stroke="var(--card-border)" stroke-width="2" fill="none"/>
         </svg>`
       }
     ];
 
-    /* --- UNLOCKED FACILITIES DATA SYSTEM --- */
     const TOWN_FACILITIES = [
       {
         id: 'tree',
@@ -1413,45 +1719,52 @@
         svg: `<svg class="outlined-art" width="65" height="50" viewBox="0 0 100 70">
             <path d="M 15 30 Q 50 10 85 30 Z" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
             <line x1="50" y1="30" x2="50" y2="65" stroke="var(--card-border)" stroke-width="3.5"/>
-            <ellipse cx="50" cy="55" rx="25" ry="8" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
-          </svg>`
-      },
-      {
-        id: 'neon',
-        name: 'HK Neon Light',
-        x: 400, y: 90,
-        displayed: true,
-        svg: `<svg class="outlined-art" width="60" height="60" viewBox="0 0 60 60">
-            <rect x="20" y="10" width="20" height="35" rx="4" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
-            <line x1="30" y1="45" x2="30" y2="55" stroke="var(--card-border)" stroke-width="3.5"/>
-          </svg>`
-      },
-      {
-        id: 'bamboo_stalk',
-        name: 'Light Bamboo',
-        x: 140, y: 240,
-        displayed: true,
-        svg: `<svg class="outlined-art" width="55" height="55" viewBox="0 0 100 100">
-            <rect x="30" y="15" width="12" height="75" rx="3" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
-            <line x1="30" y1="40" x2="42" y2="40" stroke="var(--card-border)" stroke-width="3.5"/>
-            <rect x="55" y="30" width="10" height="60" rx="3" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
-            <path d="M 25 30 C 15 25, 10 35, 25 35 Z" fill="none" stroke="var(--card-border)" stroke-width="3"/>
-          </svg>`
-      },
-      {
-        id: 'minibus',
-        name: 'HK Minibus',
-        x: 320, y: 260,
-        displayed: true,
-        svg: `<svg class="outlined-art" width="65" height="55" viewBox="0 0 100 80">
-            <rect x="10" y="20" width="80" height="45" rx="8" fill="none" stroke="var(--card-border)" stroke-width="4"/>
-            <circle cx="30" cy="65" r="8" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
-            <circle cx="70" cy="65" r="8" fill="none" stroke="var(--card-border)" stroke-width="3.5"/>
           </svg>`
       }
     ];
 
-    /* --- GAME STATE MANAGEMENT --- */
+    /* Dynamic Mission Registry with Instructions / Aim Criteria */
+    let MISSIONS_REGISTRY = [
+      {
+        id: 'm1',
+        type: 'daily',
+        title: 'Place 2 Facilities on Map',
+        reward: { coins: 100, bamboo: 10, diamonds: 0 },
+        checkCondition: () => TOWN_FACILITIES.filter(f => f.displayed).length >= 2,
+        instruction: 'Display at least 2 facilities via Construction Menu 🔨',
+        status: 'active',
+        cooldownUntil: 0
+      },
+      {
+        id: 'm2',
+        type: 'daily',
+        title: 'Gather 100 Bamboos Stock',
+        reward: { coins: 150, bamboo: 0, diamonds: 2 },
+        checkCondition: () => gameState.bamboo >= 100,
+        instruction: 'Reach a balance of 100 Bamboos',
+        status: 'active',
+        cooldownUntil: 0
+      },
+      {
+        id: 'm3',
+        type: 'weekly',
+        title: 'Accumulate 500 Coins',
+        reward: { coins: 300, bamboo: 50, diamonds: 5 },
+        checkCondition: () => gameState.coins >= 500,
+        instruction: 'Reach a total balance of 500 Coins',
+        status: 'active'
+      },
+      {
+        id: 'm4',
+        type: 'golden',
+        title: 'Golden Pioneer Badge',
+        reward: { coins: 1000, bamboo: 200, diamonds: 20 },
+        checkCondition: () => gameState.isLoggedIn === true,
+        instruction: 'Link an account to permanently back up data',
+        status: 'active'
+      }
+    ];
+
     const DEFAULT_GAME_STATE = {
       isLoggedIn: false,
       playerName: "Guest Builder",
@@ -1459,7 +1772,6 @@
       bamboo: 120,
       coins: 450,
       diamonds: 15,
-      activeMissions: 3,
       selectedLanguage: 'en',
       selectedRegion: 'Hong Kong (SAR, China)'
     };
@@ -1467,9 +1779,7 @@
     let gameState = { ...DEFAULT_GAME_STATE };
     let activeFacilityId = null;
 
-    /* --- POPULATE DROPDOWNS --- */
     function populateDropdowns() {
-      // Populate Language Dropdown
       const langSelect = document.getElementById('language-select');
       langSelect.innerHTML = '';
       LANGUAGES_LIST.forEach(lang => {
@@ -1480,7 +1790,6 @@
         langSelect.appendChild(opt);
       });
 
-      // Populate Region Dropdown
       const regionSelect = document.getElementById('region-select');
       regionSelect.innerHTML = '';
       REGIONS_LIST.forEach(reg => {
@@ -1492,14 +1801,116 @@
       });
     }
 
-    /* --- SAVE SETTINGS (Press OK toConfirm) --- */
+    /* Full i18n translation updater triggered upon pressing OK in settings */
+    function applyTranslations(lang) {
+      const dict = TRANSLATIONS[lang] || TRANSLATIONS['en'];
+      
+      // Home buttons
+      if(document.getElementById('lbl-follow')) document.getElementById('lbl-follow').innerText = dict.follow;
+      if(document.getElementById('lbl-settings')) document.getElementById('lbl-settings').innerText = dict.settings;
+      if(document.getElementById('lbl-terms')) document.getElementById('lbl-terms').innerText = dict.terms;
+      if(document.getElementById('lbl-shop-btn')) document.getElementById('lbl-shop-btn').innerText = dict.shop;
+      if(document.getElementById('lbl-home-btn')) document.getElementById('lbl-home-btn').innerText = dict.home;
+      if(document.getElementById('lbl-menu-btn')) document.getElementById('lbl-menu-btn').innerText = dict.menu;
+
+      // Settings modal
+      if(document.getElementById('setting-modal-title')) document.getElementById('setting-modal-title').innerText = dict.settingTitle;
+      if(document.getElementById('lbl-theme')) document.getElementById('lbl-theme').innerText = dict.theme;
+      if(document.getElementById('lbl-bgm')) document.getElementById('lbl-bgm').innerText = dict.bgm;
+      if(document.getElementById('lbl-sfx')) document.getElementById('lbl-sfx').innerText = dict.sfx;
+
+      // Follow modal
+      if(document.getElementById('lbl-follow-title')) document.getElementById('lbl-follow-title').innerText = dict.followTitle;
+      if(document.getElementById('lbl-follow-sub')) document.getElementById('lbl-follow-sub').innerText = dict.followSub;
+
+      // Terms modal
+      if(document.getElementById('lbl-terms-title')) document.getElementById('lbl-terms-title').innerText = dict.termsTitle;
+      if(document.getElementById('lbl-terms-accept')) document.getElementById('lbl-terms-accept').innerText = dict.termsAccept;
+      if(document.getElementById('terms-body')) document.getElementById('terms-body').innerHTML = TERMS_CONTENT[lang] || TERMS_CONTENT['en'];
+
+      // Login modal
+      if(document.getElementById('lbl-login-title')) document.getElementById('lbl-login-title').innerText = dict.loginTitle;
+      if(document.getElementById('lbl-login-sub')) document.getElementById('lbl-login-sub').innerText = dict.loginSub;
+      if(document.getElementById('lbl-login-email-btn')) document.getElementById('lbl-login-email-btn').innerText = dict.loginEmailBtn;
+
+      // Region modal
+      if(document.getElementById('lbl-region-title')) document.getElementById('lbl-region-title').innerText = dict.regionTitle;
+      if(document.getElementById('lbl-region-sub')) document.getElementById('lbl-region-sub').innerText = dict.regionSub;
+      if(document.getElementById('lbl-region-gift')) document.getElementById('lbl-region-gift').innerHTML = dict.regionGift;
+      if(document.getElementById('lbl-region-ok')) document.getElementById('lbl-region-ok').innerText = dict.regionOk;
+
+      // Character modal
+      if(document.getElementById('lbl-char-title')) document.getElementById('lbl-char-title').innerText = dict.charTitle;
+      if(document.getElementById('lbl-char-sub')) document.getElementById('lbl-char-sub').innerText = dict.charSub;
+
+      // Help modal
+      if(document.getElementById('lbl-help-title')) document.getElementById('lbl-help-title').innerText = dict.helpTitle;
+      if(document.getElementById('help-body')) document.getElementById('help-body').innerHTML = dict.helpBody;
+
+      // Shop modal
+      if(document.getElementById('lbl-shop-title')) document.getElementById('lbl-shop-title').innerText = dict.shopTitle;
+      if(document.getElementById('tab-fac')) document.getElementById('tab-fac').innerText = dict.tabFac;
+      if(document.getElementById('tab-plants')) document.getElementById('tab-plants').innerText = dict.tabPlants;
+      if(document.getElementById('tab-lights')) document.getElementById('tab-lights').innerText = dict.tabLights;
+      if(document.getElementById('tab-bamboos')) document.getElementById('tab-bamboos').innerText = dict.tabBamboos;
+      if(document.getElementById('tab-coins')) document.getElementById('tab-coins').innerText = dict.tabCoins;
+      if(document.getElementById('tab-diamonds')) document.getElementById('tab-diamonds').innerText = dict.tabDiamonds;
+
+      // Menu modal
+      if(document.getElementById('lbl-menu-title')) document.getElementById('lbl-menu-title').innerText = dict.menuTitle;
+      if(document.getElementById('lbl-menu-settings')) document.getElementById('lbl-menu-settings').innerText = dict.menuSettings;
+      if(document.getElementById('lbl-menu-help')) document.getElementById('lbl-menu-help').innerText = dict.menuHelp;
+      if(document.getElementById('lbl-menu-exit')) document.getElementById('lbl-menu-exit').innerText = dict.menuExit;
+
+      // Constructions modal
+      if(document.getElementById('lbl-const-title')) document.getElementById('lbl-const-title').innerText = dict.constTitle;
+      if(document.getElementById('lbl-const-sub')) document.getElementById('lbl-const-sub').innerText = dict.constSub;
+
+      // Missions modal
+      if(document.getElementById('lbl-missions-title')) document.getElementById('lbl-missions-title').innerText = dict.missionsTitle;
+      if(document.getElementById('lbl-missions-sub')) document.getElementById('lbl-missions-sub').innerText = dict.missionsSub;
+
+      updateUIHeaderAndAvatars();
+    }
+
     function saveSettings() {
       const selectedLang = document.getElementById('language-select').value;
       gameState.selectedLanguage = selectedLang;
+      applyTranslations(selectedLang);
       closeModal('settings-modal');
     }
 
-    /* --- RENDER TOWN FACILITIES & MOVEMENT ENGINE --- */
+    /* Local Country Clock Alignment Timer Engine */
+    setInterval(() => {
+      const timeZone = TIMEZONES[gameState.selectedRegion] || "UTC";
+      try {
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('en-US', {
+          timeZone,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true
+        });
+        document.getElementById('country-clock-time').innerText = formatter.format(now);
+        document.getElementById('country-clock-name').innerText = gameState.selectedRegion;
+      } catch (e) {
+        document.getElementById('country-clock-time').innerText = new Date().toLocaleTimeString();
+      }
+
+      /* Cooldown Timer Processor for Daily Missions */
+      const nowMs = Date.now();
+      MISSIONS_REGISTRY.forEach(m => {
+        if (m.type === 'daily' && m.status === 'cooldown') {
+          if (nowMs >= m.cooldownUntil) {
+            m.status = 'active'; // Refresh Mission 5 mins after completion
+          }
+        }
+      });
+      
+      updateMissionsListUI();
+    }, 1000);
+
     const GRID_UNIT_PX = 30;
 
     function renderTownFacilities() {
@@ -1520,10 +1931,10 @@
           ${fac.svg}
           <div class="facility-label">${fac.name}</div>
           <div class="arrow-controls ${isControlsActive ? 'active' : ''}">
-            <div class="arrow-btn arrow-north" title="Move North" onclick="moveFacility('${fac.id}', 0, -${GRID_UNIT_PX}, event)"></div>
-            <div class="arrow-btn arrow-south" title="Move South" onclick="moveFacility('${fac.id}', 0, ${GRID_UNIT_PX}, event)"></div>
-            <div class="arrow-btn arrow-east" title="Move East" onclick="moveFacility('${fac.id}', ${GRID_UNIT_PX}, 0, event)"></div>
-            <div class="arrow-btn arrow-west" title="Move West" onclick="moveFacility('${fac.id}', -${GRID_UNIT_PX}, 0, event)"></div>
+            <div class="arrow-btn arrow-north" onclick="moveFacility('${fac.id}', 0, -${GRID_UNIT_PX}, event)"></div>
+            <div class="arrow-btn arrow-south" onclick="moveFacility('${fac.id}', 0, ${GRID_UNIT_PX}, event)"></div>
+            <div class="arrow-btn arrow-east" onclick="moveFacility('${fac.id}', ${GRID_UNIT_PX}, 0, event)"></div>
+            <div class="arrow-btn arrow-west" onclick="moveFacility('${fac.id}', -${GRID_UNIT_PX}, 0, event)"></div>
           </div>
         `;
 
@@ -1556,7 +1967,6 @@
       }
     });
 
-    /* --- CONSTRUCTION MENU TOGGLE CHECKBOX LIST --- */
     function renderConstructionChecklist() {
       const listContainer = document.getElementById('constructions-toggle-list');
       listContainer.innerHTML = '';
@@ -1569,6 +1979,7 @@
           fac.displayed = !fac.displayed;
           renderConstructionChecklist();
           renderTownFacilities();
+          updateMissionsListUI();
         };
 
         item.innerHTML = `
@@ -1585,32 +1996,102 @@
       });
     }
 
-    /* --- UI UPDATE HELPERS --- */
     function updateUIHeaderAndAvatars() {
+      const dict = TRANSLATIONS[gameState.selectedLanguage] || TRANSLATIONS['en'];
       const currentAnimal = STARTER_ANIMALS.find(a => a.id === gameState.selectedAnimalId) || STARTER_ANIMALS[0];
 
       document.getElementById('header-avatar-circle').innerHTML = currentAnimal.svg;
-      document.getElementById('header-player-name').innerText = gameState.playerName;
-      document.getElementById('header-player-status').innerText = gameState.isLoggedIn ? "🟢 Logged In" : "⚪ Guest (Temp)";
+      document.getElementById('header-player-name').innerText = gameState.isLoggedIn ? gameState.playerName : dict.guestName;
+      document.getElementById('header-player-status').innerText = gameState.isLoggedIn ? dict.userStatus : dict.guestStatus;
 
       document.getElementById('home-char-btn-icon').innerHTML = currentAnimal.svg;
 
       document.getElementById('bamboo-count').innerText = gameState.bamboo;
       document.getElementById('coin-count').innerText = gameState.coins;
       document.getElementById('diamond-count').innerText = gameState.diamonds;
-      document.getElementById('active-missions-count').innerText = gameState.activeMissions;
+
+      const activeClaimableCount = MISSIONS_REGISTRY.filter(m => m.status === 'active' && m.checkCondition()).length;
+      document.getElementById('active-missions-count').innerText = activeClaimableCount;
 
       const loginBtn = document.getElementById('home-login-btn');
       if (gameState.isLoggedIn) {
         loginBtn.innerText = "👤 Profile";
         loginBtn.style.background = "var(--accent-green)";
       } else {
-        loginBtn.innerText = "🔑 Log In";
+        loginBtn.innerText = dict.login;
         loginBtn.style.background = "var(--accent-red)";
       }
     }
 
-    /* --- MODALS & NAVIGATION --- */
+    /* Render Mission System UI */
+    function updateMissionsListUI() {
+      const container = document.getElementById('missions-list');
+      if(!container) return;
+      container.innerHTML = '';
+      const dict = TRANSLATIONS[gameState.selectedLanguage] || TRANSLATIONS['en'];
+
+      MISSIONS_REGISTRY.forEach(m => {
+        const isMet = m.checkCondition();
+        const item = document.createElement('div');
+        item.className = 'mission-item';
+
+        let tagClass = m.type === 'daily' ? 'tag-daily' : (m.type === 'weekly' ? 'tag-weekly' : 'tag-golden');
+        let tagLabel = m.type.toUpperCase();
+
+        let actionArea = '';
+        if (m.status === 'claimed') {
+          actionArea = `<button class="btn" disabled style="padding:4px 10px; font-size:0.75rem;">${dict.doneBtn}</button>`;
+        } else if (m.status === 'cooldown') {
+          const remSec = Math.max(0, Math.ceil((m.cooldownUntil - Date.now()) / 1000));
+          const mins = Math.floor(remSec / 60);
+          const secs = remSec % 60;
+          actionArea = `<span style="font-size:0.75rem; font-weight:800; color:var(--accent-red);">${dict.refreshesIn}${mins}:${secs < 10 ? '0' : ''}${secs}</span>`;
+        } else {
+          // Strictly disabled unless condition criteria are fully met
+          actionArea = `<button class="btn" ${!isMet ? 'disabled' : ''} style="padding:4px 12px; font-size:0.8rem;" onclick="claimMissionDirect('${m.id}')">${dict.claimBtn}</button>`;
+        }
+
+        item.innerHTML = `
+          <div class="mission-details">
+            <div><span class="mission-tag ${tagClass}">${tagLabel}</span></div>
+            <span class="mission-title">${m.title}</span>
+            <span style="font-size:0.75rem; color:#777;">Goal: ${m.instruction}</span>
+            <div class="mission-reward">
+              Reward: +${m.reward.coins} 🪙, +${m.reward.bamboo} ${BAMBOO_SVG_ICON}, +${m.reward.diamonds} 💎
+            </div>
+          </div>
+          <div>${actionArea}</div>
+        `;
+
+        container.appendChild(item);
+      });
+      
+      const activeClaimableCount = MISSIONS_REGISTRY.filter(m => m.status === 'active' && m.checkCondition()).length;
+      document.getElementById('active-missions-count').innerText = activeClaimableCount;
+    }
+
+    function claimMissionDirect(id) {
+      const mission = MISSIONS_REGISTRY.find(m => m.id === id);
+      if (!mission || !mission.checkCondition()) return;
+
+      playSfxClick();
+      gameState.coins += mission.reward.coins;
+      gameState.bamboo += mission.reward.bamboo;
+      gameState.diamonds += mission.reward.diamonds;
+
+      if (mission.type === 'daily') {
+        mission.status = 'cooldown';
+        // 5 Minutes (300,000ms) Refresh Cooldown for Daily Missions
+        mission.cooldownUntil = Date.now() + 5 * 60 * 1000;
+      } else {
+        // No refreshing for Weekly or Golden Missions
+        mission.status = 'claimed';
+      }
+
+      updateUIHeaderAndAvatars();
+      updateMissionsListUI();
+    }
+
     function openModal(id) {
       playSfxClick();
       document.getElementById(id).style.display = 'flex';
@@ -1619,6 +2100,8 @@
       if (id === 'shop-modal') switchShopTab('facilities');
       if (id === 'character-modal') renderStarterAnimalCards();
       if (id === 'construction-menu-modal') renderConstructionChecklist();
+      if (id === 'missions-modal') updateMissionsListUI();
+      if (id === 'terms-modal') applyTranslations(gameState.selectedLanguage);
     }
 
     function closeModal(id) {
@@ -1639,12 +2122,11 @@
       document.getElementById('home-screen').style.display = 'flex';
     }
 
-    /* --- AUTHENTICATION & LOGIN --- */
     function finishLogin(name) {
       gameState.isLoggedIn = true;
       gameState.playerName = name || "Mayor " + gameState.selectedAnimalId.toUpperCase();
       updateUIHeaderAndAvatars();
-      alert("Welcome back! Your town progress is now permanently saved.");
+      updateMissionsListUI();
       closeModal('login-modal');
     }
 
@@ -1654,11 +2136,9 @@
         alert("Please enter a valid email address!");
         return;
       }
-      const userName = email.split('@')[0];
-      finishLogin(userName);
+      finishLogin(email.split('@')[0]);
     }
 
-    /* --- STARTER ANIMAL SELECTION RENDER --- */
     function renderStarterAnimalCards() {
       const grid = document.getElementById('starter-animals-grid');
       grid.innerHTML = '';
@@ -1685,27 +2165,6 @@
       renderStarterAnimalCards();
     }
 
-    /* --- MISSION SYSTEM --- */
-    function claimMission(btnElement, rewardCoins = 0, rewardBamboo = 0, rewardDiamonds = 0) {
-      playSfxClick();
-      gameState.coins += rewardCoins;
-      gameState.bamboo += rewardBamboo;
-      gameState.diamonds += rewardDiamonds;
-
-      if (gameState.activeMissions > 0) {
-        gameState.activeMissions -= 1;
-      }
-
-      updateUIHeaderAndAvatars();
-
-      const item = btnElement.parentElement;
-      item.style.opacity = '0.5';
-      btnElement.disabled = true;
-      btnElement.innerText = "Completed ✓";
-      btnElement.style.background = "rgba(0,0,0,0.1)";
-    }
-
-    /* --- THEMES & SHOP --- */
     function setTheme(mode) {
       playSfxClick();
       const lightBtn = document.getElementById('light-mode-btn');
@@ -1725,29 +2184,22 @@
     const shopItems = {
       facilities: [
         { name: 'Wooden Bench', cost: '50 Coins', icon: '🪑' },
-        { name: 'City Fountain', cost: '200 Coins', icon: '⛲' },
-        { name: 'Barcelona Cafe Seat', cost: '120 Coins', icon: '☕' }
+        { name: 'City Fountain', cost: '200 Coins', icon: '⛲' }
       ],
       plants: [
-        { name: 'Bauhinia Flower (HK)', cost: '80 Coins', icon: '🌸' },
-        { name: 'Banyan Tree (HK)', cost: '100 Coins', icon: '🌳' },
         { name: 'Flower Bed', cost: '30 Bamboos', icon: '💐' }
       ],
       lights: [
-        { name: 'Cyber Neon Sign (HK)', cost: '150 Coins', icon: '🏮' },
-        { name: 'Retro Street Lamp', cost: '60 Coins', icon: '💡' }
+        { name: 'Retro Lamp', cost: '60 Coins', icon: '💡' }
       ],
       bamboos: [
-        { name: '50x Bamboo Bundle', cost: '10 Diamonds', icon: '🪵' },
-        { name: '200x Bamboo Sack', cost: '35 Diamonds', icon: '🪵' }
+        { name: '50x Bamboo Bundle', cost: '10 Diamonds', icon: BAMBOO_SVG_ICON }
       ],
       coins: [
-        { name: '500x Coins', cost: '20 Diamonds', icon: '🪙' },
-        { name: '2000x Coins', cost: '70 Diamonds', icon: '🪙' }
+        { name: '500x Coins', cost: '20 Diamonds', icon: '🪙' }
       ],
       diamonds: [
-        { name: '10x Diamonds', cost: '$0.99', icon: '💎' },
-        { name: '50x Diamonds', cost: '$4.99', icon: '💎' }
+        { name: '10x Diamonds', cost: '$0.99', icon: '💎' }
       ]
     };
 
@@ -1763,7 +2215,7 @@
         const div = document.createElement('div');
         div.className = 'shop-item';
         div.innerHTML = `
-          <div style="font-size:32px;">${item.icon}</div>
+          <div style="font-size:32px; display:flex; align-items:center; justify-content:center; height:45px;">${item.icon}</div>
           <strong style="font-size:0.85rem;">${item.name}</strong>
           <button class="btn" style="padding:4px 10px; font-size:0.8rem; margin-top:4px; background:var(--accent-green); color:#fff;">Buy (${item.cost})</button>
         `;
@@ -1778,8 +2230,9 @@
 
     window.onload = () => {
       populateDropdowns();
+      applyTranslations(gameState.selectedLanguage);
       updateUIHeaderAndAvatars();
     };
   </script>
 </body>
-          </html>
+</html>

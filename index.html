@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BAMBUILD - 2D Animal Town Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>BAMBUILD & Animal Restaurant</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,7 @@
       --bamboo-dark: #8c683c;
       --bamboo-leaf: #d2b48c;
       --hill-color: #d8c3a5;
+      --grid-bg: #f4ece1;
     }
 
     [data-theme="dark"] {
@@ -47,6 +48,7 @@
       --bamboo-dark: #6e4e2e;
       --bamboo-leaf: #b8976d;
       --hill-color: #382f2a;
+      --grid-bg: #2d2622;
     }
 
     * {
@@ -54,7 +56,8 @@
       margin: 0;
       padding: 0;
       user-select: none;
-      font-family: 'Quicksand', sans-serif;
+      -webkit-user-select: none;
+      font-family: 'Quicksand', 'Segoe UI', sans-serif;
     }
 
     body, html {
@@ -195,7 +198,6 @@
       transform: scale(1.2);
     }
 
-    /* Form Selects & Inputs */
     .modal-select {
       width: 100%;
       padding: 10px;
@@ -208,7 +210,6 @@
       color: var(--text-color);
     }
 
-    /* Mode Toggles */
     .setting-row {
       display: flex;
       flex-direction: column;
@@ -268,7 +269,6 @@
       overflow: hidden;
     }
 
-    /* Cartoon Town Background Elements */
     .town-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -296,13 +296,11 @@
       border-right: 3px dashed var(--card-border);
     }
 
-    /* Corner Buttons */
     .top-left-btn { position: absolute; top: 20px; left: 20px; background-color: var(--accent-yellow); }
     .top-right-btn { position: absolute; top: 20px; right: 20px; background-color: var(--accent-green); color: #fff; }
     .bottom-left-btn { position: absolute; bottom: 20px; left: 20px; background-color: var(--accent-blue); color: #fff; }
     .bottom-right-btn { position: absolute; bottom: 20px; right: 20px; background-color: var(--accent-red); color: #fff; }
 
-    /* Title Container */
     .title-wrapper {
       display: flex;
       align-items: center;
@@ -325,7 +323,6 @@
       font-family: 'Mochiy Pop One', cursive;
     }
 
-    /* Middle Center Buttons */
     .home-center-buttons {
       display: flex;
       align-items: center;
@@ -357,23 +354,9 @@
       box-shadow: 0 1px 0 var(--card-border);
     }
 
-    .circle-btn.bear { 
-      background-color: var(--bamboo-color); 
-      width: 75px; 
-      height: 75px; 
-    }
-
-    .circle-btn.start { 
-      background-color: var(--accent-red); 
-      width: 95px; 
-      height: 95px; 
-    }
-
-    .circle-btn.character { 
-      background-color: var(--accent-blue); 
-      width: 75px; 
-      height: 75px; 
-    }
+    .circle-btn.bear { background-color: var(--bamboo-color); width: 75px; height: 75px; }
+    .circle-btn.start { background-color: var(--accent-red); width: 95px; height: 95px; }
+    .circle-btn.character { background-color: var(--accent-blue); width: 75px; height: 75px; }
 
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -401,7 +384,6 @@
       overflow: hidden;
     }
 
-    /* Pavement Town Map Grid */
     .town-map-area {
       position: absolute;
       bottom: 0;
@@ -415,7 +397,6 @@
       border-top: 4px solid var(--card-border);
     }
 
-    /* Distant Short Buildings Background Row */
     .short-buildings-row {
       position: absolute;
       top: -45px;
@@ -438,7 +419,6 @@
       z-index: 50;
     }
 
-    /* Player Profile Area */
     .player-profile-badge {
       display: flex;
       align-items: center;
@@ -515,7 +495,6 @@
       font-weight: 700;
     }
 
-    /* Left Side Missions Stack */
     .town-left-controls {
       position: absolute;
       top: 80px;
@@ -552,7 +531,6 @@
       justify-content: center;
     }
 
-    /* Enlarged Pedestrians - Always Top Z-Index */
     .pedestrian-wrapper {
       position: absolute;
       animation: walk 10s infinite alternate ease-in-out;
@@ -571,7 +549,6 @@
 
     .town-bottom-left { position: absolute; bottom: 20px; left: 20px; display: flex; gap: 15px; z-index: 50; }
 
-    /* Interactive Facility Placement Container */
     .facility-node {
       position: absolute;
       display: flex;
@@ -591,7 +568,6 @@
       pointer-events: none;
     }
 
-    /* Directional Triangles for Facility Movement */
     .arrow-controls {
       position: absolute;
       top: -25px; left: -25px; right: -25px; bottom: -25px;
@@ -616,7 +592,6 @@
       transform: scale(1.2);
     }
 
-    /* Triangle Triangles pointing N, E, S, W */
     .arrow-north {
       top: -12px; left: 50%; transform: translateX(-50%);
       border-left: 10px solid transparent;
@@ -688,7 +663,6 @@
       background: var(--accent-yellow);
     }
 
-    /* Starter Character Cards Grid */
     .character-selection-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -719,13 +693,11 @@
       background: var(--accent-yellow);
     }
 
-    /* Pure Outlined Vector Facilities */
     .outlined-art {
       filter: drop-shadow(0px 2px 0px var(--card-border));
       transition: transform 0.2s ease;
     }
 
-    /* Construction Menu List Item with Checkbox Toggle */
     .construction-toggle-item {
       display: flex;
       align-items: center;
@@ -756,7 +728,6 @@
       background: #eafaf1;
     }
 
-    /* Mission Item Component */
     .mission-item {
       background: var(--card-bg);
       border: 2px solid var(--card-border);
@@ -783,6 +754,134 @@
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--accent-green);
+    }
+
+    /* --- ANIMAL RESTAURANT MINI GAME STYLES --- */
+    .restaurant-game-container {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+    }
+
+    .animals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 15px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .animal-card-rest {
+      background: var(--card-bg);
+      border: 3px solid var(--card-border);
+      border-radius: 18px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 4px 0 var(--card-border);
+    }
+
+    .animal-face {
+      width: 65px;
+      height: 65px;
+      margin-bottom: 8px;
+    }
+
+    .game-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--card-bg);
+      border: 4px solid var(--card-border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 8px 0 var(--card-border);
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 15px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+
+    #game-board {
+      width: 300px;
+      height: 300px;
+      background-color: var(--grid-bg);
+      border: 3px solid var(--card-border);
+      border-radius: 14px;
+      position: relative;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(253, 248, 237, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      z-index: 10;
+      border-radius: 10px;
+    }
+
+    .instructions {
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      color: var(--text-color);
+      text-align: left;
+    }
+
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .control-row {
+      display: flex;
+      gap: 5px;
+    }
+
+    .ctrl-btn {
+      width: 48px;
+      height: 48px;
+      background-color: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 3px 0 var(--card-border);
+      cursor: pointer;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--card-border);
     }
   </style>
 </head>
@@ -851,8 +950,7 @@
       
       <div class="town-header">
         <div class="player-profile-badge">
-          <div class="player-avatar-circle" id="header-avatar-circle">
-          </div>
+          <div class="player-avatar-circle" id="header-avatar-circle"></div>
           <div class="player-info-text">
             <span class="player-name" id="header-player-name">Guest Builder</span>
             <span class="player-status-tag" id="header-player-status">Guest (Temp Session)</span>
@@ -860,22 +958,14 @@
         </div>
         
         <div class="resources-bar">
-          <div class="resource-item">
-            🪵 <span id="bamboo-count">120</span> 
-            <span class="add-btn" onclick="openShopCategory('bamboos')">+</span>
-          </div>
-          <div class="resource-item">
-            🪙 <span id="coin-count">450</span> 
-            <span class="add-btn" onclick="openShopCategory('coins')">+</span>
-          </div>
-          <div class="resource-item">
-            💎 <span id="diamond-count">15</span> 
-            <span class="add-btn" onclick="openShopCategory('diamonds')">+</span>
-          </div>
+          <div class="resource-item">🪵 <span id="bamboo-count">120</span> <span class="add-btn" onclick="openShopCategory('bamboos')">+</span></div>
+          <div class="resource-item">🪙 <span id="coin-count">450</span> <span class="add-btn" onclick="openShopCategory('coins')">+</span></div>
+          <div class="resource-item">💎 <span id="diamond-count">15</span> <span class="add-btn" onclick="openShopCategory('diamonds')">+</span></div>
           <button class="btn" style="padding: 4px 12px; font-size: 0.85rem;" onclick="openModal('shop-modal')">🛒 Shop</button>
         </div>
 
         <div style="display:flex; gap:8px;">
+          <button class="btn" style="background:var(--accent-blue); color:#fff; padding:8px 14px;" onclick="openModal('restaurant-modal')">🐱 Animal Mini-Game</button>
           <button class="btn" style="background:var(--accent-red); color:#fff; padding:8px 14px;" onclick="goToHome()">🏠 Home</button>
           <button class="btn" style="background:var(--accent-green); color:#fff; padding:8px 14px;" onclick="openModal('town-menu-modal')">☰ Menu</button>
         </div>
@@ -945,6 +1035,68 @@
 
   <!-- ==================== MODALS ==================== -->
 
+  <!-- ANIMAL RESTAURANT & SNAKE MODAL -->
+  <div id="restaurant-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 850px; width: 95%; height: 85vh; padding: 15px; display: flex; flex-direction: column;">
+      <button class="modal-close" onclick="closeModal('restaurant-modal')">&times;</button>
+      <div class="modal-title">🐱 Animal Restaurant & Snake Game</div>
+
+      <div class="tab-bar" style="justify-content: center; margin-bottom: 10px;">
+        <div class="tab-btn active" id="btn-rest-animals" onclick="switchRestSubTab('animals')">50 Animals</div>
+        <div class="tab-btn" id="btn-rest-snake" onclick="switchRestSubTab('snake')">Snake Game</div>
+      </div>
+
+      <!-- Content 1: 50 Animals -->
+      <div id="rest-tab-animals" class="restaurant-game-container">
+        <div class="animals-grid" id="restaurant-animals-grid"></div>
+      </div>
+
+      <!-- Content 2: Snake Game -->
+      <div id="rest-tab-snake" class="restaurant-game-container" style="display: none; justify-content: center;">
+        <div class="game-wrapper">
+          <div class="game-header">
+            <span>Score: <span id="score">0</span></span>
+            <span>Best: <span id="high-score">0</span></span>
+          </div>
+
+          <div id="game-board">
+            <div id="instruction-overlay" class="overlay">
+              <h2 style="color: var(--text-color); margin-bottom: 8px;">Snake Game</h2>
+              <div class="instructions">
+                <p><strong>Controls:</strong></p>
+                <ul>
+                  <li>Use <b>W, A, S, D</b> or <b>Arrow Keys</b></li>
+                  <li>Use <b>On-Screen Buttons</b></li>
+                  <li>Don't hit margins or yourself!</li>
+                </ul>
+              </div>
+              <button class="btn" onclick="startGame()">Start Playing</button>
+            </div>
+
+            <div id="gameover-overlay" class="overlay" style="display: none;">
+              <h2 style="color: var(--accent-red); margin-bottom: 8px;">Game Over!</h2>
+              <p style="margin-bottom: 15px; font-weight: 700;">Final Score: <span id="final-score">0</span></p>
+              <button class="btn" onclick="startGame()">Play Again</button>
+            </div>
+
+            <canvas id="canvas" width="300" height="300"></canvas>
+          </div>
+
+          <div class="controls">
+            <div class="control-row">
+              <button class="ctrl-btn" onclick="handleInput('UP')">▲</button>
+            </div>
+            <div class="control-row">
+              <button class="ctrl-btn" onclick="handleInput('LEFT')">◄</button>
+              <button class="ctrl-btn" onclick="handleInput('DOWN')">▼</button>
+              <button class="ctrl-btn" onclick="handleInput('RIGHT')">►</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Construction Facilities Display Menu Modal -->
   <div id="construction-menu-modal" class="modal-overlay">
     <div class="modal-card">
@@ -952,8 +1104,7 @@
       <div class="modal-title">🔨 Unlocked Constructions</div>
       <p style="font-size:0.85rem; font-weight:600; text-align:center; margin-bottom:12px; opacity:0.8;">Toggle facilities to display or hide them on the pavement town map:</p>
       
-      <div id="constructions-toggle-list" style="max-height: 250px; overflow-y: auto;">
-      </div>
+      <div id="constructions-toggle-list" style="max-height: 250px; overflow-y: auto;"></div>
 
       <div style="text-align: center; margin-top: 15px;">
         <button class="btn-ok" onclick="closeModal('construction-menu-modal')">OK</button>
@@ -1010,7 +1161,7 @@
     </div>
   </div>
 
-  <!-- Settings Modal (With Exit Cross, Language Picker, and OK Confirm Button) -->
+  <!-- Settings Modal -->
   <div id="settings-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('settings-modal')">&times;</button>
@@ -1026,14 +1177,11 @@
         </div>
       </div>
 
-      <!-- Language Selector -->
       <div class="setting-row">
         <div class="setting-header">
           <span>Language / 語言 / 言語</span>
         </div>
-        <select id="language-select" class="modal-select">
-          <!-- Populated dynamically via JS -->
-        </select>
+        <select id="language-select" class="modal-select"></select>
       </div>
 
       <div class="setting-row">
@@ -1098,36 +1246,33 @@
     </div>
   </div>
 
-  <!-- Region Selection Modal (With Exit Cross and Full Regions/Territories List) -->
+  <!-- Region Selection Modal -->
   <div id="region-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('region-modal')">&times;</button>
       <div class="modal-title">Select Your Region</div>
       <p style="font-size:0.85rem; font-weight:600; opacity:0.8; text-align:center;">Daily free coins and bamboos reset according to your local time zone!</p>
       
-      <select id="region-select" class="modal-select" style="max-height: 180px;">
-        <!-- Populated dynamically via JS with all world countries & regions -->
-      </select>
+      <select id="region-select" class="modal-select" style="max-height: 180px;"></select>
 
       <div style="margin-top:15px; background:rgba(0,0,0,0.03); padding:10px; border-radius:12px; border:2px solid var(--card-border); text-align:center; font-weight:700; font-size:0.85rem;">
         🎁 <strong>Daily Free Gift:</strong> +50 Coins & +10 Bamboos!
       </div>
 
       <div style="text-align: center; margin-top: 15px;">
-        <button class="btn-ok" style="background:var(--accent-red); color:#fff;" onclick="startGame()">OK & Enter Town 🚀</button>
+        <button class="btn-ok" style="background:var(--accent-red); color:#fff;" onclick="startGameTown()">OK & Enter Town 🚀</button>
       </div>
     </div>
   </div>
 
-  <!-- Starter Character Selection Modal (Animals Only with OK button) -->
+  <!-- Starter Character Selection Modal -->
   <div id="character-modal" class="modal-overlay">
     <div class="modal-card" style="max-width:520px;">
       <button class="modal-close" onclick="closeModal('character-modal')">&times;</button>
       <div class="modal-title">Choose Starter Animal</div>
       <p style="font-size:0.8rem; text-align:center; font-weight:600; margin-bottom:10px;">Select your animal avatar to represent you in town!</p>
       
-      <div class="character-selection-grid" id="starter-animals-grid">
-      </div>
+      <div class="character-selection-grid" id="starter-animals-grid"></div>
 
       <div style="text-align:center; margin-top:15px;">
         <button class="btn-ok" onclick="closeModal('character-modal')">OK</button>
@@ -1135,7 +1280,7 @@
     </div>
   </div>
 
-  <!-- Help / Question Mark Modal -->
+  <!-- Help Modal -->
   <div id="help-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal('help-modal')">&times;</button>
@@ -1144,7 +1289,7 @@
         1. Click <b>START (Red Button)</b> to select your region.<br>
         2. Double click any facility in town to open movement triangles!<br>
         3. Press 🔨 to hide/display unlocked constructions.<br>
-        4. Adjust music loudness & language in ⚙️ Settings.<br>
+        4. Play the 🐱 <b>Animal Mini-Game</b> from the town header!<br>
         5. Log in to permanently back up your town progress!
       </div>
     </div>
@@ -1165,8 +1310,7 @@
         <div class="tab-btn" onclick="switchShopTab('diamonds')">Diamonds</div>
       </div>
 
-      <div class="shop-grid" id="shop-content">
-      </div>
+      <div class="shop-grid" id="shop-content"></div>
     </div>
   </div>
 
@@ -1183,9 +1327,9 @@
     </div>
   </div>
 
-  <!-- Audio Synthesizer for Canon in D (Web Audio API) -->
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    /* --- AUDIO SYNTHESIZER: CANON IN D BGM & SFX --- */
+    /* --- AUDIO SYNTHESIZER --- */
     let audioCtx = null;
     let bgmGainNode = null;
     let sfxGainNode = null;
@@ -1219,7 +1363,6 @@
 
     function playCanonLoop() {
       if (!audioCtx) return;
-      
       const note = CANON_NOTES[noteIndex];
       const osc = audioCtx.createOscillator();
       const noteGain = audioCtx.createGain();
@@ -1276,11 +1419,9 @@
     window.addEventListener('click', () => {
       initAudio();
     }, { once: true });
-  </script>
 
-  <!-- ==================== JAVASCRIPT ==================== -->
-  <script>
-    /* --- ALL LANGUAGES CONFIGURATION --- */
+
+    /* --- LANGUAGES CONFIGURATION --- */
     const LANGUAGES_LIST = [
       { code: 'en', name: 'English' },
       { code: 'zh-HK', name: '繁體中文 (香港)' },
@@ -1292,30 +1433,15 @@
       { code: 'fr', name: 'Français' },
       { code: 'de', name: 'Deutsch' },
       { code: 'pt', name: 'Português' },
-      { code: 'ru', name: 'Русский' },
-      { code: 'ar', name: 'العربية' },
-      { code: 'hi', name: 'हिन्दी' },
-      { code: 'it', name: 'Italiano' },
-      { code: 'nl', name: 'Nederlands' },
-      { code: 'pl', name: 'Polski' },
-      { code: 'tr', name: 'Türkçe' },
-      { code: 'vi', name: 'Tiếng Việt' },
-      { code: 'th', name: 'ไทย' },
-      { code: 'id', name: 'Bahasa Indonesia' },
-      { code: 'uk', name: 'Українська' }
+      { code: 'ru', name: 'Русский' }
     ];
 
-    /* --- GLOBAL REGIONS LIST (Including Hong Kong & Taiwan distinct state notes) --- */
+    /* --- GLOBAL REGIONS LIST --- */
     const REGIONS_LIST = [
-      "Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
-      "Bahrain", "Bangladesh", "Belarus", "Belgium", "Brazil", "Canada", "Chile", "China (Mainland)", "Colombia",
-      "Croatia", "Czech Republic", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece",
-      "Hong Kong (SAR, China)", "Hungary", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
-      "Japan", "Jordan", "Kazakhstan", "Korea, South", "Kuwait", "Macau (SAR, China)", "Malaysia", "Mexico",
-      "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal",
-      "Qatar", "Romania", "Russian Federation", "Saudi Arabia", "Singapore", "South Africa", "Spain", "Sweden",
-      "Switzerland", "Taiwan / Chinese Taipei", "Thailand", "Turkey", "Ukraine", "United Arab Emirates",
-      "United Kingdom", "United States", "Vietnam"
+      "Afghanistan", "Albania", "Algeria", "Argentina", "Australia", "Austria", "Brazil", "Canada", "China (Mainland)", 
+      "Egypt", "France", "Germany", "Hong Kong (SAR, China)", "India", "Indonesia", "Italy", "Japan", "Korea, South", 
+      "Malaysia", "Mexico", "Netherlands", "New Zealand", "Philippines", "Singapore", "Spain", "Taiwan / Chinese Taipei", 
+      "Thailand", "United Kingdom", "United States", "Vietnam"
     ];
 
     /* --- STARTER ANIMALS VECTOR DEFINITIONS --- */
@@ -1469,7 +1595,6 @@
 
     /* --- POPULATE DROPDOWNS --- */
     function populateDropdowns() {
-      // Populate Language Dropdown
       const langSelect = document.getElementById('language-select');
       langSelect.innerHTML = '';
       LANGUAGES_LIST.forEach(lang => {
@@ -1480,7 +1605,6 @@
         langSelect.appendChild(opt);
       });
 
-      // Populate Region Dropdown
       const regionSelect = document.getElementById('region-select');
       regionSelect.innerHTML = '';
       REGIONS_LIST.forEach(reg => {
@@ -1492,7 +1616,6 @@
       });
     }
 
-    /* --- SAVE SETTINGS (Press OK toConfirm) --- */
     function saveSettings() {
       const selectedLang = document.getElementById('language-select').value;
       gameState.selectedLanguage = selectedLang;
@@ -1556,7 +1679,7 @@
       }
     });
 
-    /* --- CONSTRUCTION MENU TOGGLE CHECKBOX LIST --- */
+    /* --- CONSTRUCTION CHECKLIST --- */
     function renderConstructionChecklist() {
       const listContainer = document.getElementById('constructions-toggle-list');
       listContainer.innerHTML = '';
@@ -1619,14 +1742,22 @@
       if (id === 'shop-modal') switchShopTab('facilities');
       if (id === 'character-modal') renderStarterAnimalCards();
       if (id === 'construction-menu-modal') renderConstructionChecklist();
+      if (id === 'restaurant-modal') {
+        render50Animals();
+        switchRestSubTab('animals');
+      }
     }
 
     function closeModal(id) {
       playSfxClick();
       document.getElementById(id).style.display = 'none';
+      if (id === 'restaurant-modal') {
+        if (gameInterval) clearInterval(gameInterval);
+        isGameRunning = false;
+      }
     }
 
-    function startGame() {
+    function startGameTown() {
       gameState.selectedRegion = document.getElementById('region-select').value;
       closeModal('region-modal');
       document.getElementById('home-screen').style.display = 'none';
@@ -1753,7 +1884,7 @@
 
     function switchShopTab(category) {
       playSfxClick();
-      const tabs = document.querySelectorAll('.tab-btn');
+      const tabs = document.querySelectorAll('#shop-modal .tab-btn');
       tabs.forEach(t => t.classList.remove('active'));
       
       const container = document.getElementById('shop-content');
@@ -1776,1315 +1907,280 @@
       switchShopTab(category);
     }
 
+
+    /* =========================================================
+       --- ANIMAL RESTAURANT & SNAKE GAME INTEGRATION ---
+       ========================================================= */
+
+    const restaurantAnimals = [
+      { name: "Gumi (Cat)", bg: "#fcedc0", ears: "#e09f67", face: "#fcedc0" },
+      { name: "Shiba Inu", bg: "#e09f67", ears: "#c67d43", face: "#fff5e4" },
+      { name: "Rabbit", bg: "#ffffff", ears: "#f7aef8", face: "#ffffff" },
+      { name: "Bear", bg: "#a06cd5", ears: "#7d46b8", face: "#e2c0ff" },
+      { name: "Panda", bg: "#ffffff", ears: "#333333", face: "#ffffff" },
+      { name: "Frog", bg: "#b5e2fa", ears: "#b5e2fa", face: "#b5e2fa" },
+      { name: "Pig", bg: "#ffc6ff", ears: "#ff9cee", face: "#ffc6ff" },
+      { name: "Chick", bg: "#ffadad", ears: "#ffadad", face: "#ffadad" },
+      { name: "Fox", bg: "#f77f00", ears: "#d62828", face: "#fcbf49" },
+      { name: "Koala", bg: "#cad2c5", ears: "#84a98c", face: "#cad2c5" },
+      { name: "Tiger", bg: "#f8961e", ears: "#f3722c", face: "#f9c74f" },
+      { name: "Penguin", bg: "#2b2d42", ears: "#2b2d42", face: "#edf2f4" },
+      { name: "Sloth", bg: "#e0c3fc", ears: "#8ecae6", face: "#f72585" },
+      { name: "Red Panda", bg: "#c1121f", ears: "#780000", face: "#fdf0d5" },
+      { name: "Owl", bg: "#9a7b56", ears: "#6b4d2f", face: "#e6ccb2" },
+      { name: "Hamster", bg: "#f4a261", ears: "#e76f51", face: "#e9c46a" },
+      { name: "Mouse", bg: "#d3d3d3", ears: "#ffb703", face: "#f8f9fa" },
+      { name: "Deer", bg: "#bb9457", ears: "#432818", face: "#ffe6a7" },
+      { name: "Raccoon", bg: "#6c757d", ears: "#343a40", face: "#f8f9fa" },
+      { name: "Monkey", bg: "#b08968", ears: "#7f5539", face: "#ede0d4" },
+      { name: "Sheep", bg: "#f8f9fa", ears: "#e9ecef", face: "#f8f9fa" },
+      { name: "Duck", bg: "#ffd166", ears: "#ffd166", face: "#ffd166" },
+      { name: "Seal", bg: "#e0e1dd", ears: "#e0e1dd", face: "#e0e1dd" },
+      { name: "Axolotl", bg: "#ffb5a7", ears: "#f8ad9d", face: "#fcd5ce" },
+      { name: "Capybara", bg: "#9c6644", ears: "#7f5539", face: "#b08968" },
+      { name: "Hippo", bg: "#cdb4db", ears: "#ffc8dd", face: "#cdb4db" },
+      { name: "Elephant", bg: "#a2d2ff", ears: "#bde0fe", face: "#a2d2ff" },
+      { name: "Corgi", bg: "#dda15e", ears: "#bc6c25", face: "#fefae0" },
+      { name: "Calico Cat", bg: "#ffffff", ears: "#f4a261", face: "#ffffff" },
+      { name: "Otter", bg: "#8d6e63", ears: "#5d4037", face: "#d7ccc8" },
+      { name: "Hedgehog", bg: "#d7ccc8", ears: "#8d6e63", face: "#f5f5f5" },
+      { name: "Lion", bg: "#ffe082", ears: "#ffb300", face: "#ffe082" },
+      { name: "Wolf", bg: "#cfd8dc", ears: "#90a4ae", face: "#eceff1" },
+      { name: "Alpaca", bg: "#ffffff", ears: "#f5f5f5", face: "#ffffff" },
+      { name: "Cheetah", bg: "#ffe082", ears: "#ffb300", face: "#ffe082" },
+      { name: "Beaver", bg: "#a1887f", ears: "#6d4c41", face: "#d7ccc8" },
+      { name: "Squirrel", bg: "#ffb74d", ears: "#f57c00", face: "#ffe0b2" },
+      { name: "Giraffe", bg: "#ffe082", ears: "#ffb300", face: "#ffe082" },
+      { name: "Bat", bg: "#b0bec5", ears: "#78909c", face: "#eceff1" },
+      { name: "Whale", bg: "#81d4fa", ears: "#81d4fa", face: "#e1f5fe" },
+      { name: "Shiba Black", bg: "#424242", ears: "#212121", face: "#e0e0e0" },
+      { name: "Cow", bg: "#ffffff", ears: "#e0e0e0", face: "#ffffff" },
+      { name: "Husky", bg: "#90a4ae", ears: "#546e7a", face: "#ffffff" },
+      { name: "Bee", bg: "#fff176", ears: "#fff176", face: "#fff176" },
+      { name: "Dragon", bg: "#c8e6c9", ears: "#81c784", face: "#e8f5e9" },
+      { name: "Parrot", bg: "#81c784", ears: "#81c784", face: "#e8f5e9" },
+      { name: "Crow", bg: "#616161", ears: "#424242", face: "#757575" },
+      { name: "Chinchilla", bg: "#e0e0e0", ears: "#bdbdbd", face: "#f5f5f5" },
+      { name: "Platypus", bg: "#80deea", ears: "#4dd0e1", face: "#e0f7fa" },
+      { name: "Walrus", bg: "#bcaaa4", ears: "#8d6e63", face: "#d7ccc8" }
+    ];
+
+    function createAnimalSVG(animal) {
+      return `
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="55" r="35" fill="${animal.bg}" stroke="#5a4033" stroke-width="3" />
+            <circle cx="25" cy="25" r="10" fill="${animal.ears}" stroke="#5a4033" stroke-width="3" />
+            <circle cx="75" cy="25" r="10" fill="${animal.ears}" stroke="#5a4033" stroke-width="3" />
+            <ellipse cx="50" cy="60" rx="25" ry="20" fill="${animal.face}" />
+            <circle cx="30" cy="62" r="5" fill="#ffb3ba" opacity="0.7" />
+            <circle cx="70" cy="62" r="5" fill="#ffb3ba" opacity="0.7" />
+            <circle cx="38" cy="52" r="3" fill="#5a4033" />
+            <circle cx="62" cy="52" r="3" fill="#5a4033" />
+            <ellipse cx="50" cy="58" rx="2.5" ry="2" fill="#5a4033" />
+            <path d="M 47 62 Q 50 65 53 62" fill="none" stroke="#5a4033" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      `;
+    }
+
+    function render50Animals() {
+      const grid = document.getElementById('restaurant-animals-grid');
+      grid.innerHTML = '';
+      restaurantAnimals.forEach(animal => {
+        const card = document.createElement('div');
+        card.className = 'animal-card-rest';
+        card.innerHTML = `
+            <div class="animal-face">${createAnimalSVG(animal)}</div>
+            <div class="animal-name" style="font-weight:700; font-size:0.85rem; color:var(--text-color);">${animal.name}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function switchRestSubTab(tab) {
+      playSfxClick();
+      const btnAnimals = document.getElementById('btn-rest-animals');
+      const btnSnake = document.getElementById('btn-rest-snake');
+      const tabAnimals = document.getElementById('rest-tab-animals');
+      const tabSnake = document.getElementById('rest-tab-snake');
+
+      if (tab === 'animals') {
+        btnAnimals.classList.add('active');
+        btnSnake.classList.remove('active');
+        tabAnimals.style.display = 'flex';
+        tabSnake.style.display = 'none';
+        if (gameInterval) clearInterval(gameInterval);
+        isGameRunning = false;
+      } else {
+        btnSnake.classList.add('active');
+        btnAnimals.classList.remove('active');
+        tabSnake.style.display = 'flex';
+        tabAnimals.style.display = 'none';
+      }
+    }
+
+    /* --- SNAKE GAME ENGINE --- */
+    let canvas, ctx;
+    const gridSize = 15;
+    let tileCount = 20;
+
+    let snake = [];
+    let food = { x: 0, y: 0 };
+    let dx = gridSize;
+    let dy = 0;
+    let score = 0;
+    let highScore = 0;
+    let gameInterval = null;
+    let isGameRunning = false;
+
+    function initSnakeGame() {
+      canvas = document.getElementById('canvas');
+      ctx = canvas.getContext('2d');
+      tileCount = canvas.width / gridSize;
+
+      snake = [
+        { x: 5 * gridSize, y: 10 * gridSize },
+        { x: 4 * gridSize, y: 10 * gridSize },
+        { x: 3 * gridSize, y: 10 * gridSize }
+      ];
+      dx = gridSize;
+      dy = 0;
+      score = 0;
+      document.getElementById('score').innerText = score;
+      spawnFood();
+    }
+
+    function spawnFood() {
+      food.x = Math.floor(Math.random() * tileCount) * gridSize;
+      food.y = Math.floor(Math.random() * tileCount) * gridSize;
+      snake.forEach(part => {
+        if (part.x === food.x && part.y === food.y) spawnFood();
+      });
+    }
+
+    function startGame() {
+      playSfxClick();
+      document.getElementById('instruction-overlay').style.display = 'none';
+      document.getElementById('gameover-overlay').style.display = 'none';
+      initSnakeGame();
+      isGameRunning = true;
+      if (gameInterval) clearInterval(gameInterval);
+      gameInterval = setInterval(gameLoop, 120);
+    }
+
+    function gameOver() {
+      isGameRunning = false;
+      clearInterval(gameInterval);
+      document.getElementById('final-score').innerText = score;
+      if (score > highScore) {
+        highScore = score;
+        document.getElementById('high-score').innerText = highScore;
+      }
+      document.getElementById('gameover-overlay').style.display = 'flex';
+    }
+
+    function gameLoop() {
+      updateSnake();
+      drawSnake();
+    }
+
+    function updateSnake() {
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+      if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+        gameOver();
+        return;
+      }
+
+      for (let i = 0; i < snake.length; i++) {
+        if (head.x === snake[i].x && head.y === snake[i].y) {
+          gameOver();
+          return;
+        }
+      }
+
+      snake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        score += 10;
+        document.getElementById('score').innerText = score;
+        spawnFood();
+      } else {
+        snake.pop();
+      }
+    }
+
+    function drawSnake() {
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--grid-bg') || '#f4ece1';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#ff70a6';
+      ctx.beginPath();
+      ctx.arc(food.x + gridSize / 2, food.y + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#5a4033';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      snake.forEach((part, index) => {
+        if (index === 0) {
+          ctx.fillStyle = '#e09f67';
+          ctx.beginPath();
+          ctx.roundRect(part.x, part.y, gridSize, gridSize, [4]);
+          ctx.fill();
+          ctx.strokeStyle = '#5a4033';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          ctx.fillStyle = '#5a4033';
+          ctx.beginPath();
+          ctx.arc(part.x + 4, part.y + 5, 1.2, 0, Math.PI * 2);
+          ctx.arc(part.x + 11, part.y + 5, 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = '#f1b980';
+          ctx.beginPath();
+          ctx.roundRect(part.x + 1, part.y + 1, gridSize - 2, gridSize - 2, [3]);
+          ctx.fill();
+          ctx.strokeStyle = '#7c5c43';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      });
+    }
+
+    function handleInput(dir) {
+      if (!isGameRunning) return;
+      if (dir === 'UP' && dy === 0) { dx = 0; dy = -gridSize; }
+      if (dir === 'DOWN' && dy === 0) { dx = 0; dy = gridSize; }
+      if (dir === 'LEFT' && dx === 0) { dx = -gridSize; dy = 0; }
+      if (dir === 'RIGHT' && dx === 0) { dx = gridSize; dy = 0; }
+    }
+
+    window.addEventListener('keydown', e => {
+      switch (e.key.toLowerCase()) {
+        case 'w':
+        case 'arrowup':
+          handleInput('UP');
+          break;
+        case 's':
+        case 'arrowdown':
+          handleInput('DOWN');
+          break;
+        case 'a':
+        case 'arrowleft':
+          handleInput('LEFT');
+          break;
+        case 'd':
+        case 'arrowright':
+          handleInput('RIGHT');
+          break;
+      }
+    });
+
     window.onload = () => {
       populateDropdowns();
       updateUIHeaderAndAvatars();
     };
   </script>
-</body>
-          </html>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Animal Restaurant Snake Game</title>
-    <style>
-        :root {
-            --bg-color: #fdf8ed;
-            --card-bg: #fffbf0;
-            --border-color: #7c5c43;
-            --text-color: #5a4033;
-            --accent-color: #e29578;
-            --accent-hover: #d87d5a;
-            --grid-bg: #f4ece1;
-            --snake-head: #e09f67;
-            --snake-body: #f1b980;
-            --food-color: #ff70a6;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px 10px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: var(--border-color);
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 0px #fff;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 3px 0 var(--border-color);
-        }
-
-        .tab-btn.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .tab-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 0 0 var(--border-color);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .tab-content {
-            width: 100%;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Animals List Grid */
-        .animals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px;
-            width: 100%;
-        }
-
-        .animal-card {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 4px 0 var(--border-color);
-        }
-
-        .animal-face {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 8px;
-            position: relative;
-        }
-
-        .animal-name {
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: var(--border-color);
-        }
-
-        /* Game Layout */
-        .game-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--card-bg);
-            border: 3px solid var(--border-color);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 6px 0 var(--border-color);
-            position: relative;
-            width: 100%;
-            max-width: 440px;
-        }
-
-        .game-header {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--border-color);
-        }
-
-        #game-board {
-            width: 300px;
-            height: 300px;
-            background-color: var(--grid-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-            touch-action: none;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(253, 248, 237, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-            z-index: 10;
-            border-radius: 10px;
-        }
-
-        .overlay h2 {
-            color: var(--border-color);
-            margin-bottom: 10px;
-        }
-
-        .instructions {
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
-            color: var(--text-color);
-            text-align: left;
-        }
-
-        .instructions ul {
-            margin-left: 20px;
-            margin-top: 5px;
-        }
-
-        .btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: 2px solid var(--border-color);
-            padding: 10px 20px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 0 var(--border-color);
-            transition: all 0.1s;
-        }
-
-        .btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 var(--border-color);
-        }
-
-        /* Controls */
-        .controls {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .control-row {
-            display: flex;
-            gap: 5px;
-        }
-
-        .ctrl-btn {
-            width: 45px;
-            height: 45px;
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 3px 0 var(--border-color);
-            cursor: pointer;
-        }
-
-        .ctrl-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 var(--border-color);
-        }
-
-        /* SVG Animal Styles */
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (min-width: 600px) {
-            #game-board {
-                width: 360px;
-                height: 360px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Animal Restaurant</h1>
-        <p style="color: #7c5c43; font-size: 0.9rem;">Cute Characters & Snake Game</p>
-    </header>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('animals')">50 Animals</button>
-        <button class="tab-btn" onclick="switchTab('game')">Snake Game</button>
-    </div>
-
-    <div class="container">
-        <!-- Animals List Tab -->
-        <div id="animals-tab" class="tab-content active">
-            <div class="animals-grid" id="animals-grid">
-                <!-- Javascript will populate this -->
-            </div>
-        </div>
-
-        <!-- Game Tab -->
-        <div id="game-tab" class="tab-content">
-            <div style="display: flex; justify-content: center;">
-                <div class="game-wrapper">
-                    <div class="game-header">
-                        <span>Score: <span id="score">0</span></span>
-                        <span>Best: <span id="high-score">0</span></span>
-                    </div>
-
-                    <div id="game-board">
-                        <div id="instruction-overlay" class="overlay">
-                            <h2>Snake Game</h2>
-                            <div class="instructions">
-                                <p><strong>How to Play:</strong></p>
-                                <ul>
-                                    <li>Use <strong>W, A, S, D</strong> or <strong>Arrow Keys</strong> on Keyboard</li>
-                                    <li><strong>Swipe</strong> on the game screen</li>
-                                    <li>Use the <strong>On-Screen Buttons</strong></li>
-                                    <li>Avoid margins and hitting yourself!</li>
-                                </ul>
-                            </div>
-                            <button class="btn" onclick="startGame()">Start Playing</button>
-                        </div>
-
-                        <div id="gameover-overlay" class="overlay" style="display: none;">
-                            <h2 style="color: #d9534f;">Game Over!</h2>
-                            <p style="margin-bottom: 15px;">Final Score: <span id="final-score">0</span></p>
-                            <button class="btn" onclick="startGame()">Play Again</button>
-                        </div>
-
-                        <canvas id="canvas" width="360" height="360"></canvas>
-                    </div>
-
-                    <!-- On Screen Controls -->
-                    <div class="controls">
-                        <div class="control-row">
-                            <button class="ctrl-btn" onclick="handleInput('UP')">▲</button>
-                        </div>
-                        <div class="control-row">
-                            <button class="ctrl-btn" onclick="handleInput('LEFT')">◄</button>
-                            <button class="ctrl-btn" onclick="handleInput('DOWN')">▼</button>
-                            <button class="ctrl-btn" onclick="handleInput('RIGHT')">►</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // --- 50 ANIMALS DATA & SVG GENERATOR ---
-        const animalData = [
-            { name: "Gumi (Cat)", bg: "#fcedc0", ears: "#e09f67", face: "#fcedc0", details: "cat" },
-            { name: "Shiba Inu", bg: "#e09f67", ears: "#c67d43", face: "#fff5e4", details: "dog" },
-            { name: "Rabbit", bg: "#ffffff", ears: "#f7aef8", face: "#ffffff", details: "bunny" },
-            { name: "Bear", bg: "#a06cd5", ears: "#7d46b8", face: "#e2c0ff", details: "bear" },
-            { name: "Panda", bg: "#ffffff", ears: "#333333", face: "#ffffff", details: "panda" },
-            { name: "Frog", bg: "#b5e2fa", ears: "#b5e2fa", face: "#b5e2fa", details: "frog" },
-            { name: "Pig", bg: "#ffc6ff", ears: "#ff9cee", face: "#ffc6ff", details: "pig" },
-            { name: "Chick", bg: "#ffadad", ears: "#ffadad", face: "#ffadad", details: "chick" },
-            { name: "Fox", bg: "#f77f00", ears: "#d62828", face: "#fcbf49", details: "fox" },
-            { name: "Koala", bg: "#cad2c5", ears: "#84a98c", face: "#cad2c5", details: "koala" },
-            { name: "Tiger", bg: "#f8961e", ears: "#f3722c", face: "#f9c74f", details: "tiger" },
-            { name: "Penguin", bg: "#2b2d42", ears: "#2b2d42", face: "#edf2f4", details: "penguin" },
-            { name: "Sloth", bg: "#e0c3fc", ears: "#8ecae6", face: "#f72585", details: "sloth" },
-            { name: "Red Panda", bg: "#c1121f", ears: "#780000", face: "#fdf0d5", details: "redpanda" },
-            { name: "Owl", bg: "#9a7b56", ears: "#6b4d2f", face: "#e6ccb2", details: "owl" },
-            { name: "Hamster", bg: "#f4a261", ears: "#e76f51", face: "#e9c46a", details: "hamster" },
-            { name: "Mouse", bg: "#d3d3d3", ears: "#ffb703", face: "#f8f9fa", details: "mouse" },
-            { name: "Deer", bg: "#bb9457", ears: "#432818", face: "#ffe6a7", details: "deer" },
-            { name: "Raccoon", bg: "#6c757d", ears: "#343a40", face: "#f8f9fa", details: "raccoon" },
-            { name: "Monkey", bg: "#b08968", ears: "#7f5539", face: "#ede0d4", details: "monkey" },
-            { name: "Sheep", bg: "#f8f9fa", ears: "#e9ecef", face: "#f8f9fa", details: "sheep" },
-            { name: "Duck", bg: "#ffd166", ears: "#ffd166", face: "#ffd166", details: "duck" },
-            { name: "Seal", bg: "#e0e1dd", ears: "#e0e1dd", face: "#e0e1dd", details: "seal" },
-            { name: "Axolotl", bg: "#ffb5a7", ears: "#f8ad9d", face: "#fcd5ce", details: "axolotl" },
-            { name: "Capybara", bg: "#9c6644", ears: "#7f5539", face: "#b08968", details: "capybara" },
-            { name: "Hippo", bg: "#cdb4db", ears: "#ffc8dd", face: "#cdb4db", details: "hippo" },
-            { name: "Elephant", bg: "#a2d2ff", ears: "#bde0fe", face: "#a2d2ff", details: "elephant" },
-            { name: "Corgi", bg: "#dda15e", ears: "#bc6c25", face: "#fefae0", details: "corgi" },
-            { name: "Calico Cat", bg: "#ffffff", ears: "#f4a261", face: "#ffffff", details: "calico" },
-            { name: "Otter", bg: "#8d6e63", ears: "#5d4037", face: "#d7ccc8", details: "otter" },
-            { name: "Hedgehog", bg: "#d7ccc8", ears: "#8d6e63", face: "#f5f5f5", details: "hedgehog" },
-            { name: "Lion", bg: "#ffe082", ears: "#ffb300", face: "#ffe082", details: "lion" },
-            { name: "Wolf", bg: "#cfd8dc", ears: "#90a4ae", face: "#eceff1", details: "wolf" },
-            { name: "Alpaca", bg: "#ffffff", ears: "#f5f5f5", face: "#ffffff", details: "alpaca" },
-            { name: "Cheetah", bg: "#ffe082", ears: "#ffb300", face: "#ffe082", details: "cheetah" },
-            { name: "Beaver", bg: "#a1887f", ears: "#6d4c41", face: "#d7ccc8", details: "beaver" },
-            { name: "Squirrel", bg: "#ffb74d", ears: "#f57c00", face: "#ffe0b2", details: "squirrel" },
-            { name: "Giraffe", bg: "#ffe082", ears: "#ffb300", face: "#ffe082", details: "giraffe" },
-            { name: "Bat", bg: "#b0bec5", ears: "#78909c", face: "#eceff1", details: "bat" },
-            { name: "Whale", bg: "#81d4fa", ears: "#81d4fa", face: "#e1f5fe", details: "whale" },
-            { name: "Shiba Black", bg: "#424242", ears: "#212121", face: "#e0e0e0", details: "shibablack" },
-            { name: "Cow", bg: "#ffffff", ears: "#e0e0e0", face: "#ffffff", details: "cow" },
-            { name: "Husky", bg: "#90a4ae", ears: "#546e7a", face: "#ffffff", details: "husky" },
-            { name: "Bee", bg: "#fff176", ears: "#fff176", face: "#fff176", details: "bee" },
-            { name: "Dragon", bg: "#c8e6c9", ears: "#81c784", face: "#e8f5e9", details: "dragon" },
-            { name: "Parrot", bg: "#81c784", ears: "#81c784", face: "#e8f5e9", details: "parrot" },
-            { name: "Crow", bg: "#616161", ears: "#424242", face: "#757575", details: "crow" },
-            { name: "Chinchilla", bg: "#e0e0e0", ears: "#bdbdbd", face: "#f5f5f5", details: "chinchilla" },
-            { name: "Platypus", bg: "#80deea", ears: "#4dd0e1", face: "#e0f7fa", details: "platypus" },
-            { name: "Walrus", bg: "#bcaaa4", ears: "#8d6e63", face: "#d7ccc8", details: "walrus" }
-        ];
-
-        function createAnimalSVG(animal) {
-            // Animal Restaurant Style: Soft shapes, dark outlines (#5a4033), pink cheeks, minimalist dot eyes
-            return `
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <!-- Base Head -->
-                <circle cx="50" cy="55" r="35" fill="${animal.bg}" stroke="#5a4033" stroke-width="3" />
-                
-                <!-- Ears/Ears details -->
-                <circle cx="25" cy="25" r="10" fill="${animal.ears}" stroke="#5a4033" stroke-width="3" />
-                <circle cx="75" cy="25" r="10" fill="${animal.ears}" stroke="#5a4033" stroke-width="3" />
-                
-                <!-- Inner face overlay if needed -->
-                <ellipse cx="50" cy="60" rx="25" ry="20" fill="${animal.face}" />
-
-                <!-- Cheeks -->
-                <circle cx="30" cy="62" r="5" fill="#ffb3ba" opacity="0.7" />
-                <circle cx="70" cy="62" r="5" fill="#ffb3ba" opacity="0.7" />
-
-                <!-- Eyes -->
-                <circle cx="38" cy="52" r="3" fill="#5a4033" />
-                <circle cx="62" cy="52" r="3" fill="#5a4033" />
-                
-                <!-- Nose/Mouth -->
-                <ellipse cx="50" cy="58" rx="2.5" ry="2" fill="#5a4033" />
-                <path d="M 47 62 Q 50 65 53 62" fill="none" stroke="#5a4033" stroke-width="2" stroke-linecap="round" />
-            </svg>
-            `;
-        }
-
-        function renderAnimals() {
-            const grid = document.getElementById('animals-grid');
-            grid.innerHTML = '';
-            animalData.forEach(animal => {
-                const card = document.createElement('div');
-                card.className = 'animal-card';
-                card.innerHTML = `
-                    <div class="animal-face">${createAnimalSVG(animal)}</div>
-                    <div class="animal-name">${animal.name}</div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-            if(tab === 'animals') {
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.getElementById('animals-tab').classList.add('active');
-            } else {
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('game-tab').classList.add('active');
-            }
-        }
-
-        // --- SNAKE GAME LOGIC ---
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        const gridSize = 18;
-        const tileCount = canvas.width / gridSize;
-
-        let snake = [];
-        let food = { x: 0, y: 0 };
-        let dx = gridSize;
-        let dy = 0;
-        let score = 0;
-        let highScore = 0;
-        let gameInterval = null;
-        let isGameRunning = false;
-
-        // Touch handling variables
-        let touchStartX = 0;
-        let touchStartY = 0;
-
-        function initGame() {
-            snake = [
-                { x: 5 * gridSize, y: 10 * gridSize },
-                { x: 4 * gridSize, y: 10 * gridSize },
-                { x: 3 * gridSize, y: 10 * gridSize }
-            ];
-            dx = gridSize;
-            dy = 0;
-            score = 0;
-            document.getElementById('score').innerText = score;
-            spawnFood();
-        }
-
-        function spawnFood() {
-            food.x = Math.floor(Math.random() * tileCount) * gridSize;
-            food.y = Math.floor(Math.random() * tileCount) * gridSize;
-            // Ensure food doesn't spawn on snake
-            snake.forEach(part => {
-                if (part.x === food.x && part.y === food.y) spawnFood();
-            });
-        }
-
-        function startGame() {
-            document.getElementById('instruction-overlay').style.display = 'none';
-            document.getElementById('gameover-overlay').style.display = 'none';
-            initGame();
-            isGameRunning = true;
-            if (gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(gameLoop, 120);
-        }
-
-        function gameOver() {
-            isGameRunning = false;
-            clearInterval(gameInterval);
-            document.getElementById('final-score').innerText = score;
-            if (score > highScore) {
-                highScore = score;
-                document.getElementById('high-score').innerText = highScore;
-            }
-            document.getElementById('gameover-overlay').style.display = 'flex';
-        }
-
-        function gameLoop() {
-            update();
-            draw();
-        }
-
-        function update() {
-            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-
-            // Wall Collision Check
-            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
-                gameOver();
-                return;
-            }
-
-            // Self Collision Check
-            for (let i = 0; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
-                    gameOver();
-                    return;
-                }
-            }
-
-            snake.unshift(head);
-
-            // Food Collision Check
-            if (head.x === food.x && head.y === food.y) {
-                score += 10;
-                document.getElementById('score').innerText = score;
-                spawnFood();
-            } else {
-                snake.pop();
-            }
-        }
-
-        function draw() {
-            // Background
-            ctx.fillStyle = '#f4ece1';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw Food (Styled as a small treat/fish shape)
-            ctx.fillStyle = '#ff70a6';
-            ctx.beginPath();
-            ctx.arc(food.x + gridSize / 2, food.y + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.strokeStyle = '#5a4033';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-
-            // Draw Snake
-            snake.forEach((part, index) => {
-                if (index === 0) {
-                    // Head - Cute Animal Face Style
-                    ctx.fillStyle = '#e09f67';
-                    ctx.beginPath();
-                    ctx.roundRect(part.x, part.y, gridSize, gridSize, [6]);
-                    ctx.fill();
-                    ctx.strokeStyle = '#5a4033';
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-
-                    // Eyes
-                    ctx.fillStyle = '#5a4033';
-                    ctx.beginPath();
-                    ctx.arc(part.x + 5, part.y + 6, 1.5, 0, Math.PI * 2);
-                    ctx.arc(part.x + 13, part.y + 6, 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-                } else {
-                    // Body
-                    ctx.fillStyle = '#f1b980';
-                    ctx.beginPath();
-                    ctx.roundRect(part.x + 1, part.y + 1, gridSize - 2, gridSize - 2, [4]);
-                    ctx.fill();
-                    ctx.strokeStyle = '#7c5c43';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            });
-        }
-
-        function handleInput(dir) {
-            if (!isGameRunning) return;
-            if (dir === 'UP' && dy === 0) { dx = 0; dy = -gridSize; }
-            if (dir === 'DOWN' && dy === 0) { dx = 0; dy = gridSize; }
-            if (dir === 'LEFT' && dx === 0) { dx = -gridSize; dy = 0; }
-            if (dir === 'RIGHT' && dx === 0) { dx = gridSize; dy = 0; }
-        }
-
-        // Keyboard Controls
-        window.addEventListener('keydown', e => {
-            switch (e.key.toLowerCase()) {
-                case 'w':
-                case 'arrowup':
-                    handleInput('UP');
-                    break;
-                case 's':
-                case 'arrowdown':
-                    handleInput('DOWN');
-                    break;
-                case 'a':
-                case 'arrowleft':
-                    handleInput('LEFT');
-                    break;
-                case 'd':
-                case 'arrowright':
-                    handleInput('RIGHT');
-                    break;
-            }
-        });
-
-        // Touch & Swipe Controls
-        const board = document.getElementById('game-board');
-
-        board.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        }, { passive: true });
-
-        board.addEventListener('touchend', e => {
-            if (!touchStartX || !touchStartY) return;
-
-            let touchEndX = e.changedTouches[0].clientX;
-            let touchEndY = e.changedTouches[0].clientY;
-
-            let diffX = touchEndX - touchStartX;
-            let diffY = touchEndY - touchStartY;
-
-            if (Math.abs(diffX) > Math.abs(diffY)) {
-                // Horizontal Swipe
-                if (diffX > 20) handleInput('RIGHT');
-                else if (diffX < -20) handleInput('LEFT');
-            } else {
-                // Vertical Swipe
-                if (diffY > 20) handleInput('DOWN');
-                else if (diffY < -20) handleInput('UP');
-            }
-
-            touchStartX = 0;
-            touchStartY = 0;
-        }, { passive: true });
-
-        // On Load
-        renderAnimals();
-        draw();
-    </script>
-</body>
-</html>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Snake Party</title>
-    <style>
-        :root {
-            --bg-color: #fdf8ed;
-            --card-bg: #fffbf0;
-            --border-color: #7c5c43;
-            --text-color: #5a4033;
-            --accent-color: #e29578;
-            --accent-hover: #d87d5a;
-            --grid-bg: #f4ece1;
-            --snake-head: #e09f67;
-            --snake-body: #f1b980;
-            --food-color: #ff70a6;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px 10px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: var(--border-color);
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 0px #fff;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 3px 0 var(--border-color);
-        }
-
-        .tab-btn.active {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .tab-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 0 0 var(--border-color);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .tab-content {
-            width: 100%;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Animals List Grid */
-        .animals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px;
-            width: 100%;
-        }
-
-        .animal-card {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 4px 0 var(--border-color);
-        }
-
-        .animal-face {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 8px;
-            position: relative;
-        }
-
-        .animal-name {
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: var(--border-color);
-        }
-
-        /* Game Layout */
-        .game-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--card-bg);
-            border: 3px solid var(--border-color);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 6px 0 var(--border-color);
-            position: relative;
-            width: 100%;
-            max-width: 440px;
-        }
-
-        .game-header {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--border-color);
-        }
-
-        #game-board {
-            width: 300px;
-            height: 300px;
-            background-color: var(--grid-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-            touch-action: none;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(253, 248, 237, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-            z-index: 10;
-            border-radius: 10px;
-        }
-
-        .overlay h2 {
-            color: var(--border-color);
-            margin-bottom: 10px;
-        }
-
-        .instructions {
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
-            color: var(--text-color);
-            text-align: left;
-        }
-
-        .instructions ul {
-            margin-left: 20px;
-            margin-top: 5px;
-        }
-
-        .btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: 2px solid var(--border-color);
-            padding: 10px 20px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 0 var(--border-color);
-            transition: all 0.1s;
-        }
-
-        .btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 var(--border-color);
-        }
-
-        /* Controls */
-        .controls {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .control-row {
-            display: flex;
-            gap: 5px;
-        }
-
-        .ctrl-btn {
-            width: 45px;
-            height: 45px;
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 3px 0 var(--border-color);
-            cursor: pointer;
-        }
-
-        .ctrl-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 var(--border-color);
-        }
-
-        /* SVG Animal Styles */
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (min-width: 600px) {
-            #game-board {
-                width: 360px;
-                height: 360px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Animal Restaurant</h1>
-        <p style="color: #7c5c43; font-size: 0.9rem;">Cute Characters & Snake Game</p>
-    </header>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('animals')">50 Animals</button>
-        <button class="tab-btn" onclick="switchTab('game')">Snake Game</button>
-    </div>
-
-    <div class="container">
-        <!-- Animals List Tab -->
-        <div id="animals-tab" class="tab-content active">
-            <div class="animals-grid" id="animals-grid">
-                <!-- Javascript will populate this -->
-            </div>
-        </div>
-
-        <!-- Game Tab -->
-        <div id="game-tab" class="tab-content">
-            <div style="display: flex; justify-content: center;">
-                <div class="game-wrapper">
-                    <div class="game-header">
-                        <span>Score: <span id="score">0</span></span>
-                        <span>Best: <span id="high-score">0</span></span>
-                    </div>
-
-                    <div id="game-board">
-                        <div id="instruction-overlay" class="overlay">
-                            <h2>Snake Game</h2>
-                            <div class="instructions">
-                                <p><strong>How to Play:</strong></p>
-                                <ul>
-                                    <li>Use <strong>W, A, S, D</strong> or <strong>Arrow Keys</strong> on Keyboard</li>
-                                    <li><strong>Swipe</strong> on the game screen</li>
-                                    <li>Use the <strong>On-Screen Buttons</strong></li>
-                                    <li>Avoid margins and hitting yourself!</li>
-                                </ul>
-                            </div>
-                            <button class="btn" onclick="startGame()">Start Playing</button>
-                        </div>
-
-                        <div id="gameover-overlay" class="overlay" style="display: none;">
-                            <h2 style="color: #d9534f;">Game Over!</h2>
-                            <p style="margin-bottom: 15px;">Final Score: <span id="final-score">0</span></p>
-                            <button class="btn" onclick="startGame()">Play Again</button>
-                        </div>
-
-                        <canvas id="canvas" width="360" height="360"></canvas>
-                    </div>
-
-                    <!-- On Screen Controls -->
-                    <div class="controls">
-                        <div class="control-row">
-                            <button class="ctrl-btn" onclick="handleInput('UP')">▲</button>
-                        </div>
-                        <div class="control-row">
-                            <button class="ctrl-btn" onclick="handleInput('LEFT')">◄</button>
-                            <button class="ctrl-btn" onclick="handleInput('DOWN')">▼</button>
-                            <button class="ctrl-btn" onclick="handleInput('RIGHT')">►</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // --- 50 ANIMALS DATA & SVG GENERATOR ---
-        const animalData = [
-            { name: "Gumi (Cat)", bg: "#fcedc0", ears: "#e09f67", face: "#fcedc0", details: "cat" },
-            { name: "Shiba Inu", bg: "#e09f67", ears: "#c67d43", face: "#fff5e4", details: "dog" },
-            { name: "Rabbit", bg: "#ffffff", ears: "#f7aef8", face: "#ffffff", details: "bunny" },
-            { name: "Bear", bg: "#a06cd5", ears: "#7d46b8", face: "#e2c0ff", details: "bear" },
-            { name: "Panda", bg: "#ffffff", ears: "#333333", face: "#ffffff", details: "panda" },
-            { name: "Frog", bg: "#b5e2fa", ears: "#b5e2fa", face: "#b5e2fa", details: "frog" },
-            { name: "Pig", bg: "#ffc6ff", ears: "#ff9cee", face: "#ffc6ff", details: "pig" },
-            { name: "Chick", bg: "#ffadad", ears: "#ffadad", face: "#ffadad", details: "chick" },
-            { name: "Fox", bg: "#f77f00", ears: "#d62828", face: "#fcbf49", details: "fox" },
-            { name: "Koala", bg: "#cad2c5", ears: "#84a98c", face: "#cad2c5", details: "koala" },
-            { name: "Tiger", bg: "#f8961e", ears: "#f3722c", face: "#f9c74f", details: "tiger" },
-            { name: "Penguin", bg: "#2b2d42", ears: "#2b2d42", face: "#edf2f4", details: "penguin" },
-            { name: "Sloth", bg: "#e0c3fc", ears: "#8ecae6", face: "#f72585", details: "sloth" },
-            { name: "Red Panda", bg: "#c1121f", ears: "#780000", face: "#fdf0d5", details: "redpanda" },
-            { name: "Owl", bg: "#9a7b56", ears: "#6b4d2f", face: "#e6ccb2", details: "owl" },
-            { name: "Hamster", bg: "#f4a261", ears: "#e76f51", face: "#e9c46a", details: "hamster" },
-            { name: "Mouse", bg: "#d3d3d3", ears: "#ffb703", face: "#f8f9fa", details: "mouse" },
-            { name: "Deer", bg: "#bb9457", ears: "#432818", face: "#ffe6a7", details: "deer" },
-            { name: "Raccoon", bg: "#6c757d", ears: "#343a40", face: "#f8f9fa", details: "raccoon" },
-            { name: "Monkey", bg: "#b08968", ears: "#7f5539", face: "#ede0d4", details: "monkey" },
-            { name: "Sheep", bg: "#f8f9fa", ears: "#e9ecef", face: "#f8f9fa", details: "sheep" },
-            { name: "Duck", bg: "#ffd166", ears: "#ffd166", face: "#ffd166", details: "duck" },
-            { name: "Seal", bg: "#e0e1dd", ears: "#e0e1dd", face: "#e0e1dd", details: "seal" },
-            { name: "Axolotl", bg: "#ffb5a7", ears: "#f8ad9d", face: "#fcd5ce", details: "axolotl" },
-            { name: "Capybara", bg: "#9c6644", ears: "#7f5539", face: "#b08968", details: "capybara" },
-            { name: "Hippo", bg: "#cdb4db", ears: "#ffc8dd", face: "#cdb4db", details: "hippo" },
-            { name: "Elephant", bg: "#a2d2ff", ears: "#bde0fe", face: "#a2d2ff", details: "elephant" },
-            { name: "Corgi", bg: "#dda15e", ears: "#bc6c25", face: "#fefae0", details: "corgi" },
-            { name: "Calico Cat", bg: "#ffffff", ears: "#f4a261", face: "#ffffff", details: "calico" },
-            { name: "Otter", bg: "#8d6e63", ears: "#5d4037", face: "#d7ccc8", details: "otter" },
-            { name: "Hedgehog", bg: "#d7ccc8", ears: "#8d6e63", face: "#f5f5f5", details: "hedgehog" },
-            { name: "Lion", bg: "#ffe082", ears: "#ffb300", face: "#ffe082", details: "lion" },
-            { name: "Wolf", bg: "#cfd8dc", ears: "#90a4ae", face: "#eceff1", details: "wolf" },
-            { name: "Alpaca", bg: "#ffffff", ears: "#f5f5f5", face: "#ffffff", details: "alpaca" },
-            { name: "Cheetah", bg: "#ffe082", ears: "#ffb300", face: "#ffe082", details: "cheetah" },
-            { name: "Beaver", bg: "#a1887f", ears: "#6d4c41", face: "#d7ccc8", details: "beaver" },
-            { name: "Squirrel", bg: "#ffb74d", ears: "#f57c00", face: "#ffe0b2", details: "squirrel" },
-            { name: "Giraffe", bg: "#ffe082", ears: "#ffb300", face: "#ffe082", details: "giraffe" },
-            { name: "Bat", bg: "#b0bec5", ears: "#78909c", face: "#eceff1", details: "bat" },
-            { name: "Whale", bg: "#81d4fa", ears: "#81d4fa", face: "#e1f5fe", details: "whale" },
-            { name: "Shiba Black", bg: "#424242", ears: "#212121", face: "#e0e0e0", details: "shibablack" },
-            { name: "Cow", bg: "#ffffff", ears: "#e0e0e0", face: "#ffffff", details: "cow" },
-            { name: "Husky", bg: "#90a4ae", ears: "#546e7a", face: "#ffffff", details: "husky" },
-            { name: "Bee", bg: "#fff176", ears: "#fff176", face: "#fff176", details: "bee" },
-            { name: "Dragon", bg: "#c8e6c9", ears: "#81c784", face: "#e8f5e9", details: "dragon" },
-            { name: "Parrot", bg: "#81c784", ears: "#81c784", face: "#e8f5e9", details: "parrot" },
-            { name: "Crow", bg: "#616161", ears: "#424242", face: "#757575", details: "crow" },
-            { name: "Chinchilla", bg: "#e0e0e0", ears: "#bdbdbd", face: "#f5f5f5", details: "chinchilla" },
-            { name: "Platypus", bg: "#80deea", ears: "#4dd0e1", face: "#e0f7fa", details: "platypus" },
-            { name: "Walrus", bg: "#bcaaa4", ears: "#8d6e63", face: "#d7ccc8", details: "walrus" }
-        ];
-
-        function createAnimalSVG(animal) {
-            // Animal Restaurant Style: Soft shapes, dark outlines (#5a4033), pink cheeks, minimalist dot eyes
-            return `
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <!-- Base Head -->
-                <circle cx="50" cy="55" r="35" fill="${animal.bg}" stroke="#5a4033" stroke-width="3" />
-                
-                <!-- Ears/Ears details -->
-                <circle cx="25" cy="25" r="10" fill="${animal.ears}" stroke="#5a4033" stroke-width="3" />
-                <circle cx="75" cy="25" r="10" fill="${animal.ears}" stroke="#5a4033" stroke-width="3" />
-                
-                <!-- Inner face overlay if needed -->
-                <ellipse cx="50" cy="60" rx="25" ry="20" fill="${animal.face}" />
-
-                <!-- Cheeks -->
-                <circle cx="30" cy="62" r="5" fill="#ffb3ba" opacity="0.7" />
-                <circle cx="70" cy="62" r="5" fill="#ffb3ba" opacity="0.7" />
-
-                <!-- Eyes -->
-                <circle cx="38" cy="52" r="3" fill="#5a4033" />
-                <circle cx="62" cy="52" r="3" fill="#5a4033" />
-                
-                <!-- Nose/Mouth -->
-                <ellipse cx="50" cy="58" rx="2.5" ry="2" fill="#5a4033" />
-                <path d="M 47 62 Q 50 65 53 62" fill="none" stroke="#5a4033" stroke-width="2" stroke-linecap="round" />
-            </svg>
-            `;
-        }
-
-        function renderAnimals() {
-            const grid = document.getElementById('animals-grid');
-            grid.innerHTML = '';
-            animalData.forEach(animal => {
-                const card = document.createElement('div');
-                card.className = 'animal-card';
-                card.innerHTML = `
-                    <div class="animal-face">${createAnimalSVG(animal)}</div>
-                    <div class="animal-name">${animal.name}</div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-            if(tab === 'animals') {
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.getElementById('animals-tab').classList.add('active');
-            } else {
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('game-tab').classList.add('active');
-            }
-        }
-
-        // --- SNAKE GAME LOGIC ---
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        const gridSize = 18;
-        const tileCount = canvas.width / gridSize;
-
-        let snake = [];
-        let food = { x: 0, y: 0 };
-        let dx = gridSize;
-        let dy = 0;
-        let score = 0;
-        let highScore = 0;
-        let gameInterval = null;
-        let isGameRunning = false;
-
-        // Touch handling variables
-        let touchStartX = 0;
-        let touchStartY = 0;
-
-        function initGame() {
-            snake = [
-                { x: 5 * gridSize, y: 10 * gridSize },
-                { x: 4 * gridSize, y: 10 * gridSize },
-                { x: 3 * gridSize, y: 10 * gridSize }
-            ];
-            dx = gridSize;
-            dy = 0;
-            score = 0;
-            document.getElementById('score').innerText = score;
-            spawnFood();
-        }
-
-        function spawnFood() {
-            food.x = Math.floor(Math.random() * tileCount) * gridSize;
-            food.y = Math.floor(Math.random() * tileCount) * gridSize;
-            // Ensure food doesn't spawn on snake
-            snake.forEach(part => {
-                if (part.x === food.x && part.y === food.y) spawnFood();
-            });
-        }
-
-        function startGame() {
-            document.getElementById('instruction-overlay').style.display = 'none';
-            document.getElementById('gameover-overlay').style.display = 'none';
-            initGame();
-            isGameRunning = true;
-            if (gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(gameLoop, 120);
-        }
-
-        function gameOver() {
-            isGameRunning = false;
-            clearInterval(gameInterval);
-            document.getElementById('final-score').innerText = score;
-            if (score > highScore) {
-                highScore = score;
-                document.getElementById('high-score').innerText = highScore;
-            }
-            document.getElementById('gameover-overlay').style.display = 'flex';
-        }
-
-        function gameLoop() {
-            update();
-            draw();
-        }
-
-        function update() {
-            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-
-            // Wall Collision Check
-            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
-                gameOver();
-                return;
-            }
-
-            // Self Collision Check
-            for (let i = 0; i < snake.length; i++) {
-                if (head.x === snake[i].x && head.y === snake[i].y) {
-                    gameOver();
-                    return;
-                }
-            }
-
-            snake.unshift(head);
-
-            // Food Collision Check
-            if (head.x === food.x && head.y === food.y) {
-                score += 10;
-                document.getElementById('score').innerText = score;
-                spawnFood();
-            } else {
-                snake.pop();
-            }
-        }
-
-        function draw() {
-            // Background
-            ctx.fillStyle = '#f4ece1';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw Food (Styled as a small treat/fish shape)
-            ctx.fillStyle = '#ff70a6';
-            ctx.beginPath();
-            ctx.arc(food.x + gridSize / 2, food.y + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.strokeStyle = '#5a4033';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-
-            // Draw Snake
-            snake.forEach((part, index) => {
-                if (index === 0) {
-                    // Head - Cute Animal Face Style
-                    ctx.fillStyle = '#e09f67';
-                    ctx.beginPath();
-                    ctx.roundRect(part.x, part.y, gridSize, gridSize, [6]);
-                    ctx.fill();
-                    ctx.strokeStyle = '#5a4033';
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-
-                    // Eyes
-                    ctx.fillStyle = '#5a4033';
-                    ctx.beginPath();
-                    ctx.arc(part.x + 5, part.y + 6, 1.5, 0, Math.PI * 2);
-                    ctx.arc(part.x + 13, part.y + 6, 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-                } else {
-                    // Body
-                    ctx.fillStyle = '#f1b980';
-                    ctx.beginPath();
-                    ctx.roundRect(part.x + 1, part.y + 1, gridSize - 2, gridSize - 2, [4]);
-                    ctx.fill();
-                    ctx.strokeStyle = '#7c5c43';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            });
-        }
-
-        function handleInput(dir) {
-            if (!isGameRunning) return;
-            if (dir === 'UP' && dy === 0) { dx = 0; dy = -gridSize; }
-            if (dir === 'DOWN' && dy === 0) { dx = 0; dy = gridSize; }
-            if (dir === 'LEFT' && dx === 0) { dx = -gridSize; dy = 0; }
-            if (dir === 'RIGHT' && dx === 0) { dx = gridSize; dy = 0; }
-        }
-
-        // Keyboard Controls
-        window.addEventListener('keydown', e => {
-            switch (e.key.toLowerCase()) {
-                case 'w':
-                case 'arrowup':
-                    handleInput('UP');
-                    break;
-                case 's':
-                case 'arrowdown':
-                    handleInput('DOWN');
-                    break;
-                case 'a':
-                case 'arrowleft':
-                    handleInput('LEFT');
-                    break;
-                case 'd':
-                case 'arrowright':
-                    handleInput('RIGHT');
-                    break;
-            }
-        });
-
-        // Touch & Swipe Controls
-        const board = document.getElementById('game-board');
-
-        board.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        }, { passive: true });
-
-        board.addEventListener('touchend', e => {
-            if (!touchStartX || !touchStartY) return;
-
-            let touchEndX = e.changedTouches[0].clientX;
-            let touchEndY = e.changedTouches[0].clientY;
-
-            let diffX = touchEndX - touchStartX;
-            let diffY = touchEndY - touchStartY;
-
-            if (Math.abs(diffX) > Math.abs(diffY)) {
-                // Horizontal Swipe
-                if (diffX > 20) handleInput('RIGHT');
-                else if (diffX < -20) handleInput('LEFT');
-            } else {
-                // Vertical Swipe
-                if (diffY > 20) handleInput('DOWN');
-                else if (diffY < -20) handleInput('UP');
-            }
-
-            touchStartX = 0;
-            touchStartY = 0;
-        }, { passive: true });
-
-        // On Load
-        renderAnimals();
-        draw();
-    </script>
 </body>
 </html>

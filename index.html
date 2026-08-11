@@ -829,6 +829,17 @@
       font-size: 1.2rem;
       margin-bottom: 10px;
     }
+
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 600px) {
+      .title-text { font-size: 38px; letter-spacing: 2px; }
+      .bamboo-art { display: none; }
+      .resources-bar { padding: 4px 10px; gap: 8px; }
+      .resource-item { font-size: 0.8rem; }
+      .character-selection-grid { grid-template-columns: repeat(2, 1fr); }
+      .shop-grid { grid-template-columns: 1fr; }
+      #snake-canvas { width: 320px; height: 320px; }
+    }
   </style>
 </head>
 <body>
